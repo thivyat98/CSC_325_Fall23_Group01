@@ -1,0 +1,43 @@
+.root {
+    -fx-background-color: #f0f0f0;
+}
+
+.center {
+    -fx-alignment: CENTER;
+}
+
+.label {
+    -fx-font-size: 16;
+    -fx-text-fill: #0077FF;
+}
+
+.grid-pane {
+    -fx-hgap: 10;
+    -fx-vgap: 10;
+}
+
+#usernameField, #passwordField {
+    -fx-pref-width: 250;
+    -fx-pref-height: 30;
+}
+
+.button {
+    -fx-background-color: #0077FF;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-pref-width: 100;
+    -fx-pref-height: 40;
+}
+
+.button:hover {
+    -fx-background-color: #0055DD;
+}
+
+.hyperlink {
+    -fx-text-fill: #0077FF;
+    -fx-underline: true;
+}
+
+.hyperlink:hover {
+    -fx-text-fill: #0055DD;
+}
