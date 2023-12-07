@@ -7,6 +7,7 @@ module com.example.csc325.csc325 {
     requires com.google.auth;
     requires google.cloud.core;
     requires com.google.api.apicommon;
+    requires java.sql;
 
 
     opens com.example.csc325.csc325 to javafx.fxml;
