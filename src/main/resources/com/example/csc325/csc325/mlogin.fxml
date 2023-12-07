@@ -36,14 +36,17 @@
                 <Label prefHeight="30.0" prefWidth="417.0" text="                              Login" textAlignment="CENTER">
                     <font>
                         <Font size="25.0" />
-                    </font></Label>
+                    </font>
+                </Label>
                 <TextField prefHeight="34.0" prefWidth="386.0" promptText="Email" GridPane.rowIndex="1" />
-                <PasswordField fx:id="hiddenPasswordField" managed="false" prefHeight="33.0" prefWidth="332.0" promptText="Password" visible="false" GridPane.rowIndex="2" />
-                <TextField fx:id="visiblePasswordField" prefHeight="34.0" prefWidth="386.0" promptText="Password" GridPane.rowIndex="2" />
-                <Button fx:id="btnTogglePassword" mnemonicParsing="false" onAction="#togglePasswordVisibility" prefHeight="26.0" prefWidth="49.0" styleClass="password-toggle-button" text="Hide" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <TextField fx:id="passwordLabel" styleClass="password-label" prefHeight="34.0" prefWidth="386.0" GridPane.rowIndex="2" />
+                <PasswordField fx:id="hiddenPasswordField" styleClass="password-field" managed="false" prefHeight="33.0" prefWidth="332.0" promptText="Password" GridPane.rowIndex="2" />
+                <TextField fx:id="visiblePasswordField" styleClass="password-field" prefHeight="34.0" prefWidth="386.0" promptText="Password" GridPane.rowIndex="2" />
+                <Button fx:id="btnTogglePassword" mnemonicParsing="false" onAction="#togglePasswordVisibility" prefHeight="26.0" prefWidth="49.0" styleClass="password-toggle-button" text="Show" GridPane.columnIndex="1" GridPane.rowIndex="2">
                     <cursor>
                         <Cursor fx:constant="HAND" />
-                    </cursor></Button>
+                    </cursor>
+                </Button>
 
                 <!--            <TextField prefHeight="34.0" prefWidth="386.0" promptText="Confirm password" GridPane.rowIndex="3" />-->
                 <Button fx:id="btn_signUp" defaultButton="true" mnemonicParsing="false" onAction="#signup" prefHeight="26.0" prefWidth="404.0" styleClass="nav_btn" text="Login" GridPane.halignment="CENTER" GridPane.rowIndex="3" />

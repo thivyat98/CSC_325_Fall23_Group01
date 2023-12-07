@@ -12,7 +12,8 @@ public class SceneManager {
     private static SceneManager instance;
     private Stage stage;
 
-    private SceneManager() {}
+    private SceneManager() {
+    }
 
     public static SceneManager getInstance() {
         if (instance == null) {
