@@ -3,6 +3,7 @@ package com.example.csc325.csc325;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.FirestoreOptions;
+import com.google.firebase.cloud.FirestoreClient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -23,20 +24,6 @@ public class msignup {
     @FXML
     public Button signUpGoogle;
 
-    private static final String SERVICE_ACCOUNT_KEY_PATH = "src/main/java/com/example/csc325/csc325/privatekey.json";
-    private static final String DB_URL = "https://csc325-finalproject.firebaseio.com"; // Replace with your Firestore database URL
-
-    private final Firestore firestore;
-
-    public msignup() {
-        // Initialize Firestore
-        try (FileInputStream serviceAccount = new FileInputStream(SERVICE_ACCOUNT_KEY_PATH)) {
-            GoogleCredentials credentials = GoogleCredentials.fromStream(serviceAccount);
-            this.firestore = FirestoreOptions.newBuilder().setCredentials(credentials).build().getService();
-        } catch (IOException e) {
-            throw new RuntimeException("Error loading Firestore credentials", e);
-        }
-    }
 
     public void handleSignUp(ActionEvent actionEvent) {
         //Store this data to a local SQL database
@@ -49,12 +36,13 @@ public class msignup {
     }
 
     private void storeDataToFirestore(String data) {
+        Firestore firestore = FirestoreClient.getFirestore();
         try {
             // Add data to Firestore
             Map<String, Object> docData = new HashMap<>();
-            docData.put("column_name", data);
+            docData.put("Mazen is dumb", data + " Andrew is Smart");
 
-            firestore.collection(COLLECTION_NAME)
+            firestore.collection("users")
                     .add(docData)
                     .get(); // Blocking call to wait for the result
         } catch (Exception e) {
