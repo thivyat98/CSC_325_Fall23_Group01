@@ -51,6 +51,7 @@
                 <!--            <TextField prefHeight="34.0" prefWidth="386.0" promptText="Confirm password" GridPane.rowIndex="3" />-->
                 <Button fx:id="loginBtn" defaultButton="true" mnemonicParsing="false" onAction="#signin" prefHeight="26.0" prefWidth="404.0" styleClass="nav_btn" text="Login" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                 <Label prefHeight="17.0" prefWidth="345.0" text="                                            Don't have an account? " GridPane.rowIndex="4" />
+                <Label fx:id="lblErrorMsg"> </Label>
                 <AnchorPane GridPane.rowIndex="6">
                     <children>
                         <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="14.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" smooth="false">

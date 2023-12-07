@@ -48,4 +48,11 @@ public class SceneManager {
         stage.setScene(new Scene(root));
         stage.setTitle("login");
     }
+
+    public void showMainScene() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("searchPage.fxml"));
+        Parent root = loader.load();
+        stage.setScene(new Scene(root));
+        stage.setTitle("login");
+    }
 }

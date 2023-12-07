@@ -81,7 +81,7 @@ public class mlogin {
         }
         if (match) {
                 //change to main menu
-            SceneManager.getInstance().showMainMenuScene();
+            SceneManager.getInstance().showMainScene();
         } else {
             lblErrorMsg.setText("Sorry! Incorrect username or password");
         }
