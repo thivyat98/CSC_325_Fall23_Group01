@@ -35,6 +35,7 @@ build/
 .vscode/
 
 .idea/
+src/main/java/com/example/csc325/csc325/privatekey.json
 
 ### Mac OS ###
 .DS_Store

@@ -49,8 +49,7 @@
                 </Button>
 
                 <!--            <TextField prefHeight="34.0" prefWidth="386.0" promptText="Confirm password" GridPane.rowIndex="3" />-->
-                <Button fx:id="btn_signUp" defaultButton="true" mnemonicParsing="false" onAction="#signup" prefHeight="26.0" prefWidth="404.0" styleClass="nav_btn" text="Login" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-                <Button mnemonicParsing="false" onAction="#change" prefHeight="26.0" prefWidth="445.0" styleClass="nav_btn2" text="Login with Google" textFill="#141414" GridPane.rowIndex="6" />
+                <Button fx:id="btn_signUp" defaultButton="true" mnemonicParsing="false" onAction="#signin" prefHeight="26.0" prefWidth="404.0" styleClass="nav_btn" text="Login" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                 <Label prefHeight="17.0" prefWidth="345.0" text="                                            Don't have an account? " GridPane.rowIndex="4" />
                 <AnchorPane GridPane.rowIndex="6">
                     <children>
@@ -77,7 +76,7 @@
                     <children>
                         <AnchorPane prefHeight="54.0" prefWidth="376.0">
                             <children>
-                                <Hyperlink layoutX="246.0" layoutY="16.0" onAction="#change" text="Sign up" />
+                                <Hyperlink layoutX="246.0" layoutY="16.0" onAction="#signup" text="Sign up" />
                             </children>
                         </AnchorPane>
                     </children>
