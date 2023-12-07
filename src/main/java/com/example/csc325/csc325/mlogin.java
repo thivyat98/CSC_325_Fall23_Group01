@@ -8,8 +8,6 @@ import java.io.IOException;
 public class mlogin {
     public Button btn_signUp;
 
-
-
     public void togglePasswordVisibility(ActionEvent actionEvent) {
     }
 
