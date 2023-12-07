@@ -17,8 +17,6 @@ public class mlogin {
         SceneManager.getInstance().showSignUpScene();
     }
 
-
-
     public void change(ActionEvent actionEvent) throws IOException {
         SceneManager.getInstance().showSignUpScene();
     }
