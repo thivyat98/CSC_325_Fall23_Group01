@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="608.0" prefWidth="558.0" styleClass="anchor_pane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csc325.csc325.mlogin">
+<AnchorPane prefHeight="608.0" prefWidth="558.0" styleClass="anchor_pane" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csc325.csc325.mlogin">
     <children>
         <GridPane layoutX="92.0" layoutY="65.0" prefHeight="510.0" prefWidth="430.0" styleClass="anchor_pane">
             <columnConstraints>
@@ -28,7 +28,6 @@
                 <RowConstraints maxHeight="114.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="167.0" minHeight="10.0" prefHeight="110.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="93.0" minHeight="0.0" prefHeight="58.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="93.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="127.0" minHeight="10.0" prefHeight="88.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="103.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
             </rowConstraints>
@@ -39,9 +38,9 @@
                     </font>
                 </Label>
                 <TextField fx:id="usernameLabel" prefHeight="34.0" prefWidth="386.0" promptText="Email" GridPane.rowIndex="1" />
-                <TextField fx:id="passwordLabel" styleClass="password-label" prefHeight="34.0" prefWidth="386.0" GridPane.rowIndex="2" />
-                <PasswordField fx:id="hiddenPasswordField" styleClass="password-field" managed="false" prefHeight="33.0" prefWidth="332.0" promptText="Password" GridPane.rowIndex="2" />
-                <TextField fx:id="visiblePasswordField" styleClass="password-field" prefHeight="34.0" prefWidth="386.0" promptText="Password" GridPane.rowIndex="2" />
+                <TextField fx:id="passwordLabel" prefHeight="34.0" prefWidth="386.0" styleClass="password-label" GridPane.rowIndex="2" />
+                <PasswordField fx:id="hiddenPasswordField" managed="false" prefHeight="33.0" prefWidth="332.0" promptText="Password" styleClass="password-field" GridPane.rowIndex="2" />
+                <TextField fx:id="visiblePasswordField" prefHeight="34.0" prefWidth="386.0" promptText="Password" styleClass="password-field" GridPane.rowIndex="2" />
                 <Button fx:id="btnTogglePassword" mnemonicParsing="false" onAction="#togglePasswordVisibility" prefHeight="26.0" prefWidth="49.0" styleClass="password-toggle-button" text="Show" GridPane.columnIndex="1" GridPane.rowIndex="2">
                     <cursor>
                         <Cursor fx:constant="HAND" />
@@ -51,8 +50,8 @@
                 <!--            <TextField prefHeight="34.0" prefWidth="386.0" promptText="Confirm password" GridPane.rowIndex="3" />-->
                 <Button fx:id="loginBtn" defaultButton="true" mnemonicParsing="false" onAction="#signin" prefHeight="26.0" prefWidth="404.0" styleClass="nav_btn" text="Login" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                 <Label prefHeight="17.0" prefWidth="345.0" text="                                            Don't have an account? " GridPane.rowIndex="4" />
-                <Label fx:id="lblErrorMsg"> </Label>
-                <AnchorPane GridPane.rowIndex="6">
+                <Label fx:id="lblErrorMsg" prefHeight="22.0" prefWidth="56.0" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER"> </Label>
+                <AnchorPane GridPane.rowIndex="5">
                     <children>
                         <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="14.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" smooth="false">
                             <image>
@@ -82,7 +81,6 @@
                         </AnchorPane>
                     </children>
                 </GridPane>
-                <Label prefHeight="17.0" prefWidth="395.0" text="                                                                Or" textFill="GREY" GridPane.rowIndex="5" />
             </children>
         </GridPane>
     </children>
