@@ -21,19 +21,12 @@ public class msignup {
     @FXML
     public Button signUp;
 
-    @FXML
-    public Button signUpGoogle;
 
 
     public void handleSignUp(ActionEvent actionEvent) {
-        //Store this data to a local SQL database
+
     }
 
-    public void handleGoogleSignUp(ActionEvent actionEvent) {
-        //Using a Google account, store this data to a SQL database
-        String googleUserData = "google_data_to_store";
-        storeDataToFirestore(googleUserData);
-    }
 
     private void storeDataToFirestore(String data) {
         Firestore firestore = FirestoreClient.getFirestore();

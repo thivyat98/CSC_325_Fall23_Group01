@@ -57,7 +57,6 @@
                 <TextField fx:id="phoneNumberField" promptText="Phone number (xxx-xxx-xxxx)" GridPane.rowIndex="5" />
                 <Label fx:id="phoneNumberCheck" />
                 <Button fx:id="signUp" mnemonicParsing="false" onAction="#handleSignUp" prefHeight="26.0" prefWidth="40.0" styleClass="nav_btn" text="Sign Up" GridPane.rowIndex="10" />
-                <Button fx:id="signUpGoogle" mnemonicParsing="false" onAction="#handleGoogleSignUp" prefHeight="36.0" prefWidth="581.0" styleClass="nav_btn2" text="Sign Up with Google" GridPane.rowIndex="13" />
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="11">
                     <children>
                         <Label layoutX="192.0" layoutY="11.0" text="Already have an account?" />

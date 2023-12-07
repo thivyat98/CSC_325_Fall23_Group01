@@ -38,7 +38,7 @@
                         <Font size="25.0" />
                     </font>
                 </Label>
-                <TextField prefHeight="34.0" prefWidth="386.0" promptText="Email" GridPane.rowIndex="1" />
+                <TextField fx:id="usernameLabel" prefHeight="34.0" prefWidth="386.0" promptText="Email" GridPane.rowIndex="1" />
                 <TextField fx:id="passwordLabel" styleClass="password-label" prefHeight="34.0" prefWidth="386.0" GridPane.rowIndex="2" />
                 <PasswordField fx:id="hiddenPasswordField" styleClass="password-field" managed="false" prefHeight="33.0" prefWidth="332.0" promptText="Password" GridPane.rowIndex="2" />
                 <TextField fx:id="visiblePasswordField" styleClass="password-field" prefHeight="34.0" prefWidth="386.0" promptText="Password" GridPane.rowIndex="2" />
@@ -49,7 +49,7 @@
                 </Button>
 
                 <!--            <TextField prefHeight="34.0" prefWidth="386.0" promptText="Confirm password" GridPane.rowIndex="3" />-->
-                <Button fx:id="btn_signUp" defaultButton="true" mnemonicParsing="false" onAction="#signin" prefHeight="26.0" prefWidth="404.0" styleClass="nav_btn" text="Login" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                <Button fx:id="loginBtn" defaultButton="true" mnemonicParsing="false" onAction="#signin" prefHeight="26.0" prefWidth="404.0" styleClass="nav_btn" text="Login" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                 <Label prefHeight="17.0" prefWidth="345.0" text="                                            Don't have an account? " GridPane.rowIndex="4" />
                 <AnchorPane GridPane.rowIndex="6">
                     <children>
