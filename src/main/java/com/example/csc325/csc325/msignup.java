@@ -1,11 +1,14 @@
 package com.example.csc325.csc325;
 
+import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.FirestoreOptions;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -27,12 +30,12 @@ public class msignup {
 
     public msignup() {
         // Initialize Firestore
-        this.firestore = FirestoreOptions.getDefaultInstance()
-                .toBuilder()
-                .setProjectId("csc325-finalproject") // Replace with your Google Cloud project ID
-                .setCredentialsFile(SERVICE_ACCOUNT_KEY_PATH)
-                .build()
-                .getService();
+        try (FileInputStream serviceAccount = new FileInputStream(SERVICE_ACCOUNT_KEY_PATH)) {
+            GoogleCredentials credentials = GoogleCredentials.fromStream(serviceAccount);
+            this.firestore = FirestoreOptions.newBuilder().setCredentials(credentials).build().getService();
+        } catch (IOException e) {
+            throw new RuntimeException("Error loading Firestore credentials", e);
+        }
     }
 
     public void handleSignUp(ActionEvent actionEvent) {
@@ -46,15 +49,17 @@ public class msignup {
     }
 
     private void storeDataToFirestore(String data) {
-        // Add data to Firestore
-        Map<String, Object> docData = new HashMap<>();
-        docData.put("column_name", data);
+        try {
+            // Add data to Firestore
+            Map<String, Object> docData = new HashMap<>();
+            docData.put("column_name", data);
 
-        firestore.collection(COLLECTION_NAME)
-                .add(docData)
-                .exceptionally(e -> {
-                    e.printStackTrace();
-                    return null;
-                });
+            firestore.collection(COLLECTION_NAME)
+                    .add(docData)
+                    .get(); // Blocking call to wait for the result
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
 }
