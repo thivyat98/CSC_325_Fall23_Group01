@@ -5,29 +5,24 @@ import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.cloud.FirestoreClient;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 public class Employee extends User {
-    private UUID employeeId;
-    private String jobTitle;
     private ArrayList<String> skills;
+    private String phone;
 
-    public Employee(String userId, String name, String jobTitle) {
-        super(userId, name);
-        this.employeeId = UUID.randomUUID();
-        this.jobTitle = jobTitle;
-    }
+    private String firstName;
+    private String lastName;
 
-    public UUID getEmployeeId() {
-        return employeeId;
-    }
-
-    public String getJobTitle() {
-        return jobTitle;
+    public Employee(String firstName, String lastName, String phone, String password, String email) {
+        super(password, email);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
     }
 
     public ArrayList<String> getSkills() {
@@ -45,10 +40,12 @@ public class Employee extends User {
     @Override
     public void save(){
         Map<String, Object> data = new HashMap<>();
-        data.put("Name", super.getName());
-        data.put("EmployeeID", this.employeeId);
+        data.put("Type", "Employee");
+        data.put("First Name", this.getFirstName());
+        data.put("Last Name", this.getLastName());
+        data.put("ID", this.getId());
         data.put("Email", super.getEmail());
-        data.put("Skills", this.skills);
+        data.put("Skills", this.getSkills());
         try {
             Firestore db = FirestoreClient.getFirestore();
             DocumentReference docRef = db.collection("users").document(super.getId());
@@ -60,4 +57,47 @@ public class Employee extends User {
 
     }
 
+    @Override
+    public void register() {
+        Firestore firestore = FirestoreClient.getFirestore();
+        try {
+            // Add data to Firestore
+            Map<String, Object> creds = new HashMap<>();
+            creds.put("username", this.getEmail());
+            creds.put("hashPassword", BCrypt.hashpw(this.getPassword(), BCrypt.gensalt()));
+            creds.put("ID", this.getId());
+
+            DocumentReference docRef = firestore.collection("auth").document(this.getId());
+            ApiFuture<WriteResult> result = docRef.set(creds);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        this.save();
+
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 }

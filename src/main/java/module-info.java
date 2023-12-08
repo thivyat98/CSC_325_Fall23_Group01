@@ -8,6 +8,7 @@ module com.example.csc325.csc325 {
     requires google.cloud.core;
     requires com.google.api.apicommon;
     requires java.sql;
+    requires spring.security.crypto;
 
 
     opens com.example.csc325.csc325 to javafx.fxml;

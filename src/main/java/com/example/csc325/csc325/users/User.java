@@ -2,66 +2,47 @@ package com.example.csc325.csc325.users;
 
 
 import java.util.Objects;
+import java.util.UUID;
 
 // Define a User class to represent user data
 public abstract class User {
 
 
-    private String id;
-    private String name;
+    private final String id;
     private String email;
 
-    // Constructor, getters, and setters for User class
-    // ...
+    private String password;
 
 
     public User() {
-        this.name = "";
-        this.id = "";
+        this.password = "";
+        this.id = UUID.randomUUID().toString();
     }
 
-    public User(String name, String id) {
-        this.name = name;
-        this.id = id;
+    public User(String password, String email) {
+        this.password = password;
+        this.email = email;
+        this.id = UUID.randomUUID().toString();
     }
 
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+
+
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
 
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(name, user.name);
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                '}';
-    }
-
-    public abstract String getUserType();
-    public abstract void save();
 
     public String getEmail() {
         return this.email;
@@ -69,5 +50,18 @@ public abstract class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public abstract String getUserType();
+    public abstract void save();
+    public abstract void register();
+
+
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id +
+                '}';
     }
 }

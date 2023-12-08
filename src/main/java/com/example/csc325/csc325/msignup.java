@@ -1,46 +1,61 @@
 package com.example.csc325.csc325;
 
-import com.google.auth.oauth2.GoogleCredentials;
+import com.example.csc325.csc325.users.Employee;
+import com.example.csc325.csc325.users.User;
+import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.Firestore;
-import com.google.cloud.firestore.FirestoreOptions;
+import com.google.cloud.firestore.QueryDocumentSnapshot;
+import com.google.cloud.firestore.QuerySnapshot;
 import com.google.firebase.cloud.FirestoreClient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class msignup {
     @FXML
     public Button signUp;
+    public TextField firstNameField;
+    public TextField lastNameField;
+    public TextField emailField;
+    public TextField passwordFeild;
+    public TextField ConfirmPasswordFeild;
+    public TextField phoneNumberField;
 
 
-
-    public void handleSignUp(ActionEvent actionEvent) {
-
-    }
-
-
-    private void storeDataToFirestore(String data) {
-        Firestore firestore = FirestoreClient.getFirestore();
-        try {
-            // Add data to Firestore
-            Map<String, Object> docData = new HashMap<>();
-            docData.put("Mazen is dumb", data + " Andrew is Smart");
-
-            firestore.collection("users")
-                    .add(docData)
-                    .get(); // Blocking call to wait for the result
-        } catch (Exception e) {
-            e.printStackTrace();
+    public void handleSignUp(ActionEvent actionEvent) throws ExecutionException, InterruptedException {
+        Firestore db = FirestoreClient.getFirestore();
+        if(firstNameField.getText().isEmpty() || lastNameField.getText().isEmpty() || emailField.getText().isEmpty() || passwordFeild.getText().isEmpty() || ConfirmPasswordFeild.getText().isEmpty() || phoneNumberField.getText().isEmpty()){
+            System.out.println("All fields are required");
+            return;
         }
+        if(!passwordFeild.getText().equals(ConfirmPasswordFeild.getText())){
+            System.out.println("Passwords dont match");
+
+        }
+        else {
+            ApiFuture<QuerySnapshot> query = db.collection("auth")
+                    .whereEqualTo("username", emailField.getText())
+                    .get();
+            List<QueryDocumentSnapshot> documents = query.get().getDocuments();
+
+            if(!documents.isEmpty()) {
+                System.out.println("Account using email already exists");
+                return;
+
+            }
+            User user = new Employee(firstNameField.getText(), lastNameField.getText(), phoneNumberField.getText(), passwordFeild.getText(), emailField.getText());
+            user.register();
+        }
+
+
+
+
+
     }
+
 
 }

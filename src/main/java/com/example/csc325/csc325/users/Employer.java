@@ -5,23 +5,19 @@ import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.cloud.FirestoreClient;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class Employer extends User {
-    private String employerId;
     private String companyName;
 
-    public Employer(String userId, String name, String employerId, String companyName) {
-        super(userId, name);
-        this.employerId = employerId;
+    public Employer(String companyName, String password, String email) {
+        super(password, email);
         this.companyName = companyName;
     }
 
-    public String getEmployerId() {
-        return employerId;
-    }
 
     public String getCompanyName() {
         return companyName;
@@ -35,10 +31,10 @@ public class Employer extends User {
     @Override
     public void save(){
         Map<String, Object> data = new HashMap<>();
-        data.put("Name", super.getName());
-        data.put("EmployeeID", this.employerId);
-        data.put("Email", super.getEmail());
-        data.put("Company Name", this.companyName);
+        data.put("Type", "Employer");
+        data.put("ID", this.getId());
+        data.put("Email", this.getEmail());
+        data.put("Company Name", this.getCompanyName());
         try {
             Firestore db = FirestoreClient.getFirestore();
             DocumentReference docRef = db.collection("users").document(super.getId());
@@ -48,5 +44,22 @@ public class Employer extends User {
             System.out.println("Error: " + e.getMessage());
         }
 
+    }
+
+    @Override
+    public void register() {
+        Firestore firestore = FirestoreClient.getFirestore();
+        try {
+            // Add data to Firestore
+            Map<String, Object> creds = new HashMap<>();
+            creds.put("username", this.getEmail());
+            creds.put("hashPassword", BCrypt.hashpw(this.getPassword(), BCrypt.gensalt()));
+            creds.put("ID", this.getId());
+
+            DocumentReference docRef = firestore.collection("auth").document(this.getId());
+            ApiFuture<WriteResult> result = docRef.set(creds);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

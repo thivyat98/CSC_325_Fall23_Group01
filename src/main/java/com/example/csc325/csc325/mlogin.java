@@ -54,37 +54,6 @@ public class mlogin {
 
     public void signin(ActionEvent actionEvent) throws IOException {
 
-        String data = "";
-        int counter = 1;
-        String username = "";
-        String password = "";
-        boolean match = false;
-        data = FileManipulatorNote.readFile("loginauth.txt", counter);
-        while (!data.equals("")) {
-            //counter++;
-            if (counter % 2 == 1 && !data.equals("")) {
-                data = FileManipulatorNote.readFile("loginauth.txt", counter);
-                username = data;
-                counter++;
-
-            } else if (counter % 2 == 0 && !data.equals("")) {
-                data = FileManipulatorNote.readFile("loginauth.txt", counter);
-                password = data;
-                counter++;
-
-            } else if (data.equals("")) {
-                data = "";
-            }
-            if (usernameLabel.getText().equals(username) && visiblePasswordField.getText().equals(password)) {
-                match = true;
-            }
-        }
-        if (match) {
-                //change to main menu
-            SceneManager.getInstance().showMainScene();
-        } else {
-            lblErrorMsg.setText("Sorry! Incorrect username or password");
-        }
     }
 
 

@@ -46,14 +46,10 @@
                 <Label fx:id="firstNameCheck" />
                 <TextField fx:id="lastNameField" promptText="Last name" GridPane.rowIndex="3" />
                 <Label fx:id="lastNameCheck" />
-                <TextField fx:id="birthdateField" promptText="Birthdate (mm/dd/yyyy)" GridPane.rowIndex="6" />
-                <Label fx:id="dobCheck" />
-                <TextField fx:id="zipCodeField" promptText="Zipcode" GridPane.rowIndex="7" />
-                <Label fx:id="zipCodeCheck" />
                 <TextField fx:id="emailField" promptText="Email address" GridPane.rowIndex="4" />
                 <Label fx:id="emailCheck" />
-                <TextField promptText="Password" GridPane.rowIndex="8" />
-                <TextField promptText="Confirm Password" GridPane.rowIndex="9" />
+                <TextField fx:id="passwordFeild" promptText="Password" GridPane.rowIndex="8" />
+                <TextField fx:id="ConfirmPasswordFeild" promptText="Confirm Password" GridPane.rowIndex="9" />
                 <TextField fx:id="phoneNumberField" promptText="Phone number (xxx-xxx-xxxx)" GridPane.rowIndex="5" />
                 <Label fx:id="phoneNumberCheck" />
                 <Button fx:id="signUp" mnemonicParsing="false" onAction="#handleSignUp" prefHeight="26.0" prefWidth="40.0" styleClass="nav_btn" text="Sign Up" GridPane.rowIndex="10" />
