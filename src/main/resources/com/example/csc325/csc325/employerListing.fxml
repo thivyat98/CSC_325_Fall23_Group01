@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="750.0" prefWidth="1000.0" style="-fx-background-color: lightgreen;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csc325.csc325.employerListingsController">
+    <children>
+        <ImageView fx:id="profilePicture" fitHeight="166.0" fitWidth="171.0" layoutX="100.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@defaultprofilepic.jpg" />
+            </image>
+        </ImageView>
+        <TextArea layoutX="7.0" layoutY="220.0" prefHeight="430.0" prefWidth="383.0" promptText="About the Company" />
+        <TextArea layoutX="396.0" layoutY="42.0" prefHeight="199.0" prefWidth="588.0" promptText="Company Description" />
+        <ListView fx:id="skillListView" editable="true" layoutX="643.0" layoutY="321.0" prefHeight="357.0" prefWidth="345.0" />
+        <TextField fx:id="skill" layoutX="396.0" layoutY="321.0" prefHeight="31.0" prefWidth="238.0" promptText="Enter a Required Skill" />
+        <Label layoutX="765.0" layoutY="274.0" text="Required Skills:">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Label>
+        <Button fx:id="addSkill" layoutX="476.0" layoutY="383.0" mnemonicParsing="false"  text="Add Required Skill" />
+        <Button layoutX="762.0" layoutY="689.0" mnemonicParsing="false"  text="Remove Required Skill" />
+        <CheckBox layoutX="101.0" layoutY="672.0" mnemonicParsing="false" text="Active Job Listings">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </CheckBox>
+        <Label fx:id="employerName" layoutX="148.0" layoutY="187.0" text="Default Company">
+            <font>
+                <Font size="23.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>
