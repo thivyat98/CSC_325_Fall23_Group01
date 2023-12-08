@@ -25,24 +25,22 @@ public class msignup {
     public TextField ConfirmPasswordFeild;
     public TextField phoneNumberField;
 
-
     public void handleSignUp(ActionEvent actionEvent) throws ExecutionException, InterruptedException {
         Firestore db = FirestoreClient.getFirestore();
-        if(firstNameField.getText().isEmpty() || lastNameField.getText().isEmpty() || emailField.getText().isEmpty() || passwordFeild.getText().isEmpty() || ConfirmPasswordFeild.getText().isEmpty() || phoneNumberField.getText().isEmpty()){
+        if (firstNameField.getText().isEmpty() || lastNameField.getText().isEmpty() || emailField.getText().isEmpty() || passwordFeild.getText().isEmpty() || ConfirmPasswordFeild.getText().isEmpty() || phoneNumberField.getText().isEmpty()) {
             System.out.println("All fields are required");
             return;
         }
-        if(!passwordFeild.getText().equals(ConfirmPasswordFeild.getText())){
+        if (!passwordFeild.getText().equals(ConfirmPasswordFeild.getText())) {
             System.out.println("Passwords dont match");
 
-        }
-        else {
+        } else {
             ApiFuture<QuerySnapshot> query = db.collection("auth")
                     .whereEqualTo("username", emailField.getText())
                     .get();
             List<QueryDocumentSnapshot> documents = query.get().getDocuments();
 
-            if(!documents.isEmpty()) {
+            if (!documents.isEmpty()) {
                 System.out.println("Account using email already exists");
                 return;
 
@@ -50,12 +48,5 @@ public class msignup {
             User user = new Employee(firstNameField.getText(), lastNameField.getText(), phoneNumberField.getText(), passwordFeild.getText(), emailField.getText());
             user.register();
         }
-
-
-
-
-
     }
-
-
 }
