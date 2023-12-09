@@ -1,5 +1,6 @@
 package com.example.csc325.csc325;
 
+import com.example.csc325.csc325.Managers.SceneManager;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;

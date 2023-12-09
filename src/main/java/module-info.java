@@ -13,4 +13,8 @@ module com.example.csc325.csc325 {
 
     opens com.example.csc325.csc325 to javafx.fxml;
     exports com.example.csc325.csc325;
+    exports com.example.csc325.csc325.Controllers;
+    opens com.example.csc325.csc325.Controllers to javafx.fxml;
+    exports com.example.csc325.csc325.Managers;
+    opens com.example.csc325.csc325.Managers to javafx.fxml;
 }

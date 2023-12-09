@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="750.0" prefWidth="1000.0" style="-fx-background-color: lightgreen;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csc325.csc325.employerListingsController">
+<AnchorPane prefHeight="750.0" prefWidth="1000.0" style="-fx-background-color: lightgreen;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csc325.csc325.Controllers.employerListingsController">
     <children>
         <ImageView fx:id="profilePicture" fitHeight="166.0" fitWidth="171.0" layoutX="100.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
             <image>

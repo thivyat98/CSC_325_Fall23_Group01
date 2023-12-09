@@ -9,7 +9,7 @@
 <?import javafx.scene.control.Separator?>
 
 <?import java.net.URL?>
-<VBox alignment="TOP_CENTER" spacing="10" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.csc325.csc325.searchController">
+<VBox alignment="TOP_CENTER" spacing="10" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.csc325.csc325.Controllers.searchController">
     <style>
         /* Add a background image to the entire page */
         -fx-background-image: url('https://img.freepik.com/premium-photo/keyboard-coffee-smartphone-notebook-color-background-top-view_1286-776.jpg');

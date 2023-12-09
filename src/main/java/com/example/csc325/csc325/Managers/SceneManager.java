@@ -1,5 +1,6 @@
-package com.example.csc325.csc325;
+package com.example.csc325.csc325.Managers;
 
+import com.example.csc325.csc325.Controllers.employeeProfileController;
 import com.example.csc325.csc325.users.User;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
