@@ -1,5 +1,10 @@
 package com.example.csc325.csc325;
 
+import com.google.api.core.ApiFuture;
+import com.google.cloud.firestore.Firestore;
+import com.google.cloud.firestore.QueryDocumentSnapshot;
+import com.google.cloud.firestore.QuerySnapshot;
+import com.google.firebase.cloud.FirestoreClient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -8,14 +13,13 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class mlogin {
 
     @FXML
     public Button loginBtn;
-
-    @FXML
-    public TextField usernameLabel;
 
     @FXML
     public PasswordField hiddenPasswordField;
@@ -27,6 +31,8 @@ public class mlogin {
 
     @FXML
     public Label lblErrorMsg;
+    public TextField usernameField;
+    public TextField passwordField;
 
     public void togglePasswordVisibility(ActionEvent actionEvent) {
         if (visiblePasswordField.isVisible()) {
@@ -52,7 +58,14 @@ public class mlogin {
         SceneManager.getInstance().showSignUpScene();
     }
 
-    public void signin(ActionEvent actionEvent) throws IOException {
+    public void signin(ActionEvent actionEvent) throws IOException, ExecutionException, InterruptedException {
+        Firestore db = FirestoreClient.getFirestore();
+        ApiFuture<QuerySnapshot> query = db.collection("auth")
+                .whereEqualTo("username", usernameField.getText())
+                .get();
+        List<QueryDocumentSnapshot> document = query.get().getDocuments();
+        String hashPaswdm = document.
+
 
         SceneManager.getInstance().showMainScene();
     }
