@@ -1,6 +1,7 @@
 package com.example.csc325.csc325.Controllers;
 
 import com.example.csc325.csc325.SceneManager;
+import com.example.csc325.csc325.UserSessionManager;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
@@ -22,13 +23,6 @@ public class mlogin {
 
     @FXML
     public Button loginBtn;
-
-    @FXML
-    public PasswordField hiddenPasswordField;
-
-    @FXML
-    public TextField visiblePasswordField;
-
 
     @FXML
     public Label lblErrorMsg;
@@ -67,8 +61,14 @@ public class mlogin {
         List<QueryDocumentSnapshot> documents = query.get().getDocuments();
         String storedHashedPassword = documents.get(0).getString("hashPassword");
         assert storedHashedPassword != null;
-        System.out.println(BCrypt.checkpw(passwordField.getText(), storedHashedPassword));
+        if(BCrypt.checkpw(passwordField.getText(), storedHashedPassword)){
+            UserSessionManager.loginUser(documents.get(0).getString("ID"));
+            SceneManager.getInstance().showMainScene();
+        }
+        else{
+            System.out.println("Incorrect Password");
 
+        }
 
         //SceneManager.getInstance().showMainScene();
     }

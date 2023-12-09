@@ -3,6 +3,7 @@ package com.example.csc325.csc325.users;
 
 import java.util.Objects;
 import java.util.UUID;
+import java.util.concurrent.ExecutionException;
 
 // Define a User class to represent user data
 public abstract class User {
@@ -54,7 +55,7 @@ public abstract class User {
 
     public abstract String getUserType();
     public abstract void save();
-    public abstract void register();
+    public abstract void register() throws ExecutionException, InterruptedException;
 
 
 

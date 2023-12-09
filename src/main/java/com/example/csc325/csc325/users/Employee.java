@@ -1,15 +1,15 @@
 package com.example.csc325.csc325.users;
 
 import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.DocumentReference;
-import com.google.cloud.firestore.Firestore;
-import com.google.cloud.firestore.WriteResult;
+import com.google.cloud.firestore.*;
 import com.google.firebase.cloud.FirestoreClient;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 public class Employee extends User {
     private ArrayList<String> skills;
@@ -58,8 +58,18 @@ public class Employee extends User {
     }
 
     @Override
-    public void register() {
+    public void register() throws ExecutionException, InterruptedException {
         Firestore firestore = FirestoreClient.getFirestore();
+        ApiFuture<QuerySnapshot> query = firestore.collection("auth")
+                .whereEqualTo("username", this.getEmail())
+                .get();
+        List<QueryDocumentSnapshot> documents = query.get().getDocuments();
+
+        if (!documents.isEmpty()) {
+            System.out.println("Account using email already exists");
+            return;
+
+        }
         try {
             // Add data to Firestore
             Map<String, Object> creds = new HashMap<>();

@@ -38,14 +38,7 @@
                     </font>
                 </Label>
                 <TextField fx:id="usernameField" prefHeight="34.0" prefWidth="386.0" promptText="Email" GridPane.rowIndex="1" />
-                <TextField fx:id="passwordField" prefHeight="34.0" prefWidth="386.0" styleClass="password-label" GridPane.rowIndex="2" />
-                <PasswordField fx:id="hiddenPasswordField" managed="false" prefHeight="33.0" prefWidth="332.0" promptText="Password" styleClass="password-field" GridPane.rowIndex="2" />
-                <TextField fx:id="visiblePasswordField" prefHeight="34.0" prefWidth="386.0" promptText="Password" styleClass="password-field" GridPane.rowIndex="2" />
-                <Button fx:id="btnTogglePassword" mnemonicParsing="false" onAction="#togglePasswordVisibility" prefHeight="26.0" prefWidth="49.0" styleClass="password-toggle-button" text="Show" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                    <cursor>
-                        <Cursor fx:constant="HAND" />
-                    </cursor>
-                </Button>
+                <PasswordField fx:id="passwordField" prefHeight="34.0" prefWidth="386.0" styleClass="password-label" GridPane.rowIndex="2" />
 
                 <!--            <TextField prefHeight="34.0" prefWidth="386.0" promptText="Confirm password" GridPane.rowIndex="3" />-->
                 <Button fx:id="loginBtn" defaultButton="true" mnemonicParsing="false" onAction="#signin" prefHeight="26.0" prefWidth="404.0" styleClass="nav_btn" text="Login" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
