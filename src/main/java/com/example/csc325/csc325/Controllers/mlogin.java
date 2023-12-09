@@ -1,4 +1,4 @@
-package com.example.csc325.csc325;
+package com.example.csc325.csc325.Controllers;
 
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.Firestore;
