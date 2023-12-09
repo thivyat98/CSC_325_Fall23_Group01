@@ -29,9 +29,9 @@ public class msignup {
         Firestore db = FirestoreClient.getFirestore();
         if (firstNameField.getText().isEmpty() || lastNameField.getText().isEmpty() || emailField.getText().isEmpty() || passwordFeild.getText().isEmpty() || ConfirmPasswordFeild.getText().isEmpty() || phoneNumberField.getText().isEmpty()) {
             System.out.println("All fields are required");
-            return;
+
         }
-        if (!passwordFeild.getText().equals(ConfirmPasswordFeild.getText())) {
+         else if (!passwordFeild.getText().equals(ConfirmPasswordFeild.getText())) {
             System.out.println("Passwords dont match");
 
         } else {
