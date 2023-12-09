@@ -1,4 +1,4 @@
-package com.example.csc325.csc325.Managers;
+package com.example.csc325.csc325;
 
 public class UserSessionManager {
     private static String currentUserId = null;

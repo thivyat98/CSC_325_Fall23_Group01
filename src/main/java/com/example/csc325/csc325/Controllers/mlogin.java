@@ -1,6 +1,6 @@
 package com.example.csc325.csc325.Controllers;
 
-import com.example.csc325.csc325.Managers.SceneManager;
+import com.example.csc325.csc325.SceneManager;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
@@ -28,29 +28,28 @@ public class mlogin {
 
     @FXML
     public TextField visiblePasswordField;
-    @FXML
-    public TextField passwordLabel;
+
 
     @FXML
     public Label lblErrorMsg;
     public TextField usernameField;
     public TextField passwordField;
 
-    public void togglePasswordVisibility(ActionEvent actionEvent) {
-        if (visiblePasswordField.isVisible()) {
-            hiddenPasswordField.setText(visiblePasswordField.getText());
-            hiddenPasswordField.setVisible(true);
-            passwordLabel.setText(getDots(hiddenPasswordField.getText()));
-            passwordLabel.setVisible(true);
-            visiblePasswordField.setVisible(false);
-        } else {
-            visiblePasswordField.setText(hiddenPasswordField.getText());
-            visiblePasswordField.setVisible(true);
-            visiblePasswordField.requestFocus();
-            passwordLabel.setVisible(false);
-            hiddenPasswordField.setVisible(false);
-        }
-    }
+//    public void togglePasswordVisibility(ActionEvent actionEvent) {
+//        if (visiblePasswordField.isVisible()) {
+//            hiddenPasswordField.setText(visiblePasswordField.getText());
+//            hiddenPasswordField.setVisible(true);
+//            passwordField.setText(getDots(hiddenPasswordField.getText()));
+//            passwordField.setVisible(true);
+//            visiblePasswordField.setVisible(false);
+//        } else {
+//            visiblePasswordField.setText(hiddenPasswordField.getText());
+//            visiblePasswordField.setVisible(true);
+//            visiblePasswordField.requestFocus();
+//            passwordField.setVisible(false);
+//            hiddenPasswordField.setVisible(false);
+//        }
+//    }
 
     private String getDots(String text) {
         return "•".repeat(text.length());

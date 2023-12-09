@@ -1,4 +1,4 @@
-package com.example.csc325.csc325.Managers;
+package com.example.csc325.csc325;
 
 import com.example.csc325.csc325.Controllers.employeeProfileController;
 import com.example.csc325.csc325.users.User;
