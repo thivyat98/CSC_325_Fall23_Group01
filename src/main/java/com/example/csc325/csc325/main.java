@@ -15,18 +15,12 @@ import java.util.concurrent.ExecutionException;
 
 public class main extends Application {
     public static void main(String[] args) throws IOException, ExecutionException, InterruptedException {
-        InputStream serviceAccount = new FileInputStream("src/main/java/com/example/csc325/csc325/privatekey.json");
+        InputStream serviceAccount = new FileInputStream("src/main/resources/com/example/csc325/csc325/privatekey.json");
         GoogleCredentials credentials = GoogleCredentials.fromStream(serviceAccount);
         FirebaseOptions options = FirebaseOptions.builder()
                 .setCredentials(credentials)
                 .build();
         FirebaseApp.initializeApp(options);
-//        Employee user = new Employee("test", "test", "test");
-//        ArrayList<String> skills = new ArrayList<>();
-//        skills.add("Java");
-//        skills.add("C++");
-//        user.setSkills(skills);
-//        user.save();
         launch();
     }
 
