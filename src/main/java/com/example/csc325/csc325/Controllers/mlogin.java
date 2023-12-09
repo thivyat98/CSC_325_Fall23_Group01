@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import java.io.IOException;
 import java.util.List;
@@ -64,11 +65,13 @@ public class mlogin {
         ApiFuture<QuerySnapshot> query = db.collection("auth")
                 .whereEqualTo("username", usernameField.getText())
                 .get();
-        List<QueryDocumentSnapshot> document = query.get().getDocuments();
-        String hashPaswdm = document.
+        List<QueryDocumentSnapshot> documents = query.get().getDocuments();
+        String storedHashedPassword = documents.get(0).getString("hashPassword");
+        assert storedHashedPassword != null;
+        System.out.println(BCrypt.checkpw(passwordField.getText(), storedHashedPassword));
 
 
-        SceneManager.getInstance().showMainScene();
+        //SceneManager.getInstance().showMainScene();
     }
 
 
