@@ -18,6 +18,7 @@ public class searchController {
     // Replace the local list with a Firestore collection reference
     private CollectionReference jobCollection;
 
+
     public searchController() {
         // Assuming 'jobs' is the name of your Firestore collection
         this.jobCollection = FirestoreClient.getFirestore().collection("jobs");
