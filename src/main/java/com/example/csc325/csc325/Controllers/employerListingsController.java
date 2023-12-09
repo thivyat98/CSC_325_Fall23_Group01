@@ -1,4 +1,4 @@
-package com.example.csc325.csc325;
+package com.example.csc325.csc325.Controllers;
 
 import com.example.csc325.csc325.users.User;
 import javafx.fxml.FXML;

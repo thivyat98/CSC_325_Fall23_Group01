@@ -1,5 +1,6 @@
 package com.example.csc325.csc325;
 
+import com.example.csc325.csc325.Managers.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
