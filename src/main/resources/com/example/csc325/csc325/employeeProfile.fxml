@@ -27,8 +27,8 @@
                 <Font size="36.0" />
             </font>
         </Label>
-        <Label layoutX="74.0" layoutY="186.0" prefHeight="28.0" prefWidth="188.0" text="Email" textFill="#949090" />
-        <Label layoutX="338.0" layoutY="186.0" prefHeight="28.0" prefWidth="188.0" text="Phone Number" textFill="#949090" />
+        <Label fx:id="username" layoutX="74.0" layoutY="186.0" prefHeight="28.0" prefWidth="188.0" text="Email" textFill="#949090" />
+        <Label fx:id="phoneNumber" layoutX="338.0" layoutY="186.0" prefHeight="28.0" prefWidth="188.0" text="Phone Number" textFill="#949090" />
         <Label fx:id="lblErrorMsg" layoutX="46.0" layoutY="669.0" textFill="#eb0f0f" />
       <Button fx:id="saveButton" layoutX="641.0" layoutY="663.0" mnemonicParsing="false" onAction="#saveProfile" text="Save" />
 

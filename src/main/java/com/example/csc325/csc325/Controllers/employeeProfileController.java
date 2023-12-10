@@ -35,7 +35,7 @@ public class employeeProfileController {
     @FXML
     private TextField Email;
     @FXML
-    private TextField phoneNumber;
+    private Label phoneNumber;
 
     @FXML
     private Button saveButton;
