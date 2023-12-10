@@ -80,7 +80,6 @@ public class employeeProfileController {
             username.setText(employee.getEmail());
             // Set the employeeName label to the employee's full name
             employeeName.setText(employee.getFirstName() + " " + employee.getLastName());
-            Email.setText(employee.getEmail());
             phoneNumber.setText(employee.getPhone());
             loadSkills(employee);
             loadProfilePicture(employee);
