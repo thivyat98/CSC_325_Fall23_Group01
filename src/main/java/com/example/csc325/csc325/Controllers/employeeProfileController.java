@@ -29,6 +29,22 @@ public class employeeProfileController {
     @FXML
     private ImageView profilePicture;
 
+    @FXML
+    public TextField FirstName;
+
+    @FXML
+    private TextField LastName;
+
+    @FXML
+    private TextField Email;
+
+    @FXML
+    private TextField phoneNumber;
+
+    @FXML
+    private TextField aboutMe;
+
+
     private User user;
 
     @FXML
