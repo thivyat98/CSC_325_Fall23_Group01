@@ -10,6 +10,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.ListView?>
 <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="724" prefWidth="708" style="-fx-background-color: white; -fx-padding: 20;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csc325.csc325.Controllers.employeeProfileController">
     <children>
         <ImageView fitHeight="86.0" fitWidth="129.0" layoutX="46.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
@@ -21,7 +22,7 @@
             </image>
         </ImageView>
         <TextArea layoutX="8.0" layoutY="251.0" prefHeight="195.0" prefWidth="628.0" promptText="About me" style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: transparent;" />
-        <TextArea layoutX="8.0" layoutY="463.0" prefHeight="161.0" prefWidth="628.0" promptText="Skills" style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: transparent;" />
+        <ListView fx:id="skillListView" layoutX="8.0" layoutY="463.0" prefHeight="161.0" prefWidth="628.0" style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: transparent;" />
         <Label fx:id="employeeName" alignment="CENTER" contentDisplay="CENTER" layoutX="45.0" layoutY="41.0" prefHeight="105.0" prefWidth="644.0" textFill="#949090">
             <font>
                 <Font size="36.0" />
