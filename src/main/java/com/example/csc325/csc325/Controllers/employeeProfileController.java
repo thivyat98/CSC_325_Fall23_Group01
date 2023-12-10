@@ -1,6 +1,5 @@
 package com.example.csc325.csc325.Controllers;
 
-
 import com.example.csc325.csc325.UserSessionManager;
 import com.example.csc325.csc325.users.Employee;
 import com.example.csc325.csc325.users.User;
@@ -20,7 +19,7 @@ public class employeeProfileController {
     @FXML
     public Label username;
     @FXML
-    public TextField FirstName;
+    public Label employeeName;
     @FXML
     private ListView<String> skillListView;
     @FXML
@@ -30,14 +29,9 @@ public class employeeProfileController {
     @FXML
     private ImageView profilePicture;
     @FXML
-    private TextField LastName;
-
-    @FXML
     private TextField Email;
-
     @FXML
     private TextField phoneNumber;
-
 
     @FXML
     void addSkilltoList(MouseEvent event) {
@@ -58,7 +52,6 @@ public class employeeProfileController {
         }
     }
 
-
     private void loadSkills(Employee employee) {
         skillListView.getItems().addAll(employee.getSkills());
     }
@@ -76,13 +69,15 @@ public class employeeProfileController {
         User user = UserSessionManager.getUser();
         if (user instanceof Employee) {
             Employee employee = (Employee) user;
+            // Set the username label to the employee's email
             username.setText(employee.getEmail());
-            FirstName.setText(employee.getFirstName());
-            LastName.setText(employee.getLastName());
+            // Set the employeeName label to the employee's full name
+            employeeName.setText(employee.getFirstName() + " " + employee.getLastName());
             Email.setText(employee.getEmail());
             phoneNumber.setText(employee.getPhone());
             loadSkills(employee);
             loadProfilePicture(employee);
         }
     }
+
 }
