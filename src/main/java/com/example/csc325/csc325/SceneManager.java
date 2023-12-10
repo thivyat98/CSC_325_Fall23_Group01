@@ -34,14 +34,6 @@ public class SceneManager {
 
     }
 
-    public void showProfileScene(User user) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("employeeProfile.fxml"));
-        Parent root = loader.load();
-        employeeProfileController profileController = loader.getController();
-        profileController.onLoad();
-        stage.setScene(new Scene(root));
-        stage.setTitle("User Profile");
-    }
 
     public void showSignUpScene() throws IOException {
         stage.hide();
