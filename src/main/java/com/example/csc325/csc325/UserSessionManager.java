@@ -20,7 +20,8 @@ public class UserSessionManager {
     }
 
     public static void logoutUser() {
-        currentUserId = null; // Clear when user logs out
+        currentUserId = null;// Clear when user logs out
+        user = null;
     }
 
     public static String getCurrentUserId() {

@@ -40,13 +40,13 @@ public class Employee extends User {
     }
 
     public Employee(String firstName, String lastName, String phone, String email) {
-        super(email, phone);
+        super(email, phone, "Employee");
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
     public Employee(String firstName, String lastName, String phone, String email, String id) {
-        super(email, id, phone);
+        super(email, id, phone, "Employee");
         this.firstName = firstName;
         this.lastName = lastName;
     }
@@ -58,15 +58,11 @@ public class Employee extends User {
         this.skills = skills;
     }
 
-    @Override
-    public String getUserType() {
-        return "Employee";
-    }
 
     @Override
     public void save(){
         Map<String, Object> data = new HashMap<>();
-        data.put("Type", "Employee");
+        data.put("Type", this.getType());
         data.put("First Name", this.getFirstName());
         data.put("Last Name", this.getLastName());
         data.put("ID", this.getId());
@@ -103,6 +99,7 @@ public class Employee extends User {
             creds.put("username", this.getEmail());
             creds.put("hashPassword", BCrypt.hashpw(password, BCrypt.gensalt()));
             creds.put("ID", this.getId());
+            creds.put("Type", this.getType());
 
             DocumentReference docRef = firestore.collection("auth").document(this.getId());
             ApiFuture<WriteResult> result = docRef.set(creds);

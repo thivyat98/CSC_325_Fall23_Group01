@@ -14,14 +14,15 @@ import java.util.concurrent.ExecutionException;
 
 public class Employer extends User {
     private String companyName;
+    private String type;
 
     public Employer(String companyName, String email, String phone) {
-        super(email, phone);
+        super(email, phone, "Employer");
         this.companyName = companyName;
     }
 
     public Employer(String companyName, String email, String phone, String id) {
-        super(email, phone, id);
+        super(email, phone, id, "Employer");
         this.companyName = companyName;
     }
 
@@ -30,15 +31,12 @@ public class Employer extends User {
         return companyName;
     }
 
-    @Override
-    public String getUserType() {
-        return "Employer";
-    }
+
 
     @Override
     public void save(){
         Map<String, Object> data = new HashMap<>();
-        data.put("Type", "Employer");
+        data.put("Type", this.getType());
         data.put("ID", this.getId());
         data.put("Email", this.getEmail());
         data.put("Company Name", this.getCompanyName());
@@ -63,6 +61,8 @@ public class Employer extends User {
             creds.put("username", this.getEmail());
             creds.put("hashPassword", BCrypt.hashpw(password, BCrypt.gensalt()));
             creds.put("ID", this.getId());
+            creds.put("Type", this.getType());
+
 
             DocumentReference docRef = firestore.collection("auth").document(this.getId());
             ApiFuture<WriteResult> result = docRef.set(creds);

@@ -43,6 +43,13 @@ public class SceneManager {
         stage.setTitle("Signup");
     }
 
+    public void showBussinessSignUpScene() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("employerSignup.fxml"));
+        Parent root = loader.load();
+        stage.setScene(new Scene(root));
+        stage.setTitle("Signup");
+    }
+
     public void showLoginScene() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("mlogin.fxml"));
         Parent root = loader.load();

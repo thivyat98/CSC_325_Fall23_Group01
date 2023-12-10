@@ -14,18 +14,22 @@ public abstract class User {
 
     private String phone;
 
+    private String type;
+
 
     public User() {
         this.id = UUID.randomUUID().toString();
     }
 
-    public User(String email, String phone) {
+    public User(String email, String phone, String type) {
+        this.type = type;
         this.email = email;
         this.phone = phone;
         this.id = UUID.randomUUID().toString();
     }
 
-    public User(String email, String id, String phone) {
+    public User(String email, String id, String phone, String type) {
+        this.type = type;
         this.email = email;
         this.id = id;
         this.phone = phone;
@@ -53,7 +57,6 @@ public abstract class User {
         this.email = email;
     }
 
-    public abstract String getUserType();
     public abstract void save();
     public abstract void register(String password) throws ExecutionException, InterruptedException;
 
@@ -72,5 +75,13 @@ public abstract class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

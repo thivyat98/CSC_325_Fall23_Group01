@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="629.0" prefWidth="600.0" styleClass="anchor_pane" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csc325.csc325.Controllers.msignup">
+<AnchorPane prefHeight="629.0" prefWidth="600.0" styleClass="anchor_pane" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csc325.csc325.Controllers.employerSignup">
     <children>
         <GridPane layoutX="36.0" layoutY="31.0" prefHeight="604.0" prefWidth="529.0" styleClass="anchor_pane">
             <columnConstraints>
@@ -32,19 +32,17 @@
                 <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Label prefHeight="17.0" prefWidth="575.0" text="                                           Sign Up">
+                <Label prefHeight="17.0" prefWidth="575.0" text="                                    Business Sign Up">
                     <font>
                         <Font size="25.0" />
                     </font>
                 </Label>
-                <TextField fx:id="firstNameField" promptText="First name" GridPane.rowIndex="2" />
+                <TextField fx:id="companyNameField" promptText="Company name" GridPane.rowIndex="2" />
                 <Label fx:id="firstNameCheck" />
-                <TextField fx:id="lastNameField" promptText="Last name" GridPane.rowIndex="3" />
-                <Label fx:id="lastNameCheck" />
                 <TextField fx:id="emailField" promptText="Email address" GridPane.rowIndex="4" />
                 <Label fx:id="emailCheck" />
-                <TextField fx:id="passwordFeild" promptText="Password" GridPane.rowIndex="6" GridPane.valignment="BOTTOM" />
-                <TextField fx:id="ConfirmPasswordFeild" promptText="Confirm Password" GridPane.rowIndex="7" />
+                <TextField fx:id="passwordField" promptText="Password" GridPane.rowIndex="6" GridPane.valignment="BOTTOM" />
+                <TextField fx:id="ConfirmPasswordField" promptText="Confirm Password" GridPane.rowIndex="7" />
                 <TextField fx:id="phoneNumberField" promptText="Phone number (xxx-xxx-xxxx)" GridPane.rowIndex="5" GridPane.valignment="TOP" />
                 <Label fx:id="phoneNumberCheck" />
                 <Button fx:id="signUp" mnemonicParsing="false" onAction="#handleSignUp" prefHeight="26.0" prefWidth="40.0" styleClass="nav_btn" text="Sign Up" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
@@ -52,10 +50,9 @@
                     <children>
                         <Label layoutX="192.0" layoutY="11.0" text="Already have an account?" />
                         <Hyperlink fx:id="loginLink" layoutX="332.0" layoutY="8.0" onAction="#backToLogin" text="Login" />
-
                     </children>
                     <children>
-                        <Hyperlink fx:id="bussinessSignup" onAction="#toBussinessSignup" contentDisplay="CENTER" layoutX="212.0" layoutY="66.0" prefHeight="23.0" prefWidth="106.0" text="Bussiness Signup" textAlignment="JUSTIFY" textOverrun="CLIP" />
+                        <Hyperlink fx:id="employeeSignup" onAction="#toSignup" contentDisplay="CENTER" layoutX="212.0" layoutY="66.0" prefHeight="23.0" prefWidth="106.0" text="Employee Signup" textAlignment="JUSTIFY" textOverrun="CLIP" />
                     </children>
                 </AnchorPane>
             </children>

@@ -67,7 +67,8 @@ public class mlogin {
         String storedHashedPassword = documents.get(0).getString("hashPassword");
         assert storedHashedPassword != null;
         if(BCrypt.checkpw(passwordField.getText(), storedHashedPassword)){
-            UserSessionManager.loginUser(documents.get(0).getString("ID"), "employee");
+            System.out.println(documents.get(0).getString("ID"));
+            UserSessionManager.loginUser(documents.get(0).getString("ID"), documents.get(0).getString("Type"));
             SceneManager.getInstance().showProfileScene(UserSessionManager.getUser());
         }
         else{
