@@ -60,7 +60,7 @@ public class employeeProfileController {
     }
 
     private void loadSkills(Employee employee) {
-        skillListView.getItems().addAll(employee.getSkills());
+        //skillListView.getItems().addAll(employee.getSkills());
     }
 
     private void loadProfilePicture(Employee employee) {

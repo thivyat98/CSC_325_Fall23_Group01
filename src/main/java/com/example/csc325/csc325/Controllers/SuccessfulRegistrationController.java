@@ -16,7 +16,7 @@ public class SuccessfulRegistrationController {
     public Button backToLoginBtn;
 
     public void backToLogin() throws IOException, ExecutionException, InterruptedException {
-        SceneManager.getInstance().showMainScene();
+        SceneManager.getInstance().showLoginScene();
     }
 
 
