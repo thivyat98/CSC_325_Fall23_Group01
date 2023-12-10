@@ -12,19 +12,7 @@
    <children>
       <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="704.0" prefWidth="688.0" style="-fx-background-color: white; -fx-padding: 20;">
          <children>
-            <ImageView fitHeight="724" fitWidth="688" layoutX="0.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@banner.jpeg" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="86.0" fitWidth="129.0" layoutX="46.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
-               <clip>
-                  <Circle centerX="43.0" centerY="43.0" radius="43.0" />
-               </clip>
-               <image>
-                  <Image url="@profile.png" />
-               </image>
-            </ImageView>
+
             <TextField layoutX="14.0" layoutY="186.0" prefHeight="26.0" prefWidth="150.0" promptText="Full Name" style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: transparent;" />
             <TextField layoutX="181.0" layoutY="186.0" prefHeight="26.0" prefWidth="100.0" promptText="Pronouns" style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: transparent;" />
             <TextArea layoutX="16.0" layoutY="227.0" prefHeight="100.0" prefWidth="628.0" promptText="About me" style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: transparent;" />
@@ -36,6 +24,5 @@
    </children>
    <stylesheets>
       <URL value="@style.css" />
-      <URL value="@../../../../../styling/style.css" />
    </stylesheets>
 </AnchorPane>

@@ -2,12 +2,11 @@ package com.example.csc325.csc325.Controllers;
 
 import com.example.csc325.csc325.Posts.JobPosting;
 import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.CollectionReference;
-import com.google.cloud.firestore.DocumentSnapshot;
-import com.google.cloud.firestore.QuerySnapshot;
+import com.google.cloud.firestore.*;
 import com.google.firebase.cloud.FirestoreClient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -31,6 +30,14 @@ public class searchController {
     public searchController() {
         // Assuming 'jobs' is the name of your Firestore collection
         this.jobCollection = FirestoreClient.getFirestore().collection("jobs");
+    }
+
+    public void onLoad() throws ExecutionException, InterruptedException {
+        List<JobPosting> recent = fetchRecentJobs();
+        for (JobPosting job : recent) {
+            HBox jobUI = createJobListingUI(job);
+            jobListingsContainer.getChildren().add(jobUI);
+        }
     }
 
     //ToDo: Implement search functionality for jobs with a set of keywords
@@ -66,7 +73,7 @@ public class searchController {
     }
 
     public HBox createJobListingUI(JobPosting job) {
-        HBox jobBox = new HBox();
+        HBox jobBox = new HBox(10);
         jobBox.getStyleClass().add("job-listing");
 
         VBox detailsBox = new VBox(5);
@@ -100,6 +107,22 @@ public class searchController {
     private void handleApplyAction(JobPosting job) {
         // Handling apply action, e.g., printing job ID
         System.out.println("Applied for: " + job.getId()); // Assuming getId() is a method in Post or JobPosting
+    }
+
+    public List<JobPosting> fetchRecentJobs() throws ExecutionException, InterruptedException {
+
+        // Assuming 'jobs' is your collection and 'postedDate' is the timestamp field
+        ApiFuture<QuerySnapshot> query = jobCollection
+                .orderBy("unixTime", Query.Direction.DESCENDING)
+                .limit(10)
+                .get();
+
+        List<QueryDocumentSnapshot> documents = query.get().getDocuments();
+        List<JobPosting> recentJobs = new ArrayList<>();
+        for (QueryDocumentSnapshot document : documents) {
+            recentJobs.add(document.toObject(JobPosting.class));
+        }
+        return recentJobs;
     }
 
 }

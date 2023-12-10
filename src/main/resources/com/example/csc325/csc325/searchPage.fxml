@@ -29,244 +29,244 @@
     </HBox>
     <ScrollPane fitToWidth="true" fitToHeight="true">
         <VBox spacing="10" alignment="CENTER" fx:id="jobListingsContainer">
-            <!-- Job Listing 1 -->
-            <HBox styleClass="job-listing">
-                <VBox spacing="5">
-                    <Label styleClass="job-title" text="Software Engineer" />
-                    <Label styleClass="company-name" text="ABC Tech" />
-                    <Label styleClass="job-location" text="New York, NY" />
-                    <Label styleClass="job-description" text="We are looking for a skilled software engineer with experience in Java and JavaScript." />
-                    <Button styleClass="apply-button" text="Apply" />
-                </VBox>
-            </HBox>
-            <Separator />
+<!--            &lt;!&ndash; Job Listing 1 &ndash;&gt;-->
+<!--            <HBox styleClass="job-listing">-->
+<!--                <VBox spacing="5">-->
+<!--                    <Label styleClass="job-title" text="Software Engineer" />-->
+<!--                    <Label styleClass="company-name" text="ABC Tech" />-->
+<!--                    <Label styleClass="job-location" text="New York, NY" />-->
+<!--                    <Label styleClass="job-description" text="We are looking for a skilled software engineer with experience in Java and JavaScript." />-->
+<!--                    <Button styleClass="apply-button" text="Apply" />-->
+<!--                </VBox>-->
+<!--            </HBox>-->
+<!--            <Separator />-->
 
-            <!-- Job Listing 2 -->
-            <HBox styleClass="job-listing">
-                <VBox spacing="5">
-                    <Label styleClass="job-title" text="Graphic Designer" />
-                    <Label styleClass="company-name" text="Design Co." />
-                    <Label styleClass="job-location" text="San Francisco, CA" />
-                    <Label styleClass="job-description" text="We are seeking a creative graphic designer to join our team." />
-                    <Button styleClass="apply-button" text="Apply" />
-                </VBox>
-            </HBox>
-            <Separator />
+<!--            &lt;!&ndash; Job Listing 2 &ndash;&gt;-->
+<!--            <HBox styleClass="job-listing">-->
+<!--                <VBox spacing="5">-->
+<!--                    <Label styleClass="job-title" text="Graphic Designer" />-->
+<!--                    <Label styleClass="company-name" text="Design Co." />-->
+<!--                    <Label styleClass="job-location" text="San Francisco, CA" />-->
+<!--                    <Label styleClass="job-description" text="We are seeking a creative graphic designer to join our team." />-->
+<!--                    <Button styleClass="apply-button" text="Apply" />-->
+<!--                </VBox>-->
+<!--            </HBox>-->
+<!--            <Separator />-->
 
-            <!-- Job Listing 3 -->
-            <HBox styleClass="job-listing">
-                <VBox spacing="5">
-                    <Label styleClass="job-title" text="Marketing Specialist" />
-                    <Label styleClass="company-name" text="Marketing Corp." />
-                    <Label styleClass="job-location" text="Los Angeles, CA" />
-                    <Label styleClass="job-description" text="Join our marketing team and help drive brand success." />
-                    <Button styleClass="apply-button" text="Apply" />
-                </VBox>
-            </HBox>
-            <Separator />
+<!--            &lt;!&ndash; Job Listing 3 &ndash;&gt;-->
+<!--            <HBox styleClass="job-listing">-->
+<!--                <VBox spacing="5">-->
+<!--                    <Label styleClass="job-title" text="Marketing Specialist" />-->
+<!--                    <Label styleClass="company-name" text="Marketing Corp." />-->
+<!--                    <Label styleClass="job-location" text="Los Angeles, CA" />-->
+<!--                    <Label styleClass="job-description" text="Join our marketing team and help drive brand success." />-->
+<!--                    <Button styleClass="apply-button" text="Apply" />-->
+<!--                </VBox>-->
+<!--            </HBox>-->
+<!--            <Separator />-->
 
-            <!-- Job Listing 4 -->
-            <HBox styleClass="job-listing">
-                <VBox spacing="5">
-                    <Label styleClass="job-title" text="Front-End Developer" />
-                    <Label styleClass="company-name" text="Web Solutions" />
-                    <Label styleClass="job-location" text="Chicago, IL" />
-                    <Label styleClass="job-description" text="Seeking a front-end developer experienced in HTML, CSS, and JavaScript." />
-                    <Button styleClass="apply-button" text="Apply" />
-                </VBox>
-            </HBox>
-            <Separator />
+<!--            &lt;!&ndash; Job Listing 4 &ndash;&gt;-->
+<!--            <HBox styleClass="job-listing">-->
+<!--                <VBox spacing="5">-->
+<!--                    <Label styleClass="job-title" text="Front-End Developer" />-->
+<!--                    <Label styleClass="company-name" text="Web Solutions" />-->
+<!--                    <Label styleClass="job-location" text="Chicago, IL" />-->
+<!--                    <Label styleClass="job-description" text="Seeking a front-end developer experienced in HTML, CSS, and JavaScript." />-->
+<!--                    <Button styleClass="apply-button" text="Apply" />-->
+<!--                </VBox>-->
+<!--            </HBox>-->
+<!--            <Separator />-->
 
-            <!-- Job Listing 5 -->
-            <HBox styleClass="job-listing">
-                <VBox spacing="5">
-                    <Label styleClass="job-title" text="Data Analyst" />
-                    <Label styleClass="company-name" text="Data Insights" />
-                    <Label styleClass="job-location" text="San Jose, CA" />
-                    <Label styleClass="job-description" text="Join our team to analyze and visualize data for decision-making." />
-                    <Button styleClass="apply-button" text= "Apply" />
-                </VBox>
-            </HBox>
-            <Separator />
+<!--            &lt;!&ndash; Job Listing 5 &ndash;&gt;-->
+<!--            <HBox styleClass="job-listing">-->
+<!--                <VBox spacing="5">-->
+<!--                    <Label styleClass="job-title" text="Data Analyst" />-->
+<!--                    <Label styleClass="company-name" text="Data Insights" />-->
+<!--                    <Label styleClass="job-location" text="San Jose, CA" />-->
+<!--                    <Label styleClass="job-description" text="Join our team to analyze and visualize data for decision-making." />-->
+<!--                    <Button styleClass="apply-button" text= "Apply" />-->
+<!--                </VBox>-->
+<!--            </HBox>-->
+<!--            <Separator />-->
 
-            <!-- Job Listing 6 -->
-            <HBox styleClass="job-listing">
-                <VBox spacing="5">
-                    <Label styleClass="job-title" text="UX Designer" />
-                    <Label styleClass="company-name" text="UX Innovations" />
-                    <Label styleClass="job-location" text="Seattle, WA" />
-                    <Label styleClass="job-description" text="Create user-centric designs and enhance the user experience." />
-                    <Button styleClass="apply-button" text= "Apply" />
-                </VBox>
-            </HBox>
-            <Separator />
+<!--            &lt;!&ndash; Job Listing 6 &ndash;&gt;-->
+<!--            <HBox styleClass="job-listing">-->
+<!--                <VBox spacing="5">-->
+<!--                    <Label styleClass="job-title" text="UX Designer" />-->
+<!--                    <Label styleClass="company-name" text="UX Innovations" />-->
+<!--                    <Label styleClass="job-location" text="Seattle, WA" />-->
+<!--                    <Label styleClass="job-description" text="Create user-centric designs and enhance the user experience." />-->
+<!--                    <Button styleClass="apply-button" text= "Apply" />-->
+<!--                </VBox>-->
+<!--            </HBox>-->
+<!--            <Separator />-->
 
-            <!-- Job Listing 7 -->
-            <HBox styleClass="job-listing">
-                <VBox spacing="5">
-                    <Label styleClass="job-title" text="Content Writer" />
-                    <Label styleClass="company-name" text="Content Creators" />
-                    <Label styleClass="job-location" text="Denver, CO" />
-                    <Label styleClass="job-description" text="Write engaging content for various platforms and audiences." />
-                    <Button styleClass="apply-button" text= "Apply" />
-                </VBox>
-            </HBox>
-            <Separator />
+<!--            &lt;!&ndash; Job Listing 7 &ndash;&gt;-->
+<!--            <HBox styleClass="job-listing">-->
+<!--                <VBox spacing="5">-->
+<!--                    <Label styleClass="job-title" text="Content Writer" />-->
+<!--                    <Label styleClass="company-name" text="Content Creators" />-->
+<!--                    <Label styleClass="job-location" text="Denver, CO" />-->
+<!--                    <Label styleClass="job-description" text="Write engaging content for various platforms and audiences." />-->
+<!--                    <Button styleClass="apply-button" text= "Apply" />-->
+<!--                </VBox>-->
+<!--            </HBox>-->
+<!--            <Separator />-->
 
-            <!-- Job Listing 8 -->
-            <HBox styleClass="job-listing">
-                <VBox spacing="5">
-                    <Label styleClass="job-title" text="Sales Representative" />
-                    <Label styleClass="company-name" text="Sales Solutions" />
-                    <Label styleClass="job-location" text="Miami, FL" />
-                    <Label styleClass="job-description" text="Join our sales team to drive revenue and customer satisfaction." />
-                    <Button styleClass="apply-button" text= "Apply" />
-                </VBox>
-            </HBox>
-            <Separator />
+<!--            &lt;!&ndash; Job Listing 8 &ndash;&gt;-->
+<!--            <HBox styleClass="job-listing">-->
+<!--                <VBox spacing="5">-->
+<!--                    <Label styleClass="job-title" text="Sales Representative" />-->
+<!--                    <Label styleClass="company-name" text="Sales Solutions" />-->
+<!--                    <Label styleClass="job-location" text="Miami, FL" />-->
+<!--                    <Label styleClass="job-description" text="Join our sales team to drive revenue and customer satisfaction." />-->
+<!--                    <Button styleClass="apply-button" text= "Apply" />-->
+<!--                </VBox>-->
+<!--            </HBox>-->
+<!--            <Separator />-->
 
-            <!-- Job Listing 9 -->
-            <HBox styleClass="job-listing">
-                <VBox spacing="5">
-                    <Label styleClass="job-title" text="Network Administrator" />
-                    <Label styleClass="company-name" text="Networking Inc." />
-                    <Label styleClass="job-location" text="Austin, TX" />
-                    <Label styleClass="job-description" text="Manage and maintain network infrastructure and security." />
-                    <Button styleClass="apply-button" text= "Apply" />
-                </VBox>
-            </HBox>
-            <Separator />
+<!--            &lt;!&ndash; Job Listing 9 &ndash;&gt;-->
+<!--            <HBox styleClass="job-listing">-->
+<!--                <VBox spacing="5">-->
+<!--                    <Label styleClass="job-title" text="Network Administrator" />-->
+<!--                    <Label styleClass="company-name" text="Networking Inc." />-->
+<!--                    <Label styleClass="job-location" text="Austin, TX" />-->
+<!--                    <Label styleClass="job-description" text="Manage and maintain network infrastructure and security." />-->
+<!--                    <Button styleClass="apply-button" text= "Apply" />-->
+<!--                </VBox>-->
+<!--            </HBox>-->
+<!--            <Separator />-->
 
-            <!-- Job Listing 10 -->
-            <HBox styleClass="job-listing">
-                <VBox spacing="5">
-                    <Label styleClass="job-title" text="Customer Support Specialist" />
-                    <Label styleClass="company-name" text="Support Solutions" />
-                    <Label styleClass="job-location" text="Dallas, TX" />
-                    <Label styleClass="job-description" text="Provide exceptional customer support and resolve issues effectively." />
-                    <Button styleClass="apply-button" text="Apply" />
-                </VBox>
-            </HBox>
-            <!-- No Separator after the last job listing -->
-            <!-- Job Listing 11 -->
-            <HBox styleClass="job-listing">
-                <VBox spacing="5">
-                    <Label styleClass="job-title" text="UX Researcher" />
-                    <Label styleClass="company-name" text="User Insights" />
-                    <Label styleClass="job-location" text="Boston, MA" />
-                    <Label styleClass="job-description" text="Conduct user research and provide insights for product improvement." />
-                    <Button styleClass="apply-button" text="Apply" />
-                </VBox>
-            </HBox>
-            <Separator />
+<!--            &lt;!&ndash; Job Listing 10 &ndash;&gt;-->
+<!--            <HBox styleClass="job-listing">-->
+<!--                <VBox spacing="5">-->
+<!--                    <Label styleClass="job-title" text="Customer Support Specialist" />-->
+<!--                    <Label styleClass="company-name" text="Support Solutions" />-->
+<!--                    <Label styleClass="job-location" text="Dallas, TX" />-->
+<!--                    <Label styleClass="job-description" text="Provide exceptional customer support and resolve issues effectively." />-->
+<!--                    <Button styleClass="apply-button" text="Apply" />-->
+<!--                </VBox>-->
+<!--            </HBox>-->
+<!--            &lt;!&ndash; No Separator after the last job listing &ndash;&gt;-->
+<!--            &lt;!&ndash; Job Listing 11 &ndash;&gt;-->
+<!--            <HBox styleClass="job-listing">-->
+<!--                <VBox spacing="5">-->
+<!--                    <Label styleClass="job-title" text="UX Researcher" />-->
+<!--                    <Label styleClass="company-name" text="User Insights" />-->
+<!--                    <Label styleClass="job-location" text="Boston, MA" />-->
+<!--                    <Label styleClass="job-description" text="Conduct user research and provide insights for product improvement." />-->
+<!--                    <Button styleClass="apply-button" text="Apply" />-->
+<!--                </VBox>-->
+<!--            </HBox>-->
+<!--            <Separator />-->
 
-            <!-- Job Listing 12 -->
-            <HBox styleClass="job-listing">
-                <VBox spacing="5">
-                    <Label styleClass="job-title" text="Project Manager" />
-                    <Label styleClass="company-name" text="Project Pro" />
-                    <Label styleClass="job-location" text="Houston, TX" />
-                    <Label styleClass="job-description" text="Lead project teams and ensure successful project delivery." />
-                    <Button styleClass="apply-button" text="Apply" />
-                </VBox>
-            </HBox>
-            <Separator />
+<!--            &lt;!&ndash; Job Listing 12 &ndash;&gt;-->
+<!--            <HBox styleClass="job-listing">-->
+<!--                <VBox spacing="5">-->
+<!--                    <Label styleClass="job-title" text="Project Manager" />-->
+<!--                    <Label styleClass="company-name" text="Project Pro" />-->
+<!--                    <Label styleClass="job-location" text="Houston, TX" />-->
+<!--                    <Label styleClass="job-description" text="Lead project teams and ensure successful project delivery." />-->
+<!--                    <Button styleClass="apply-button" text="Apply" />-->
+<!--                </VBox>-->
+<!--            </HBox>-->
+<!--            <Separator />-->
 
-            <!-- Job Listing 13 -->
-            <HBox styleClass="job-listing">
-                <VBox spacing="5">
-                    <Label styleClass="job-title" text="Data Scientist" />
-                    <Label styleClass="company-name" text="Data Innovations" />
-                    <Label styleClass="job-location" text="San Diego, CA" />
-                    <Label styleClass="job-description" text="Use data to solve complex problems and drive business decisions." />
-                    <Button styleClass="apply-button" text="Apply" />
-                </VBox>
-            </HBox>
-            <Separator />
+<!--            &lt;!&ndash; Job Listing 13 &ndash;&gt;-->
+<!--            <HBox styleClass="job-listing">-->
+<!--                <VBox spacing="5">-->
+<!--                    <Label styleClass="job-title" text="Data Scientist" />-->
+<!--                    <Label styleClass="company-name" text="Data Innovations" />-->
+<!--                    <Label styleClass="job-location" text="San Diego, CA" />-->
+<!--                    <Label styleClass="job-description" text="Use data to solve complex problems and drive business decisions." />-->
+<!--                    <Button styleClass="apply-button" text="Apply" />-->
+<!--                </VBox>-->
+<!--            </HBox>-->
+<!--            <Separator />-->
 
-            <!-- Job Listing 14 -->
-            <HBox styleClass="job-listing">
-                <VBox spacing="5">
-                    <Label styleClass="job-title" text="Quality Assurance Analyst" />
-                    <Label styleClass="company-name" text="Quality Solutions" />
-                    <Label styleClass="job-location" text="Portland, OR" />
-                    <Label styleClass="job-description" text="Ensure product quality through testing and analysis." />
-                    <Button styleClass="apply-button" text="Apply" />
-                </VBox>
-            </HBox>
-            <Separator />
+<!--            &lt;!&ndash; Job Listing 14 &ndash;&gt;-->
+<!--            <HBox styleClass="job-listing">-->
+<!--                <VBox spacing="5">-->
+<!--                    <Label styleClass="job-title" text="Quality Assurance Analyst" />-->
+<!--                    <Label styleClass="company-name" text="Quality Solutions" />-->
+<!--                    <Label styleClass="job-location" text="Portland, OR" />-->
+<!--                    <Label styleClass="job-description" text="Ensure product quality through testing and analysis." />-->
+<!--                    <Button styleClass="apply-button" text="Apply" />-->
+<!--                </VBox>-->
+<!--            </HBox>-->
+<!--            <Separator />-->
 
-            <!-- Job Listing 15 -->
-            <HBox styleClass="job-listing">
-                <VBox spacing="5">
-                    <Label styleClass="job-title" text="Product Designer" />
-                    <Label styleClass="company-name" text="Design Innovations" />
-                    <Label styleClass="job-location" text="Austin, TX" />
-                    <Label styleClass="job-description" text="Design user-friendly products and experiences." />
-                    <Button styleClass="apply-button" text="Apply" />
-                </VBox>
-            </HBox>
-            <Separator />
+<!--            &lt;!&ndash; Job Listing 15 &ndash;&gt;-->
+<!--            <HBox styleClass="job-listing">-->
+<!--                <VBox spacing="5">-->
+<!--                    <Label styleClass="job-title" text="Product Designer" />-->
+<!--                    <Label styleClass="company-name" text="Design Innovations" />-->
+<!--                    <Label styleClass="job-location" text="Austin, TX" />-->
+<!--                    <Label styleClass="job-description" text="Design user-friendly products and experiences." />-->
+<!--                    <Button styleClass="apply-button" text="Apply" />-->
+<!--                </VBox>-->
+<!--            </HBox>-->
+<!--            <Separator />-->
 
-            <!-- Job Listing 16 -->
-            <HBox styleClass="job-listing">
-                <VBox spacing="5">
-                    <Label styleClass="job-title" text="Financial Analyst" />
-                    <Label styleClass="company-name" text="Financial Insights" />
-                    <Label styleClass="job-location" text="Chicago, IL" />
-                    <Label styleClass="job-description" text="Analyze financial data and provide strategic recommendations." />
-                    <Button styleClass="apply-button" text="Apply" />
-                </VBox>
-            </HBox>
-            <Separator />
+<!--            &lt;!&ndash; Job Listing 16 &ndash;&gt;-->
+<!--            <HBox styleClass="job-listing">-->
+<!--                <VBox spacing="5">-->
+<!--                    <Label styleClass="job-title" text="Financial Analyst" />-->
+<!--                    <Label styleClass="company-name" text="Financial Insights" />-->
+<!--                    <Label styleClass="job-location" text="Chicago, IL" />-->
+<!--                    <Label styleClass="job-description" text="Analyze financial data and provide strategic recommendations." />-->
+<!--                    <Button styleClass="apply-button" text="Apply" />-->
+<!--                </VBox>-->
+<!--            </HBox>-->
+<!--            <Separator />-->
 
-            <!-- Job Listing 17 -->
-            <HBox styleClass="job-listing">
-                <VBox spacing="5">
-                    <Label styleClass="job-title" text="Content Editor" />
-                    <Label styleClass="company-name" text="Content Creations" />
-                    <Label styleClass="job-location" text="Denver, CO" />
-                    <Label styleClass="job-description" text="Edit and curate engaging content for various platforms." />
-                    <Button styleClass="apply-button" text="Apply" />
-                </VBox>
-            </HBox>
-            <Separator />
+<!--            &lt;!&ndash; Job Listing 17 &ndash;&gt;-->
+<!--            <HBox styleClass="job-listing">-->
+<!--                <VBox spacing="5">-->
+<!--                    <Label styleClass="job-title" text="Content Editor" />-->
+<!--                    <Label styleClass="company-name" text="Content Creations" />-->
+<!--                    <Label styleClass="job-location" text="Denver, CO" />-->
+<!--                    <Label styleClass="job-description" text="Edit and curate engaging content for various platforms." />-->
+<!--                    <Button styleClass="apply-button" text="Apply" />-->
+<!--                </VBox>-->
+<!--            </HBox>-->
+<!--            <Separator />-->
 
-            <!-- Job Listing 18 -->
-            <HBox styleClass="job-listing">
-                <VBox spacing="5">
-                    <Label styleClass="job-title" text="HR Manager" />
-                    <Label styleClass="company-name" text="HR Solutions" />
-                    <Label styleClass="job-location" text="Miami, FL" />
-                    <Label styleClass="job-description" text="Manage human resources and ensure a productive workforce." />
-                    <Button styleClass="apply-button" text="Apply" />
-                </VBox>
-            </HBox>
-            <Separator />
+<!--            &lt;!&ndash; Job Listing 18 &ndash;&gt;-->
+<!--            <HBox styleClass="job-listing">-->
+<!--                <VBox spacing="5">-->
+<!--                    <Label styleClass="job-title" text="HR Manager" />-->
+<!--                    <Label styleClass="company-name" text="HR Solutions" />-->
+<!--                    <Label styleClass="job-location" text="Miami, FL" />-->
+<!--                    <Label styleClass="job-description" text="Manage human resources and ensure a productive workforce." />-->
+<!--                    <Button styleClass="apply-button" text="Apply" />-->
+<!--                </VBox>-->
+<!--            </HBox>-->
+<!--            <Separator />-->
 
-            <!-- Job Listing 19 -->
-            <HBox styleClass="job-listing">
-                <VBox spacing="5">
-                    <Label styleClass="job-title" text="Cybersecurity Analyst" />
-                    <Label styleClass="company-name" text="Cybersecurity Solutions" />
-                    <Label styleClass="job-location" text="Seattle, WA" />
-                    <Label styleClass="job-description" text="Protect systems and data from cyber threats and vulnerabilities." />
-                    <Button styleClass="apply-button" text="Apply" />
-                </VBox>
-            </HBox>
-            <Separator />
+<!--            &lt;!&ndash; Job Listing 19 &ndash;&gt;-->
+<!--            <HBox styleClass="job-listing">-->
+<!--                <VBox spacing="5">-->
+<!--                    <Label styleClass="job-title" text="Cybersecurity Analyst" />-->
+<!--                    <Label styleClass="company-name" text="Cybersecurity Solutions" />-->
+<!--                    <Label styleClass="job-location" text="Seattle, WA" />-->
+<!--                    <Label styleClass="job-description" text="Protect systems and data from cyber threats and vulnerabilities." />-->
+<!--                    <Button styleClass="apply-button" text="Apply" />-->
+<!--                </VBox>-->
+<!--            </HBox>-->
+<!--            <Separator />-->
 
-            <!-- Job Listing 20 -->
-            <HBox styleClass="job-listing">
-                <VBox spacing="5">
-                    <Label styleClass="job-title" text="Customer Service Representative" />
-                    <Label styleClass="company-name" text="Customer Support Pro" />
-                    <Label styleClass="job-location" text="Dallas, TX" />
-                    <Label styleClass="job-description" text="Provide excellent customer service and assist with inquiries." />
-                    <Button styleClass="apply-button" text="Apply" />
-                </VBox>
-            </HBox>
-            <!-- No Separator after the last job listing -->
+<!--            &lt;!&ndash; Job Listing 20 &ndash;&gt;-->
+<!--            <HBox styleClass="job-listing">-->
+<!--                <VBox spacing="5">-->
+<!--                    <Label styleClass="job-title" text="Customer Service Representative" />-->
+<!--                    <Label styleClass="company-name" text="Customer Support Pro" />-->
+<!--                    <Label styleClass="job-location" text="Dallas, TX" />-->
+<!--                    <Label styleClass="job-description" text="Provide excellent customer service and assist with inquiries." />-->
+<!--                    <Button styleClass="apply-button" text="Apply" />-->
+<!--                </VBox>-->
+<!--            </HBox>-->
+<!--            &lt;!&ndash; No Separator after the last job listing &ndash;&gt;-->
         </VBox>
     </ScrollPane>
 </VBox>

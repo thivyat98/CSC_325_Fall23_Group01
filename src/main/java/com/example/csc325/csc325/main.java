@@ -27,12 +27,13 @@ public class main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         SceneManager.getInstance().setStage(stage);
-        FXMLLoader fxmlLoader = new FXMLLoader(main.class.getResource("mlogin.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setMaximized(true);
-        stage.setResizable(false);
-        stage.setTitle("Login");
-        stage.setScene(scene);
-        stage.show();
+        SceneManager.getInstance().showLoginScene();
+//        FXMLLoader fxmlLoader = new FXMLLoader(main.class.getResource("mlogin.fxml"));
+//        Scene scene = new Scene(fxmlLoader.load());
+//        stage.setFullScreen(true);
+//        stage.setResizable(false);
+//        stage.setTitle("Login");
+//        stage.setScene(scene);
+//        stage.show();
     }
 }

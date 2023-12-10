@@ -35,11 +35,10 @@ public class UserSessionManager {
     public static void setCurrentUser(String currentUserId, String type) throws ExecutionException, InterruptedException {
         if(type.equalsIgnoreCase("employee")){
             user = Employee.getEmployee(currentUserId);
-            System.out.println(((Employee) user).getFirstName());
-            System.out.println(user.getType());
-        }
-        else if(type.equalsIgnoreCase("employer"))
-        user = Employer.getEmployer(currentUserId);
 
+        }
+        else if(type.equalsIgnoreCase("employer")) {
+            user = Employer.getEmployer(currentUserId);
+        }
     }
 }
