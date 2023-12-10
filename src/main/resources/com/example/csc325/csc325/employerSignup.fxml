@@ -55,6 +55,7 @@
                         <Hyperlink fx:id="employeeSignup" onAction="#toSignup" contentDisplay="CENTER" layoutX="212.0" layoutY="66.0" prefHeight="23.0" prefWidth="106.0" text="Employee Signup" textAlignment="JUSTIFY" textOverrun="CLIP" />
                     </children>
                 </AnchorPane>
+                <Label fx:id="lblErrorMsg" style="-fx-text-fill: #e63946" alignment="CENTER" prefHeight="30.0" prefWidth="305.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
             </children>
         </GridPane>
     </children>

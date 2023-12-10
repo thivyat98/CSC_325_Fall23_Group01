@@ -28,7 +28,7 @@
         <Button text="Search" onAction="#searchJobs" />
     </HBox>
     <ScrollPane fitToWidth="true" fitToHeight="true">
-        <VBox spacing="10" alignment="CENTER" fx:id="jobListings">
+        <VBox spacing="10" alignment="CENTER" fx:id="jobListingsContainer">
             <!-- Job Listing 1 -->
             <HBox styleClass="job-listing">
                 <VBox spacing="5">

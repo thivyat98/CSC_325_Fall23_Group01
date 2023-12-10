@@ -24,32 +24,33 @@ public class Employee extends User {
         DocumentSnapshot document = future.get();
         document.toObject(Employee.class);
         if (document.exists()) {
-            String firstName = document.getString("First Name");
-            String lastName = document.getString("Last Name");
-            String email = document.getString("Email");
-            String phone = document.getString("Phone");
-            String id = document.getString("ID");
-            ArrayList<String> skills = (ArrayList<String>) document.get("Skills");
 
-            Employee employee = new Employee(firstName, lastName, phone, email, id);
-            employee.setSkills(skills); // Assuming you have a setter for skills
-            return employee;
+            return document.toObject(Employee.class);
         } else {
             System.out.println("No User Found!");
             return null;
         }
     }
 
+    public Employee() {
+        super();
+        this.firstName = "";
+        this.lastName = "";
+        this.skills = new ArrayList<>();
+    }
+
     public Employee(String firstName, String lastName, String phone, String email) {
-        super(email, phone, "Employee");
+        super(email, phone, "employee");
         this.firstName = firstName;
         this.lastName = lastName;
+        this.skills = new ArrayList<>();
     }
 
     public Employee(String firstName, String lastName, String phone, String email, String id) {
-        super(email, id, phone, "Employee");
+        super(email, id, phone, "employee");
         this.firstName = firstName;
         this.lastName = lastName;
+        this.skills = new ArrayList<>();
     }
 
     public ArrayList<String> getSkills() {
@@ -66,7 +67,7 @@ public class Employee extends User {
         data.put("type", this.getType());
         data.put("firstName", this.getFirstName());
         data.put("lastName", this.getLastName());
-        data.put("ID", this.getId());
+        data.put("id", this.getId());
         data.put("email", super.getEmail());
         data.put("skills", this.getSkills());
         data.put("phone", this.getPhone());

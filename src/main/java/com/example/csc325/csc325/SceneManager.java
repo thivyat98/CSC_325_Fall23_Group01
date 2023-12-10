@@ -54,13 +54,20 @@ public class SceneManager {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("mlogin.fxml"));
         Parent root = loader.load();
         stage.setScene(new Scene(root));
-        stage.setTitle("login");
+        stage.setTitle("Login");
     }
 
     public void showMainScene() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("searchPage.fxml"));
         Parent root = loader.load();
         stage.setScene(new Scene(root));
-        stage.setTitle("login");
+        stage.setTitle("Job Finder");
+    }
+
+    public void showSuccessfulRegScene() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("successfulRegistration.fxml"));
+        Parent root = loader.load();
+        stage.setScene(new Scene(root));
+        stage.setTitle("Success");
     }
 }

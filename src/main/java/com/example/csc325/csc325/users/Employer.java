@@ -14,7 +14,6 @@ import java.util.concurrent.ExecutionException;
 
 public class Employer extends User {
     private String companyName;
-    private String type;
 
     public Employer(String companyName, String email, String phone) {
         super(email, phone, "Employer");
@@ -24,6 +23,11 @@ public class Employer extends User {
     public Employer(String companyName, String email, String phone, String id) {
         super(email, phone, id, "Employer");
         this.companyName = companyName;
+    }
+
+    public Employer() {
+        super();
+        this.companyName = "";
     }
 
 
@@ -78,12 +82,7 @@ public class Employer extends User {
         ApiFuture<DocumentSnapshot> future = docRef.get();
         DocumentSnapshot document = future.get();
         if (document.exists()) {
-            String companyName = document.getString("Company Name");
-            String email = document.getString("Email");
-            String phone = document.getString("Phone");
-            String id = document.getString("ID");
-
-            return new Employer(companyName, phone, email, id);
+            return document.toObject(Employer.class);
         } else {
             System.out.println("No User Found!");
             return null;

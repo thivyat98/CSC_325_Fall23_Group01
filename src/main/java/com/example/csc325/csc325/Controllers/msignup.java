@@ -35,7 +35,7 @@ public class msignup {
     public Label lblErrorMsg;
 
 
-    public void handleSignUp(ActionEvent actionEvent) throws ExecutionException, InterruptedException {
+    public void handleSignUp(ActionEvent actionEvent) throws ExecutionException, InterruptedException, IOException {
         Firestore db = FirestoreClient.getFirestore();
         if (firstNameField.getText().isEmpty() || lastNameField.getText().isEmpty() || emailField.getText().isEmpty() || passwordFeild.getText().isEmpty() || ConfirmPasswordFeild.getText().isEmpty() || phoneNumberField.getText().isEmpty()) {
             System.out.println("All fields are required");
@@ -60,6 +60,7 @@ public class msignup {
             }
             User user = new Employee(firstNameField.getText(), lastNameField.getText(), phoneNumberField.getText(), emailField.getText());
             user.register(passwordFeild.getText());
+            SceneManager.getInstance().showSuccessfulRegScene();
         }
     }
 
