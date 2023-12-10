@@ -39,7 +39,7 @@ public class searchController {
             for (DocumentSnapshot document : querySnapshot.getDocuments()) {
                 JobPosting job = document.toObject(JobPosting.class);
                 if (job != null) {
-                    System.out.println("Job Matches: " + job.getJobTitle());
+                    System.out.println("Job Matches: " + job.getTitle());
                 }
             }
         } catch (InterruptedException | ExecutionException e) {
