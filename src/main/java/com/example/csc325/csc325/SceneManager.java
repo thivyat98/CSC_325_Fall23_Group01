@@ -96,6 +96,8 @@ public class SceneManager {
         stage.hide();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("employeeProfile.fxml"));
         Parent root = loader.load();
+        employeeProfileController profileController = loader.getController();
+        profileController.onLoad();
         stage.setScene(new Scene(root));
         stage.setTitle("Employer Profile");
         stage.show();
