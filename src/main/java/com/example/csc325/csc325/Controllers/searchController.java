@@ -45,8 +45,8 @@ public class searchController {
         String searchTerm = searchField.getText().toLowerCase();
         jobListingsContainer.getChildren().clear();
 
-        // Split the input string into multiple keywords
-        String[] keywords = searchTerm.split(",\\s*");
+        // Split the input string into multiple keywords using space as a separator
+        String[] keywords = searchTerm.split("\\s+");
 
         for (String keyword : keywords) {
             List<JobPosting> jobs = fetchJobs(keyword);
