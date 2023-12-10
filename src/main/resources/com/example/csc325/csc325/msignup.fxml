@@ -48,16 +48,17 @@
                 <TextField fx:id="phoneNumberField" promptText="Phone number (xxx-xxx-xxxx)" GridPane.rowIndex="5" GridPane.valignment="TOP" />
                 <Label fx:id="phoneNumberCheck" />
                 <Button fx:id="signUp" mnemonicParsing="false" onAction="#handleSignUp" prefHeight="26.0" prefWidth="40.0" styleClass="nav_btn" text="Sign Up" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
-                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="9">
+                <AnchorPane prefHeight="45.0" prefWidth="461.0" GridPane.rowIndex="9">
                     <children>
                         <Label layoutX="192.0" layoutY="11.0" text="Already have an account?" />
                         <Hyperlink fx:id="loginLink" layoutX="332.0" layoutY="8.0" onAction="#backToLogin" text="Login" />
 
                     </children>
                     <children>
-                        <Hyperlink fx:id="bussinessSignup" onAction="#toBussinessSignup" contentDisplay="CENTER" layoutX="212.0" layoutY="66.0" prefHeight="23.0" prefWidth="106.0" text="Bussiness Signup" textAlignment="JUSTIFY" textOverrun="CLIP" />
+                        <Hyperlink fx:id="bussinessSignup" contentDisplay="CENTER" layoutX="212.0" layoutY="66.0" onAction="#toBussinessSignup" prefHeight="23.0" prefWidth="106.0" text="Bussiness Signup" textAlignment="JUSTIFY" textOverrun="CLIP" />
                     </children>
                 </AnchorPane>
+            <Label fx:id="lblErrorMsg" style="-fx-text-fill: #e63946" alignment="CENTER" prefHeight="30.0" prefWidth="305.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
             </children>
         </GridPane>
     </children>

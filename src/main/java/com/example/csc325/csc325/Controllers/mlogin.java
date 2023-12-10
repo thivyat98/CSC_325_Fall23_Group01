@@ -62,6 +62,7 @@ public class mlogin {
         List<QueryDocumentSnapshot> documents = query.get().getDocuments();
         if(documents.isEmpty()){
             System.out.println("No Account under this email");
+            lblErrorMsg.setText("No Account under this email");
             return;
         }
         String storedHashedPassword = documents.get(0).getString("hashPassword");
@@ -73,6 +74,8 @@ public class mlogin {
         }
         else{
             System.out.println("Incorrect Password");
+            lblErrorMsg.setText("Incorrect Password");
+
             return;
 
         }
