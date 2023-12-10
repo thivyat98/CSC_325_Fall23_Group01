@@ -35,10 +35,7 @@ public class searchController {
 
     public void onLoad() throws ExecutionException, InterruptedException {
         List<JobPosting> recent = fetchRecentJobs();
-        for (JobPosting job : recent) {
-            HBox jobUI = createJobListingUI(job);
-            jobListingsContainer.getChildren().add(jobUI);
-        }
+        displayJobs(recent);
     }
 
     public void searchJobs(ActionEvent actionEvent) {
@@ -149,6 +146,13 @@ public class searchController {
 
     public void employeeProfileLoader(ActionEvent actionEvent) throws IOException {
         SceneManager.getInstance().showEmployeeProfileScene();
+    }
+
+    private void displayJobs(List<JobPosting> jobs) {
+        for (JobPosting job : jobs) {
+            HBox jobUI = createJobListingUI(job);
+            jobListingsContainer.getChildren().add(jobUI);
+        }
     }
 
 }
