@@ -18,7 +18,10 @@ public abstract class User {
 
 
     public User() {
-        this.id = UUID.randomUUID().toString();
+        this.type = "";
+        this.email = "";
+        this.id = "";
+        this.phone = "";
     }
 
     public User(String email, String phone, String type) {

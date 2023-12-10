@@ -22,6 +22,7 @@ public class Employee extends User {
         DocumentReference docRef = db.collection("users").document(ID);
         ApiFuture<DocumentSnapshot> future = docRef.get();
         DocumentSnapshot document = future.get();
+        document.toObject(Employee.class);
         if (document.exists()) {
             String firstName = document.getString("First Name");
             String lastName = document.getString("Last Name");
@@ -62,13 +63,13 @@ public class Employee extends User {
     @Override
     public void save(){
         Map<String, Object> data = new HashMap<>();
-        data.put("Type", this.getType());
-        data.put("First Name", this.getFirstName());
-        data.put("Last Name", this.getLastName());
+        data.put("type", this.getType());
+        data.put("firstName", this.getFirstName());
+        data.put("lastName", this.getLastName());
         data.put("ID", this.getId());
-        data.put("Email", super.getEmail());
-        data.put("Skills", this.getSkills());
-        data.put("Phone", this.getPhone());
+        data.put("email", super.getEmail());
+        data.put("skills", this.getSkills());
+        data.put("phone", this.getPhone());
         try {
             Firestore db = FirestoreClient.getFirestore();
             DocumentReference docRef = db.collection("users").document(super.getId());

@@ -7,9 +7,16 @@ public class JobPosting extends Post{
 
     private String company;
     private String salary;
-    private ArrayList<String> keywords;
+    private List<String> keywords;
 
-    public JobPosting(String jobTitle, String company, String salary, String description, ArrayList<String> keywords) {
+    public JobPosting() {
+        super();
+        this.company = "";
+        this.salary = "";
+        this.keywords = new ArrayList<>();
+    }
+
+    public JobPosting(String jobTitle, String company, String salary, String description, List<String> keywords) {
         super(jobTitle, description);
         this.company = company;
         this.salary = salary;
@@ -33,11 +40,11 @@ public class JobPosting extends Post{
         this.salary = salary;
     }
 
-    public ArrayList<String> getKeywords() {
+    public List<String> getKeywords() {
         return keywords;
     }
 
-    public void setKeywords(ArrayList<String> keywords) {
+    public void setKeywords(List<String> keywords) {
         this.keywords = keywords;
     }
 }

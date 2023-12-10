@@ -69,7 +69,7 @@ public class mlogin {
         if(BCrypt.checkpw(passwordField.getText(), storedHashedPassword)){
             System.out.println(documents.get(0).getString("ID"));
             UserSessionManager.loginUser(documents.get(0).getString("ID"), documents.get(0).getString("Type"));
-            SceneManager.getInstance().showProfileScene(UserSessionManager.getUser());
+            SceneManager.getInstance().showMainScene();
         }
         else{
             System.out.println("Incorrect Password");
