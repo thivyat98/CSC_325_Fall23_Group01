@@ -20,20 +20,15 @@ public class employeeProfileController {
     @FXML
     public Label username;
     @FXML
+    public TextField FirstName;
+    @FXML
     private ListView<String> skillListView;
-
     @FXML
     private TextField skill;
-
     @FXML
     private Button addSkill;
-
     @FXML
     private ImageView profilePicture;
-
-    @FXML
-    public TextField FirstName;
-
     @FXML
     private TextField LastName;
 
@@ -64,9 +59,6 @@ public class employeeProfileController {
     }
 
 
-
-
-
     private void loadSkills(Employee employee) {
         skillListView.getItems().addAll(employee.getSkills());
     }
@@ -92,6 +84,5 @@ public class employeeProfileController {
             loadSkills(employee);
             loadProfilePicture(employee);
         }
-
     }
 }
