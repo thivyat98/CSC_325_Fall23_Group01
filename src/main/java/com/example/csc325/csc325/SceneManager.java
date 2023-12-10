@@ -91,4 +91,13 @@ public class SceneManager {
         stage.setTitle("Success");
         stage.show();
     }
+
+    public void showEmployeeProfileScene() throws IOException {
+        stage.hide();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("employeeProfile.fxml"));
+        Parent root = loader.load();
+        stage.setScene(new Scene(root));
+        stage.setTitle("Employer Profile");
+        stage.show();
+    }
 }
