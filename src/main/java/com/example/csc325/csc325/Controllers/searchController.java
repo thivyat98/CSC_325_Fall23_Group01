@@ -15,9 +15,7 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.concurrent.ExecutionException;
 
 
@@ -62,7 +60,7 @@ public class searchController {
 
     public List<JobPosting> fetchJobs(String keyword) {
         List<JobPosting> jobs = new ArrayList<>();
-        Set<String> pulledJobIds = new HashSet<>(); // Use a Set to store unique job IDs
+        List<String> pulledJobIds = new ArrayList<>(); // Use a List to store pulled job IDs
 
         try {
             // Query Firestore for jobs using the keyword
