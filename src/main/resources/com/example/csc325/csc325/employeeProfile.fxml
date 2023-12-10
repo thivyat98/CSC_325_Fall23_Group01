@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,17 +12,31 @@
    <children>
       <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="704.0" prefWidth="688.0" style="-fx-background-color: white; -fx-padding: 20;">
          <children>
-
-            <TextField layoutX="14.0" layoutY="186.0" prefHeight="26.0" prefWidth="150.0" promptText="Full Name" style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: transparent;" />
-            <TextField layoutX="181.0" layoutY="186.0" prefHeight="26.0" prefWidth="100.0" promptText="Pronouns" style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: transparent;" />
-            <TextArea layoutX="16.0" layoutY="227.0" prefHeight="100.0" prefWidth="628.0" promptText="About me" style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: transparent;" />
-            <TextArea layoutX="16.0" layoutY="354.0" prefHeight="100.0" prefWidth="628.0" promptText="Education" style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: transparent;" />
-            <TextArea layoutX="16.0" layoutY="476.0" prefHeight="100.0" prefWidth="628.0" promptText="Past Experience" style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: transparent;" />
-            <TextArea layoutX="16.0" layoutY="590.0" prefHeight="100.0" prefWidth="628.0" promptText="Skills" style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: transparent;" />
+            <ImageView fitHeight="724" fitWidth="688" layoutX="0.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@banner.jpeg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="86.0" fitWidth="129.0" layoutX="46.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+               <clip>
+                  <Circle centerX="43.0" centerY="43.0" radius="43.0" />
+               </clip>
+               <image>
+                  <Image url="@profile.png" />
+               </image>
+            </ImageView>
+            <TextArea layoutX="8.0" layoutY="251.0" prefHeight="195.0" prefWidth="628.0" promptText="About me" style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: transparent;" />
+            <TextArea layoutX="8.0" layoutY="463.0" prefHeight="161.0" prefWidth="628.0" promptText="Skills" style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: transparent;" />
+            <Label layoutX="17.0" layoutY="193.0" text="First Name" textFill="#949090" />
+            <Label layoutX="95.0" layoutY="193.0" text="Last Name" textFill="#949090" />
+            <Label layoutX="196.0" layoutY="193.0" text="Email" textFill="#949090" />
+            <Label layoutX="262.0" layoutY="193.0" text="Phone Number" textFill="#949090" />
+            <Label fx:id="lblErrorMsg" layoutX="46.0" layoutY="669.0" textFill="#eb0f0f" />
          </children>
       </AnchorPane>
    </children>
    <stylesheets>
       <URL value="@style.css" />
+      <URL value="@../../../../../styling/style.css" />
    </stylesheets>
 </AnchorPane>

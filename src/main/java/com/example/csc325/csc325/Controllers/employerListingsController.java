@@ -29,6 +29,18 @@ public class employerListingsController {
     private Button addJob;
 
     private List<Job> jobList;
+    @FXML
+    private TextField CompanyName;
+
+
+
+    @FXML
+    private TextField email;
+
+    @FXML
+    private TextField phoneNumber;
+
+
 
     // Constructor to initialize jobList
     public employerListingsController() {
