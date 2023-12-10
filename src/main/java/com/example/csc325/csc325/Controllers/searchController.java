@@ -147,4 +147,8 @@ public class searchController {
         return recentJobs;
     }
 
+    public void employeeProfileLoader(ActionEvent actionEvent) throws IOException {
+        SceneManager.getInstance().showEmployeeProfileScene();
+    }
+
 }
