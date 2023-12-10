@@ -7,7 +7,6 @@ import com.google.cloud.firestore.*;
 import com.google.firebase.cloud.FirestoreClient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -16,7 +15,9 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.ExecutionException;
 
 
@@ -42,29 +43,43 @@ public class searchController {
         }
     }
 
-    //ToDo: Implement search functionality for jobs with a set of keywords
     public void searchJobs(ActionEvent actionEvent) {
         String searchTerm = searchField.getText().toLowerCase();
         jobListingsContainer.getChildren().clear();
-        List<JobPosting> jobs = fetchJobs(searchTerm);
-        for (JobPosting job : jobs) {
-            HBox jobUI = createJobListingUI(job);
-            jobListingsContainer.getChildren().add(jobUI);
+
+        // Split the input string into multiple keywords
+        String[] keywords = searchTerm.split(",\\s*");
+
+        for (String keyword : keywords) {
+            List<JobPosting> jobs = fetchJobs(keyword);
+            for (JobPosting job : jobs) {
+                HBox jobUI = createJobListingUI(job);
+                jobListingsContainer.getChildren().add(jobUI);
+            }
         }
     }
 
-    public List<JobPosting> fetchJobs(String searchTerm){
+
+    public List<JobPosting> fetchJobs(String keyword) {
         List<JobPosting> jobs = new ArrayList<>();
+        Set<String> pulledJobIds = new HashSet<>(); // Use a Set to store unique job IDs
+
         try {
-            // Query Firestore for jobs
-            ApiFuture<QuerySnapshot> future = jobCollection.whereArrayContains("keywords", searchTerm).get();
+            // Query Firestore for jobs using the keyword
+            ApiFuture<QuerySnapshot> future = jobCollection.whereArrayContains("keywords", keyword).get();
             QuerySnapshot querySnapshot = future.get();
 
             // Display the matching jobs
             for (DocumentSnapshot document : querySnapshot.getDocuments()) {
                 JobPosting job = document.toObject(JobPosting.class);
                 if (job != null) {
-                    jobs.add(job);
+                    String jobId = job.getId();
+
+                    // Check if the job ID has already been pulled
+                    if (!pulledJobIds.contains(jobId)) {
+                        jobs.add(job);
+                        pulledJobIds.add(jobId);
+                    }
                 }
             }
         } catch (InterruptedException | ExecutionException e) {
@@ -73,6 +88,7 @@ public class searchController {
 
         return jobs;
     }
+
 
     public HBox createJobListingUI(JobPosting job) {
         HBox jobBox = new HBox(10);
@@ -103,7 +119,7 @@ public class searchController {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        }); // Set up your event handler
+        });
 
         detailsBox.getChildren().addAll(titleLabel, companyNameLabel, locationLabel, salaryLabel, descriptionLabel, applyButton);
         jobBox.getChildren().add(detailsBox);
@@ -113,7 +129,6 @@ public class searchController {
 
 
     private void handleApplyAction(JobPosting job) throws IOException {
-        // Handling apply action, e.g., printing job ID
         System.out.println("Applied for: " + job.getId()); // Assuming getId() is a method in Post or JobPosting
         SceneManager.getInstance().showSuccessfulRegScene();
     }
