@@ -1,8 +1,10 @@
 package com.example.csc325.csc325.Controllers;
 
+import com.example.csc325.csc325.SceneManager;
 import com.example.csc325.csc325.UserSessionManager;
 import com.example.csc325.csc325.users.Employee;
 import com.example.csc325.csc325.users.User;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -14,6 +16,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 public class employeeProfileController {
     @FXML
@@ -32,6 +36,9 @@ public class employeeProfileController {
     private TextField Email;
     @FXML
     private TextField phoneNumber;
+
+    @FXML
+    private Button saveButton;
 
     @FXML
     void addSkilltoList(MouseEvent event) {
@@ -80,4 +87,7 @@ public class employeeProfileController {
         }
     }
 
+    public void saveProfile(ActionEvent actionEvent) throws IOException, ExecutionException, InterruptedException {
+        SceneManager.getInstance().showMainScene();
+    }
 }
