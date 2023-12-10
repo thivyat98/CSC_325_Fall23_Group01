@@ -1,5 +1,6 @@
 package com.example.csc325.csc325.Controllers;
 
+import com.example.csc325.csc325.SceneManager;
 import com.example.csc325.csc325.users.Employee;
 import com.example.csc325.csc325.users.User;
 import com.google.api.core.ApiFuture;
@@ -10,8 +11,10 @@ import com.google.firebase.cloud.FirestoreClient;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -24,6 +27,7 @@ public class msignup {
     public TextField passwordFeild;
     public TextField ConfirmPasswordFeild;
     public TextField phoneNumberField;
+    public Hyperlink loginLink;
 
     public void handleSignUp(ActionEvent actionEvent) throws ExecutionException, InterruptedException {
         Firestore db = FirestoreClient.getFirestore();
@@ -45,8 +49,12 @@ public class msignup {
                 return;
 
             }
-            User user = new Employee(firstNameField.getText(), lastNameField.getText(), phoneNumberField.getText(), passwordFeild.getText(), emailField.getText());
-            user.register();
+            User user = new Employee(firstNameField.getText(), lastNameField.getText(), phoneNumberField.getText(), emailField.getText());
+            user.register(passwordFeild.getText());
         }
+    }
+
+    public void backToLogin(ActionEvent actionEvent) throws IOException {
+        SceneManager.getInstance().showLoginScene();
     }
 }

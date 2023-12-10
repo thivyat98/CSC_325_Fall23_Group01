@@ -1,5 +1,7 @@
 package com.example.csc325.csc325;
 
+import com.example.csc325.csc325.users.Employee;
+import com.example.csc325.csc325.users.Employer;
 import com.example.csc325.csc325.users.User;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
@@ -12,8 +14,9 @@ public class UserSessionManager {
     private static String currentUserId = null;
     private static User user = null;
 
-    public static void loginUser(String userId) {
-        currentUserId = userId; // Set when user logs in
+    public static void loginUser(String userId, String type) throws ExecutionException, InterruptedException {
+        currentUserId = userId;
+        setCurrentUser(currentUserId, type);// Set when user logs in
     }
 
     public static void logoutUser() {
@@ -28,18 +31,12 @@ public class UserSessionManager {
         return user;
     }
 
-    public static void setUser(String currentUserId) throws ExecutionException, InterruptedException {
-        Firestore db = FirestoreClient.getFirestore();
-        DocumentReference docRef = db.collection("users").document(currentUserId);
-        ApiFuture<DocumentSnapshot> future = docRef.get();
-        DocumentSnapshot document = future.get();
-        if (document.exists()) {
-            if(document.getString("Type").equals("Employee")){
-
-            }
-            System.out.println("Document data: " + document.getData());
-        } else {
-            System.out.println("No User Found!");
+    public static void setCurrentUser(String currentUserId, String type) throws ExecutionException, InterruptedException {
+        if(type.equalsIgnoreCase("employee")){
+            user = Employee.getEmployee(currentUserId);
         }
+        else if(type.equalsIgnoreCase("employer"))
+        user = Employer.getEmployer(currentUserId);
+
     }
 }

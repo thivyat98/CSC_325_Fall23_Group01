@@ -12,19 +12,25 @@ public abstract class User {
     private final String id;
     private String email;
 
-    private String password;
+    private String phone;
 
 
     public User() {
-        this.password = "";
         this.id = UUID.randomUUID().toString();
     }
 
-    public User(String password, String email) {
-        this.password = password;
+    public User(String email, String phone) {
         this.email = email;
+        this.phone = phone;
         this.id = UUID.randomUUID().toString();
     }
+
+    public User(String email, String id, String phone) {
+        this.email = email;
+        this.id = id;
+        this.phone = phone;
+    }
+
 
     public String getId() {
         return id;
@@ -33,13 +39,7 @@ public abstract class User {
 
 
 
-    public String getPassword() {
-        return password;
-    }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
 
 
@@ -55,7 +55,7 @@ public abstract class User {
 
     public abstract String getUserType();
     public abstract void save();
-    public abstract void register() throws ExecutionException, InterruptedException;
+    public abstract void register(String password) throws ExecutionException, InterruptedException;
 
 
 
@@ -64,5 +64,13 @@ public abstract class User {
         return "User{" +
                 "id='" + id +
                 '}';
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

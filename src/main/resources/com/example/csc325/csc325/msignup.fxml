@@ -51,7 +51,7 @@
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="9">
                     <children>
                         <Label layoutX="192.0" layoutY="11.0" text="Already have an account?" />
-                        <Hyperlink layoutX="332.0" layoutY="8.0" text="Login" />
+                        <Hyperlink layoutX="332.0" fx:id="loginLink" onAction="#backToLogin" layoutY="8.0" text="Login" />
                     </children>
                 </AnchorPane>
             </children>

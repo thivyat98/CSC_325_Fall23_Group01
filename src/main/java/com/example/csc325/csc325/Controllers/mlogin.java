@@ -16,6 +16,7 @@ import javafx.scene.control.TextField;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import java.io.IOException;
+import java.sql.SQLOutput;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -59,18 +60,23 @@ public class mlogin {
                 .whereEqualTo("username", usernameField.getText())
                 .get();
         List<QueryDocumentSnapshot> documents = query.get().getDocuments();
+        if(documents.isEmpty()){
+            System.out.println("No Account under this email");
+            return;
+        }
         String storedHashedPassword = documents.get(0).getString("hashPassword");
         assert storedHashedPassword != null;
         if(BCrypt.checkpw(passwordField.getText(), storedHashedPassword)){
-            UserSessionManager.loginUser(documents.get(0).getString("ID"));
-            SceneManager.getInstance().showMainScene();
+            UserSessionManager.loginUser(documents.get(0).getString("ID"), "employee");
+            SceneManager.getInstance().showProfileScene(UserSessionManager.getUser());
         }
         else{
             System.out.println("Incorrect Password");
+            return;
 
         }
 
-        //SceneManager.getInstance().showMainScene();
+
     }
 
 

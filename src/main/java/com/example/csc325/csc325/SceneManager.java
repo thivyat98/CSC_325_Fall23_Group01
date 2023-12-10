@@ -44,7 +44,7 @@ public class SceneManager {
     }
 
     public void showLoginScene() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("loginView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("mlogin.fxml"));
         Parent root = loader.load();
         stage.setScene(new Scene(root));
         stage.setTitle("login");

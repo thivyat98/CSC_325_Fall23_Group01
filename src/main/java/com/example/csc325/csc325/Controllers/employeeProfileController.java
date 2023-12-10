@@ -57,7 +57,7 @@ public class employeeProfileController {
     }
 
     private void loadUserData() {
-        username.setText(user.getId());
+        username.setText(user.getEmail());
     }
 
 }

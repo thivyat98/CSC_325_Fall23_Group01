@@ -13,16 +13,42 @@ import java.util.concurrent.ExecutionException;
 
 public class Employee extends User {
     private ArrayList<String> skills;
-    private String phone;
 
     private String firstName;
     private String lastName;
 
-    public Employee(String firstName, String lastName, String phone, String password, String email) {
-        super(password, email);
+    public static Employee getEmployee(String ID) throws ExecutionException, InterruptedException {
+        Firestore db = FirestoreClient.getFirestore();
+        DocumentReference docRef = db.collection("users").document(ID);
+        ApiFuture<DocumentSnapshot> future = docRef.get();
+        DocumentSnapshot document = future.get();
+        if (document.exists()) {
+            String firstName = document.getString("First Name");
+            String lastName = document.getString("Last Name");
+            String email = document.getString("Email");
+            String phone = document.getString("Phone");
+            String id = document.getString("ID");
+            ArrayList<String> skills = (ArrayList<String>) document.get("Skills");
+
+            Employee employee = new Employee(firstName, lastName, phone, email, id);
+            employee.setSkills(skills); // Assuming you have a setter for skills
+            return employee;
+        } else {
+            System.out.println("No User Found!");
+            return null;
+        }
+    }
+
+    public Employee(String firstName, String lastName, String phone, String email) {
+        super(email, phone);
         this.firstName = firstName;
         this.lastName = lastName;
-        this.phone = phone;
+    }
+
+    public Employee(String firstName, String lastName, String phone, String email, String id) {
+        super(email, id, phone);
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public ArrayList<String> getSkills() {
@@ -46,6 +72,7 @@ public class Employee extends User {
         data.put("ID", this.getId());
         data.put("Email", super.getEmail());
         data.put("Skills", this.getSkills());
+        data.put("Phone", this.getPhone());
         try {
             Firestore db = FirestoreClient.getFirestore();
             DocumentReference docRef = db.collection("users").document(super.getId());
@@ -58,7 +85,7 @@ public class Employee extends User {
     }
 
     @Override
-    public void register() throws ExecutionException, InterruptedException {
+    public void register(String password) throws ExecutionException, InterruptedException {
         Firestore firestore = FirestoreClient.getFirestore();
         ApiFuture<QuerySnapshot> query = firestore.collection("auth")
                 .whereEqualTo("username", this.getEmail())
@@ -74,7 +101,7 @@ public class Employee extends User {
             // Add data to Firestore
             Map<String, Object> creds = new HashMap<>();
             creds.put("username", this.getEmail());
-            creds.put("hashPassword", BCrypt.hashpw(this.getPassword(), BCrypt.gensalt()));
+            creds.put("hashPassword", BCrypt.hashpw(password, BCrypt.gensalt()));
             creds.put("ID", this.getId());
 
             DocumentReference docRef = firestore.collection("auth").document(this.getId());
@@ -87,13 +114,6 @@ public class Employee extends User {
 
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
 
     public String getFirstName() {
         return firstName;
