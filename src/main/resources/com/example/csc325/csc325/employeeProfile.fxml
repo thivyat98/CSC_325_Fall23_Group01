@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="724" prefWidth="708" style="-fx-background-color: white; -fx-padding: 20;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="724" prefWidth="708" style="-fx-background-color: white; -fx-padding: 20;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csc325.csc325.Controllers.employeeProfileController">
     <children>
         <ImageView fitHeight="86.0" fitWidth="129.0" layoutX="46.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
             <clip>
@@ -30,7 +30,7 @@
         <Label layoutX="74.0" layoutY="186.0" prefHeight="28.0" prefWidth="188.0" text="Email" textFill="#949090" />
         <Label layoutX="338.0" layoutY="186.0" prefHeight="28.0" prefWidth="188.0" text="Phone Number" textFill="#949090" />
         <Label fx:id="lblErrorMsg" layoutX="46.0" layoutY="669.0" textFill="#eb0f0f" />
-      <Button fx:id="saveButton" layoutX="641.0" layoutY="663.0" mnemonicParsing="false" onAction="go" text="Save" />
+      <Button fx:id="saveButton" layoutX="641.0" layoutY="663.0" mnemonicParsing="false" onAction="#saveProfile" text="Save" />
 
     </children>
     <stylesheets>

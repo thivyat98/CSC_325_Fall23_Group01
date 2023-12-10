@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="TOP_CENTER" spacing="10" style="-fx-background-color: #f2f2f2;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="com.example.csc325.csc325.Controllers.searchController">
+<VBox alignment="TOP_CENTER" spacing="10" style="-fx-background-color: #f2f2f2;" prefHeight="724" prefWidth="708" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="com.example.csc325.csc325.Controllers.searchController">
     <!-- Smoke Grey Background -->
     <VBox style="-fx-background-color: #ddd;">
         <!-- Existing content -->
