@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -17,7 +14,7 @@
 
 <AnchorPane prefHeight="608.0" prefWidth="558.0" styleClass="anchor_pane" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csc325.csc325.Controllers.mlogin">
     <children>
-        <GridPane layoutX="92.0" layoutY="65.0" prefHeight="510.0" prefWidth="430.0" styleClass="anchor_pane">
+        <GridPane layoutX="64.0" layoutY="49.0" prefHeight="510.0" prefWidth="430.0" styleClass="anchor_pane">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints />
@@ -32,7 +29,7 @@
                 <RowConstraints maxHeight="103.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Label prefHeight="30.0" prefWidth="417.0" text="                              Login" textAlignment="CENTER">
+                <Label alignment="CENTER" prefHeight="30.0" prefWidth="417.0" text="Login" textAlignment="CENTER">
                     <font>
                         <Font size="25.0" />
                     </font>
@@ -42,8 +39,7 @@
 
                 <!--            <TextField prefHeight="34.0" prefWidth="386.0" promptText="Confirm password" GridPane.rowIndex="3" />-->
                 <Button fx:id="loginBtn" defaultButton="true" mnemonicParsing="false" onAction="#signin" prefHeight="26.0" prefWidth="404.0" styleClass="nav_btn" text="Login" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-                <Label prefHeight="17.0" prefWidth="345.0" text="                                            Don't have an account? " GridPane.rowIndex="4" />
-                <Label fx:id="lblErrorMsg" prefHeight="22.0" prefWidth="56.0" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER"> </Label>
+                <Label alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="253.0" text="Don't have an account? " GridPane.rowIndex="4" />
                 <GridPane prefHeight="26.0" prefWidth="240.0" GridPane.rowIndex="4">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
@@ -52,13 +48,14 @@
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <AnchorPane prefHeight="54.0" prefWidth="376.0">
+                        <AnchorPane prefHeight="20.0" prefWidth="291.0">
                             <children>
-                                <Hyperlink layoutX="246.0" layoutY="16.0" onAction="#signup" text="Sign up" />
+                                <Hyperlink layoutX="253.0" layoutY="19.0" onAction="#signup" text="Sign up" />
                             </children>
                         </AnchorPane>
                     </children>
                 </GridPane>
+            <Label fx:id="lblErrorMsg" style="-fx-text-fill: #e63946" alignment="CENTER" prefHeight="67.0" prefWidth="394.0" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
             </children>
         </GridPane>
     </children>

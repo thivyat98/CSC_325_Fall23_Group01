@@ -1,7 +1,6 @@
 package com.example.csc325.csc325.Controllers;
 
 import com.example.csc325.csc325.SceneManager;
-import com.example.csc325.csc325.users.Employee;
 import com.example.csc325.csc325.users.Employer;
 import com.example.csc325.csc325.users.User;
 import com.google.api.core.ApiFuture;
@@ -12,13 +11,14 @@ import com.google.firebase.cloud.FirestoreClient;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-public class employerSignup {
+public class employerSignupController {
 
 
     public TextField companyNameField;
@@ -29,6 +29,8 @@ public class employerSignup {
     public Button signUp;
     public Hyperlink loginLink;
 
+    public Label lblErrorMsg;
+
     public void backToLogin(ActionEvent actionEvent) throws IOException {
         SceneManager.getInstance().showLoginScene();
     }
@@ -37,10 +39,12 @@ public class employerSignup {
         Firestore db = FirestoreClient.getFirestore();
         if (companyNameField.getText().isEmpty() || emailField.getText().isEmpty() || passwordField.getText().isEmpty() || ConfirmPasswordField.getText().isEmpty() || phoneNumberField.getText().isEmpty()) {
             System.out.println("All fields are required");
+            lblErrorMsg.setText("All fields are required");
 
         }
         else if (!passwordField.getText().equals(ConfirmPasswordField.getText())) {
             System.out.println("Passwords dont match");
+            lblErrorMsg.setText("Passwords dont match");
 
         } else {
             ApiFuture<QuerySnapshot> query = db.collection("auth")
@@ -50,6 +54,7 @@ public class employerSignup {
 
             if (!documents.isEmpty()) {
                 System.out.println("Account using email already exists");
+                lblErrorMsg.setText("Account using email already exists");
                 return;
 
             }

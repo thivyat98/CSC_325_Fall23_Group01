@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
@@ -30,14 +31,20 @@ public class msignup {
     public Hyperlink loginLink;
     public Hyperlink bussinessSignup;
 
+    @FXML
+    public Label lblErrorMsg;
+
+
     public void handleSignUp(ActionEvent actionEvent) throws ExecutionException, InterruptedException {
         Firestore db = FirestoreClient.getFirestore();
         if (firstNameField.getText().isEmpty() || lastNameField.getText().isEmpty() || emailField.getText().isEmpty() || passwordFeild.getText().isEmpty() || ConfirmPasswordFeild.getText().isEmpty() || phoneNumberField.getText().isEmpty()) {
             System.out.println("All fields are required");
+            lblErrorMsg.setText("All fields are required");
 
         }
          else if (!passwordFeild.getText().equals(ConfirmPasswordFeild.getText())) {
             System.out.println("Passwords dont match");
+            lblErrorMsg.setText("Passwords dont match");
 
         } else {
             ApiFuture<QuerySnapshot> query = db.collection("auth")
@@ -47,6 +54,7 @@ public class msignup {
 
             if (!documents.isEmpty()) {
                 System.out.println("Account using email already exists");
+                lblErrorMsg.setText("Account using email already exists");
                 return;
 
             }
