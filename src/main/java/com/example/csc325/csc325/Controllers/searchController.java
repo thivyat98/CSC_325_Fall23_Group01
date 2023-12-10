@@ -44,15 +44,15 @@ public class searchController {
     public void searchJobs(ActionEvent actionEvent) {
         String searchTerm = searchField.getText().toLowerCase();
         jobListingsContainer.getChildren().clear();
-        ArrayList<JobPosting> jobs = fetchJobs(searchTerm);
+        List<JobPosting> jobs = fetchJobs(searchTerm);
         for (JobPosting job : jobs) {
             HBox jobUI = createJobListingUI(job);
             jobListingsContainer.getChildren().add(jobUI);
         }
     }
 
-    public ArrayList<JobPosting> fetchJobs(String searchTerm){
-        ArrayList<JobPosting> jobs = new ArrayList<>();
+    public List<JobPosting> fetchJobs(String searchTerm){
+        List<JobPosting> jobs = new ArrayList<>();
         try {
             // Query Firestore for jobs
             ApiFuture<QuerySnapshot> future = jobCollection.whereArrayContains("keywords", searchTerm).get();
