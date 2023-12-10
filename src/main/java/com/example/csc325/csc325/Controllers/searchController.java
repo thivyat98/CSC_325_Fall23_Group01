@@ -1,6 +1,7 @@
 package com.example.csc325.csc325.Controllers;
 
 import com.example.csc325.csc325.Posts.JobPosting;
+import com.example.csc325.csc325.SceneManager;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
 import com.google.firebase.cloud.FirestoreClient;
@@ -13,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -95,7 +97,13 @@ public class searchController {
 
         Button applyButton = new Button("Apply");
         applyButton.getStyleClass().add("apply-button");
-        applyButton.setOnAction(event -> handleApplyAction(job)); // Set up your event handler
+        applyButton.setOnAction(event -> {
+            try {
+                handleApplyAction(job);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }); // Set up your event handler
 
         detailsBox.getChildren().addAll(titleLabel, companyNameLabel, locationLabel, salaryLabel, descriptionLabel, applyButton);
         jobBox.getChildren().add(detailsBox);
@@ -104,9 +112,10 @@ public class searchController {
     }
 
 
-    private void handleApplyAction(JobPosting job) {
+    private void handleApplyAction(JobPosting job) throws IOException {
         // Handling apply action, e.g., printing job ID
         System.out.println("Applied for: " + job.getId()); // Assuming getId() is a method in Post or JobPosting
+        SceneManager.getInstance().showSuccessfulRegScene();
     }
 
     public List<JobPosting> fetchRecentJobs() throws ExecutionException, InterruptedException {
