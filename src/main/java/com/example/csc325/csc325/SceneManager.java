@@ -38,7 +38,7 @@ public class SceneManager {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("employeeProfile.fxml"));
         Parent root = loader.load();
         employeeProfileController profileController = loader.getController();
-        profileController.setUser(user);
+        profileController.onLoad();
         stage.setScene(new Scene(root));
         stage.setTitle("User Profile");
     }
