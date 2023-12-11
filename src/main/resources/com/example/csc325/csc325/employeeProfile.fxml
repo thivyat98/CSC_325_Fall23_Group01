@@ -38,6 +38,6 @@
         <TextField fx:id="skill" layoutX="31.0" layoutY="589.0" promptText="Add Skill" />
     </children>
     <stylesheets>
-        <URL value="@style.css" />
+        <URL value="@colors.css" />
     </stylesheets>
 </AnchorPane>
