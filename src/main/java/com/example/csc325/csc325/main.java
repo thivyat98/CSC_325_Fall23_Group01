@@ -1,5 +1,7 @@
 package com.example.csc325.csc325;
 
+import com.example.csc325.csc325.Posts.JobPosting;
+import com.example.csc325.csc325.users.Employee;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
@@ -11,6 +13,7 @@ import javafx.stage.Stage;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 public class main extends Application {
@@ -21,6 +24,9 @@ public class main extends Application {
                 .setCredentials(credentials)
                 .build();
         FirebaseApp.initializeApp(options);
+//        JobPosting job = new JobPosting("Title","My company","1", "des", new ArrayList<>(), "123", "NY");
+//        job.addApplicants(new Employee());
+//        job.save();
         launch();
     }
 

@@ -70,4 +70,6 @@ public abstract class Post {
     public int hashCode() {
         return id.hashCode();
     }
+
+    public abstract void save();
 }
