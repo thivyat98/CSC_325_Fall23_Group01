@@ -14,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 public class employeeProfileController {
@@ -39,17 +40,22 @@ public class employeeProfileController {
 
     @FXML
     void addSkilltoList(ActionEvent event) {
+        User user = UserSessionManager.getUser();
         if(skill.getText().isEmpty()){
             return;
         }
         skillListView.getItems().add(skill.getText());
+        ((Employee) user).addSkill(skill.getText());
         skill.clear();
     }
 
     @FXML
     void removeSkillfromList(ActionEvent event) {
+        User user = UserSessionManager.getUser();
         int selectedID = skillListView.getSelectionModel().getSelectedIndex();
+        String selectString = skillListView.getSelectionModel().getSelectedItem();
         skillListView.getItems().remove(selectedID);
+        ((Employee) user).removeSkill(selectString);
     }
 
 

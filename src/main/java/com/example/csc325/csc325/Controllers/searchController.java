@@ -25,7 +25,7 @@ public class searchController {
     public VBox jobListingsContainer;
 
     // Replace the local list with a Firestore collection reference
-    private CollectionReference jobCollection;
+    private final CollectionReference jobCollection;
 
 
     public searchController() {
@@ -53,7 +53,7 @@ public class searchController {
     }
 
     public List<JobPosting> fetchJobs(String keyword, int limit) throws ExecutionException, InterruptedException {
-        if(keyword.isEmpty()){
+        if (keyword.isEmpty()) {
             ApiFuture<QuerySnapshot> query = jobCollection
                     .orderBy("unixTime", Query.Direction.DESCENDING)
                     .limit(10)
@@ -67,7 +67,6 @@ public class searchController {
             return recentJobs;
         }
         List<JobPosting> jobs = new ArrayList<>();
-        List<String> pulledJobIds = new ArrayList<>();
         try {
             // Query Firestore for jobs using the keyword
             ApiFuture<QuerySnapshot> future = jobCollection
@@ -79,13 +78,11 @@ public class searchController {
             for (DocumentSnapshot document : querySnapshot.getDocuments()) {
                 JobPosting job = document.toObject(JobPosting.class);
                 if (job != null) {
-                    String jobId = job.getId();
 
                     // Check if the job ID has already been pulled
-                    if (!pulledJobIds.contains(jobId)) {
-                        jobs.add(job);
-                        pulledJobIds.add(jobId);
-                    }
+
+                    jobs.add(job);
+
                 }
             }
         } catch (InterruptedException | ExecutionException e) {
@@ -191,7 +188,7 @@ public class searchController {
 
 //    public List<JobPosting> fetchRecentJobs() throws ExecutionException, InterruptedException {
 //
-        // Assuming 'jobs' is your collection and 'postedDate' is the timestamp field
+    // Assuming 'jobs' is your collection and 'postedDate' is the timestamp field
 //        ApiFuture<QuerySnapshot> query = jobCollection
 //                .orderBy("unixTime", Query.Direction.DESCENDING)
 //                .limit(10)
@@ -214,7 +211,10 @@ public class searchController {
             HBox jobUI = createJobListingUI(job);
             jobListingsContainer.getChildren().add(jobUI);
         }
+        deeznuts();
     }
 
-
+    protected void deeznuts() {
+        System.out.println("smear of poop on everything bagel wside of poop");
+    }
 }

@@ -61,7 +61,15 @@ public class Employee extends User {
         this.skills = skills;
     }
 
+    public void addSkill(String skill){
+        this.skills.add(skill);
+        this.save();
+    }
 
+    public void removeSkill(String skill){
+        this.skills.remove(skill);
+        this.save();
+    }
     @Override
     public void save() {
         Map<String, Object> data = new HashMap<>();
