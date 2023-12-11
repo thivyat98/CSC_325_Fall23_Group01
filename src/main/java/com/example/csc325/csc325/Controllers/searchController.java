@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -217,6 +218,9 @@ public class searchController {
         for (JobPosting job : jobs) {
             HBox jobUI = createJobListingUI(job);
             jobListingsContainer.getChildren().add(jobUI);
+            Separator separator = new Separator();
+            separator.getStyleClass().add("separator");
+            jobListingsContainer.getChildren().add(separator);
         }
     }
 
