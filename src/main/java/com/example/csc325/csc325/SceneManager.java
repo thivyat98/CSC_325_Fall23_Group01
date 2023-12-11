@@ -91,6 +91,8 @@ public class SceneManager {
         Parent root = loader.load();
         employeeProfileController profileController = loader.getController();
         profileController.onLoad();
+        this.stage.setMinWidth(730);
+        this.stage.setMinHeight(730);
         stage.setScene(new Scene(root));
         stage.setTitle("Employee Profile");
         stage.show();
@@ -102,6 +104,8 @@ public class SceneManager {
         Parent root = loader.load();
         employerProfileController profileController = loader.getController();
         profileController.onLoad();
+        this.stage.setMinWidth(730);
+        this.stage.setMinHeight(730);
         stage.setScene(new Scene(root));
         stage.setTitle("Employer Profile");
         stage.show();
