@@ -2,6 +2,7 @@ package com.example.csc325.csc325.Controllers;
 
 import com.example.csc325.csc325.Posts.JobPosting;
 import com.example.csc325.csc325.SceneManager;
+import com.example.csc325.csc325.UserSessionManager;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
 import com.google.firebase.cloud.FirestoreClient;
@@ -16,6 +17,7 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
 
@@ -204,7 +206,11 @@ public class searchController {
 //    }
 
     public void employeeProfileLoader(ActionEvent actionEvent) throws IOException {
-        SceneManager.getInstance().showEmployerProfileScene();
+        if (Objects.equals(UserSessionManager.getUser().getType(), "employer")){
+            SceneManager.getInstance().showEmployerProfileScene();
+        }
+        else if(Objects.equals(UserSessionManager.getUser().getType(), "employee"))
+        SceneManager.getInstance().showEmployeeProfileScene();
     }
 
     private void displayJobs(List<JobPosting> jobs) {
