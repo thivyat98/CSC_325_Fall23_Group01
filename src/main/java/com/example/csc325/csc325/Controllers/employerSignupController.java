@@ -40,7 +40,7 @@ public class employerSignupController {
         SceneManager.getInstance().showLoginScene();
     }
 
-    public void handleSignUp(ActionEvent actionEvent) throws ExecutionException, InterruptedException {
+    public void handleSignUp(ActionEvent actionEvent) throws ExecutionException, InterruptedException, IOException {
         Firestore db = FirestoreClient.getFirestore();
 
         // Validate email using Regex
@@ -86,6 +86,7 @@ public class employerSignupController {
 
             User user = new Employer(companyNameField.getText(), emailField.getText(), phoneNumberField.getText());
             user.register(passwordField.getText());
+            SceneManager.getInstance().showSuccessfulRegScene();
         }
     }
 

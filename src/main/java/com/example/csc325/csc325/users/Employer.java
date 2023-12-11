@@ -16,12 +16,12 @@ public class Employer extends User {
     private String companyName;
 
     public Employer(String companyName, String email, String phone) {
-        super(email, phone, "Employer");
+        super(email, phone, "employer");
         this.companyName = companyName;
     }
 
     public Employer(String companyName, String email, String phone, String id) {
-        super(email, phone, id, "Employer");
+        super(email, phone, id, "employer");
         this.companyName = companyName;
     }
 
@@ -46,15 +46,18 @@ public class Employer extends User {
     public String getCompanyName() {
         return companyName;
     }
+    public void setCompanyName(String companyName){
+        this.companyName = companyName;
+    }
 
     @Override
     public void save() {
         Map<String, Object> data = new HashMap<>();
-        data.put("Type", this.getType());
-        data.put("ID", this.getId());
-        data.put("Email", this.getEmail());
-        data.put("Company Name", this.getCompanyName());
-        data.put("Phone", this.getPhone());
+        data.put("type", this.getType());
+        data.put("id", this.getId());
+        data.put("email", this.getEmail());
+        data.put("companyName", this.getCompanyName());
+        data.put("phone", this.getPhone());
         try {
             Firestore db = FirestoreClient.getFirestore();
             DocumentReference docRef = db.collection("users").document(super.getId());
