@@ -212,10 +212,6 @@ public class searchController {
             HBox jobUI = createJobListingUI(job);
             jobListingsContainer.getChildren().add(jobUI);
         }
-        deeznuts();
     }
 
-    protected void deeznuts() {
-        System.out.println("smear of poop on everything bagel wside of poop");
-    }
 }
