@@ -11,16 +11,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import java.io.IOException;
-import java.sql.SQLOutput;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-public class mlogin {
+public class loginController {
 
     @FXML
     public Button loginBtn;
