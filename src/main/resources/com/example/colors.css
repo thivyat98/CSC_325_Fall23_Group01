@@ -1,0 +1,58 @@
+.nav_btn {
+    -fx-background-color:#a3cef1;
+    -fx-cursor:hand;
+    -fx-font-family:"Arial";
+    -fx-font-size:14px;
+    -fx-text-alignment: center;
+    -fx-text-fill:#fff;
+    -fx-alignment:CENTER;
+    -fx-background-radius:5;
+
+}
+.nav_btn3{
+    -fx-background-color:#6096ba;
+    -fx-cursor:hand;
+    -fx-font-family:"Arial";
+    -fx-font-size:14px;
+    -fx-text-alignment: center;
+    -fx-text-fill:#fff;
+    -fx-alignment:CENTER;
+    -fx-background-radius:5;
+
+}
+.nav_btn2{
+    -fx-background-color:#6096ba;
+    -fx-cursor:hand;
+    -fx-font-family:"Arial";
+    -fx-font-size:14px;
+    -fx-text-alignment: center;
+    -fx-text-fill:#808080;
+    -fx-border-color:#808080;
+    -fx-alignment:CENTER;
+    -fx-background-radius:5;
+    -fx-pref-width:404px;
+    -fx-pref-height:40px;
+}
+
+.anchor_pane {
+    -fx-background-color:#4f5d75;
+    -fx-alignment:CENTER;
+
+}
+
+.background_color
+{
+    -fx-background-color:#4f5d75;
+    -fx-alignment:CENTER;
+}
+
+.password-toggle-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #1E90FF;
+    -fx-border: none;
+}
+
+
+.title{
+    -fx-font-size: 20;
+}

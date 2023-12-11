@@ -42,4 +42,9 @@ public class employerProfileController {
         SceneManager.getInstance().showMainScene();
         //Want to make a dshboard where we see how many have applied?
     }
+
+    public void logOutHandler(ActionEvent actionEvent) throws IOException {
+        UserSessionManager.logoutUser();
+        SceneManager.getInstance().showLoginScene();
+    }
 }

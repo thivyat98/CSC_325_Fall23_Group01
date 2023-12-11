@@ -32,12 +32,13 @@
         <Label fx:id="username" layoutX="51.0" layoutY="180.0" prefHeight="28.0" prefWidth="188.0" text="Email" textFill="#949090" />
         <Label fx:id="phoneNumber" layoutX="341.0" layoutY="182.0" prefHeight="28.0" prefWidth="188.0" text="Phone Number" textFill="#949090" />
         <Label fx:id="lblErrorMsg" layoutX="46.0" layoutY="669.0" textFill="#eb0f0f" />
-      <Button fx:id="saveButton" layoutX="611.0" layoutY="645.0" mnemonicParsing="false" onAction="#saveProfile" text="Save" />
+      <Button fx:id="saveButton" layoutX="610.0" layoutY="589.0" mnemonicParsing="false" onAction="#saveProfile" text="Save" />
       <Button fx:id="addSkill" layoutX="32.0" layoutY="650.0" mnemonicParsing="false" onAction="#addSkilltoList" text="Add" />
       <Button layoutX="116.0" layoutY="651.0" mnemonicParsing="false" onAction="#removeSkillfromList" text="Remove" />
         <TextField fx:id="skill" layoutX="31.0" layoutY="589.0" promptText="Add Skill" />
+      <Button fx:id="logOutBtn" onAction="#logOutHandler" layoutX="594.0" layoutY="656.0" mnemonicParsing="false" text="Log Out" />
     </children>
     <stylesheets>
-        <URL value="@style.css" />
+        <URL value="@colors.css" />
     </stylesheets>
 </AnchorPane>
