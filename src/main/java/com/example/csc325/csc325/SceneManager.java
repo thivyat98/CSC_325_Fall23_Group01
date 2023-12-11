@@ -1,6 +1,7 @@
 package com.example.csc325.csc325;
 
 import com.example.csc325.csc325.Controllers.employeeProfileController;
+import com.example.csc325.csc325.Controllers.employerProfileController;
 import com.example.csc325.csc325.Controllers.searchController;
 import com.example.csc325.csc325.users.User;
 import javafx.fxml.FXMLLoader;
@@ -44,7 +45,7 @@ public class SceneManager {
         stage.show();
     }
 
-    public void showBussinessSignUpScene() throws IOException {
+    public void showBusinessSignUpScene() throws IOException {
         stage.hide();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("employerSignup.fxml"));
         Parent root = loader.load();
@@ -89,6 +90,17 @@ public class SceneManager {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("employeeProfile.fxml"));
         Parent root = loader.load();
         employeeProfileController profileController = loader.getController();
+        profileController.onLoad();
+        stage.setScene(new Scene(root));
+        stage.setTitle("Employee Profile");
+        stage.show();
+    }
+
+    public void showEmployerProfileScene() throws IOException {
+        stage.hide();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("employerProfile.fxml"));
+        Parent root = loader.load();
+        employerProfileController profileController = loader.getController();
         profileController.onLoad();
         stage.setScene(new Scene(root));
         stage.setTitle("Employer Profile");

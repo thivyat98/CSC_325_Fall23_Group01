@@ -91,6 +91,6 @@ public class msignup {
     }
 
     public void toBussinessSignup(ActionEvent actionEvent) throws IOException {
-        SceneManager.getInstance().showBussinessSignUpScene();
+        SceneManager.getInstance().showBusinessSignUpScene();
     }
 }
