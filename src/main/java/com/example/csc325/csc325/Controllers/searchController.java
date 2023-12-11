@@ -204,7 +204,7 @@ public class searchController {
 //    }
 
     public void employeeProfileLoader(ActionEvent actionEvent) throws IOException {
-        SceneManager.getInstance().showEmployeeProfileScene();
+        SceneManager.getInstance().showEmployerProfileScene();
     }
 
     private void displayJobs(List<JobPosting> jobs) {
