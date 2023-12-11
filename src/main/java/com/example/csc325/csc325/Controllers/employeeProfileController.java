@@ -39,6 +39,9 @@ public class employeeProfileController {
     private Button saveButton;
 
     @FXML
+    private Button logOutBtn;
+
+    @FXML
     void addSkilltoList(ActionEvent event) {
         User user = UserSessionManager.getUser();
         if(skill.getText().isEmpty()){
@@ -80,5 +83,10 @@ public class employeeProfileController {
 
     public void saveProfile(ActionEvent actionEvent) throws IOException, ExecutionException, InterruptedException {
         SceneManager.getInstance().showMainScene();
+    }
+
+    public void logOutHandler(ActionEvent actionEvent) throws IOException {
+        UserSessionManager.logoutUser();
+        SceneManager.getInstance().showLoginScene();
     }
 }

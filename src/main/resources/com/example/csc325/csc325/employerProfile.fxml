@@ -33,8 +33,9 @@
         <Label fx:id="username" layoutX="74.0" layoutY="186.0" prefHeight="28.0" prefWidth="188.0" text="Email" textFill="#bfdbf7" />
         <Label fx:id="phoneNumber" layoutX="338.0" layoutY="186.0" prefHeight="28.0" prefWidth="188.0" text="Phone Number" textFill="#bfdbf7" />
         <Label fx:id="lblErrorMsg" layoutX="46.0" layoutY="669.0" textFill="#eb0f0f" />
-        <Button fx:id="saveButton" layoutX="641.0" layoutY="663.0" mnemonicParsing="false" text="Save" />
+        <Button fx:id="saveButton" layoutX="610.0" layoutY="589.0" mnemonicParsing="false" onAction="#saveProfile" text="Save" />
         <TextField fx:id="skill" promptText="Add Skill" style="-fx-prompt-text-fill: #bfdbf7;" />
+        <Button fx:id="logOutBtn" onAction="#logOutHandler" layoutX="594.0" layoutY="656.0" mnemonicParsing="false" text="Log Out" />
     </children>
     <stylesheets>
         <URL value="@colors.css" />
