@@ -38,7 +38,7 @@ public class searchController {
         displayJobs(recent);
     }
 
-    public void searchJobs(ActionEvent actionEvent) {
+    public void searchJobs(ActionEvent actionEvent) throws ExecutionException, InterruptedException {
         String searchTerm = searchField.getText().toLowerCase();
         jobListingsContainer.getChildren().clear();
 
@@ -52,16 +52,26 @@ public class searchController {
         }
     }
 
-    public List<JobPosting> fetchJobs(String keyword, int limit) {
-        List<JobPosting> jobs = new ArrayList<>();
-        List<String> pulledJobIds = new ArrayList<>(); // Use a List to store pulled job IDs
+    public List<JobPosting> fetchJobs(String keyword, int limit) throws ExecutionException, InterruptedException {
+        if(keyword.isEmpty()){
+            ApiFuture<QuerySnapshot> query = jobCollection
+                    .orderBy("unixTime", Query.Direction.DESCENDING)
+                    .limit(10)
+                    .get();
 
+            List<QueryDocumentSnapshot> documents = query.get().getDocuments();
+            List<JobPosting> recentJobs = new ArrayList<>();
+            for (QueryDocumentSnapshot document : documents) {
+                recentJobs.add(document.toObject(JobPosting.class));
+            }
+            return recentJobs;
+        }
+        List<JobPosting> jobs = new ArrayList<>();
+        List<String> pulledJobIds = new ArrayList<>();
         try {
             // Query Firestore for jobs using the keyword
             ApiFuture<QuerySnapshot> future = jobCollection
                     .whereArrayContains("keywords", keyword)
-                    .orderBy("unixTime", Query.Direction.DESCENDING)
-                    .limit(limit)
                     .get();
             QuerySnapshot querySnapshot = future.get();
 
@@ -177,12 +187,11 @@ public class searchController {
 
     private void handleApplyAction(JobPosting job) throws IOException {
         System.out.println("Applied for: " + job.getId()); // Assuming getId() is a method in Post or JobPosting
-        SceneManager.getInstance().showSuccessfulRegScene();
     }
 
 //    public List<JobPosting> fetchRecentJobs() throws ExecutionException, InterruptedException {
 //
-//        // Assuming 'jobs' is your collection and 'postedDate' is the timestamp field
+        // Assuming 'jobs' is your collection and 'postedDate' is the timestamp field
 //        ApiFuture<QuerySnapshot> query = jobCollection
 //                .orderBy("unixTime", Query.Direction.DESCENDING)
 //                .limit(10)

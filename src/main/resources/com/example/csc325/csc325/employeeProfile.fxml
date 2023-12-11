@@ -35,8 +35,7 @@
       <Button fx:id="saveButton" layoutX="641.0" layoutY="663.0" mnemonicParsing="false" onAction="#saveProfile" text="Save" />
       <Button fx:id="addSkill" layoutX="32.0" layoutY="650.0" mnemonicParsing="false" onAction="#addSkilltoList" text="Add" />
       <Button layoutX="168.0" layoutY="651.0" mnemonicParsing="false" onAction="#removeSkillfromList" text="Remove" />
-      <TextField fx:id="skill" layoutX="30.0" layoutY="613.0" />
-
+        <TextField fx:id="skill" promptText="Add Skill" />
     </children>
     <stylesheets>
         <URL value="@style.css" />

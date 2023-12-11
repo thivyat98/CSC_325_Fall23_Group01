@@ -10,12 +10,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.FileChooser;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
@@ -41,35 +38,26 @@ public class employeeProfileController {
     private Button saveButton;
 
     @FXML
-    void addSkilltoList(MouseEvent event) {
+    void addSkilltoList(ActionEvent event) {
+        if(skill.getText().isEmpty()){
+            return;
+        }
         skillListView.getItems().add(skill.getText());
+        skill.clear();
     }
 
     @FXML
-    void removeSkillfromList(MouseEvent event) {
+    void removeSkillfromList(ActionEvent event) {
         int selectedID = skillListView.getSelectionModel().getSelectedIndex();
         skillListView.getItems().remove(selectedID);
     }
 
-    @FXML
-    protected void showProfilePicture() {
-        File file = (new FileChooser()).showOpenDialog(profilePicture.getScene().getWindow());
-        if (file != null) {
-            profilePicture.setImage(new Image(file.toURI().toString()));
-        }
-    }
 
     private void loadSkills(Employee employee) {
-        //skillListView.getItems().addAll(employee.getSkills());
+        skillListView.getItems().addAll(employee.getSkills());
     }
 
-    private void loadProfilePicture(Employee employee) {
-        // Assuming Employee class has a method like getProfilePicturePath()
-        String profilePicturePath = "";  // Add the corresponding method in the Employee class
-        if (profilePicturePath != null && !profilePicturePath.isEmpty()) {
-            profilePicture.setImage(new Image(new File(profilePicturePath).toURI().toString()));
-        }
-    }
+
 
     // This method is called when the scene is loaded, it should auto-populate the fields with the user data from UserSessionManager
     public void onLoad() {
@@ -82,7 +70,6 @@ public class employeeProfileController {
             employeeName.setText(employee.getFirstName() + " " + employee.getLastName());
             phoneNumber.setText(employee.getPhone());
             loadSkills(employee);
-            loadProfilePicture(employee);
         }
     }
 
