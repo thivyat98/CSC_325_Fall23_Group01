@@ -22,6 +22,7 @@ import java.util.concurrent.ExecutionException;
 public class searchController {
     @FXML
     public TextField searchField;
+    @FXML
     public VBox jobListingsContainer;
 
     // Replace the local list with a Firestore collection reference
@@ -183,7 +184,7 @@ public class searchController {
 
 
     private void handleApplyAction(JobPosting job) throws IOException {
-        System.out.println("Applied for: " + job.getId()); // Assuming getId() is a method in Post or JobPosting
+        System.out.println("Applied for: " + job.getId());
     }
 
 //    public List<JobPosting> fetchRecentJobs() throws ExecutionException, InterruptedException {

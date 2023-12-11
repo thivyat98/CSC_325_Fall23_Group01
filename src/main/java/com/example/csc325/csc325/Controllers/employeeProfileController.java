@@ -68,8 +68,7 @@ public class employeeProfileController {
     // This method is called when the scene is loaded, it should auto-populate the fields with the user data from UserSessionManager
     public void onLoad() {
         User user = UserSessionManager.getUser();
-        if (user instanceof Employee) {
-            Employee employee = (Employee) user;
+        if (user instanceof Employee employee) {
             // Set the username label to the employee's email
             username.setText(employee.getEmail());
             // Set the employeeName label to the employee's full name
