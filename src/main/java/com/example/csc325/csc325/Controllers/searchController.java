@@ -205,7 +205,7 @@ public class searchController {
 //        return recentJobs;
 //    }
 
-    public void employeeProfileLoader(ActionEvent actionEvent) throws IOException {
+    public void ProfileLoader(ActionEvent actionEvent) throws IOException {
         if (Objects.equals(UserSessionManager.getUser().getType(), "employer")){
             SceneManager.getInstance().showEmployerProfileScene();
         }
