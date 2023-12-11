@@ -20,6 +20,9 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class msignup {
+    private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@(.+)$";
+    private static final String PHONE_REGEX = "^\\d{10}$"; // Assumes a 10-digit phone number
+    private static final String PASSWORD_REGEX = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$";
     @FXML
     public Button signUp;
     public TextField firstNameField;
@@ -30,23 +33,42 @@ public class msignup {
     public TextField phoneNumberField;
     public Hyperlink loginLink;
     public Hyperlink bussinessSignup;
-
     @FXML
     public Label lblErrorMsg;
 
-
     public void handleSignUp(ActionEvent actionEvent) throws ExecutionException, InterruptedException, IOException {
         Firestore db = FirestoreClient.getFirestore();
-        if (firstNameField.getText().isEmpty() || lastNameField.getText().isEmpty() || emailField.getText().isEmpty() || passwordFeild.getText().isEmpty() || ConfirmPasswordFeild.getText().isEmpty() || phoneNumberField.getText().isEmpty()) {
+
+        if (firstNameField.getText().isEmpty() || lastNameField.getText().isEmpty() ||
+                emailField.getText().isEmpty() || passwordFeild.getText().isEmpty() ||
+                ConfirmPasswordFeild.getText().isEmpty() || phoneNumberField.getText().isEmpty()) {
             System.out.println("All fields are required");
             lblErrorMsg.setText("All fields are required");
-
-        }
-         else if (!passwordFeild.getText().equals(ConfirmPasswordFeild.getText())) {
-            System.out.println("Passwords dont match");
-            lblErrorMsg.setText("Passwords dont match");
-
+        } else if (!passwordFeild.getText().equals(ConfirmPasswordFeild.getText())) {
+            System.out.println("Passwords don't match");
+            lblErrorMsg.setText("Passwords don't match");
         } else {
+            // Validate email using Regex
+            if (!emailField.getText().matches(EMAIL_REGEX)) {
+                System.out.println("Invalid email format");
+                lblErrorMsg.setText("Invalid email format");
+                return;
+            }
+
+            // Validate phone number using Regex
+            if (!phoneNumberField.getText().matches(PHONE_REGEX)) {
+                System.out.println("Invalid phone number format");
+                lblErrorMsg.setText("Invalid phone number format");
+                return;
+            }
+
+            // Validate password using Regex
+            if (!passwordFeild.getText().matches(PASSWORD_REGEX)) {
+                System.out.println("Invalid password format");
+                lblErrorMsg.setText("Invalid password format");
+                return;
+            }
+
             ApiFuture<QuerySnapshot> query = db.collection("auth")
                     .whereEqualTo("username", emailField.getText())
                     .get();
@@ -56,8 +78,8 @@ public class msignup {
                 System.out.println("Account using email already exists");
                 lblErrorMsg.setText("Account using email already exists");
                 return;
-
             }
+
             User user = new Employee(firstNameField.getText(), lastNameField.getText(), phoneNumberField.getText(), emailField.getText());
             user.register(passwordFeild.getText());
             SceneManager.getInstance().showSuccessfulRegScene();
