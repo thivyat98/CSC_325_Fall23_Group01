@@ -14,6 +14,7 @@ public abstract class User {
     private String phone;
 
     private String type;
+    private String about = "";
 
 
     public User() {
@@ -21,6 +22,7 @@ public abstract class User {
         this.email = "";
         this.id = "";
         this.phone = "";
+        this.about ="";
     }
 
     public User(String email, String phone, String type) {
@@ -77,5 +79,13 @@ public abstract class User {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getAbout() {
+        return about;
+    }
+
+    public void setAbout(String about) {
+        this.about = about;
     }
 }

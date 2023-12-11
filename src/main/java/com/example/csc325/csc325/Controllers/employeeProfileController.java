@@ -6,10 +6,7 @@ import com.example.csc325.csc325.users.Employee;
 import com.example.csc325.csc325.users.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
@@ -22,6 +19,7 @@ public class employeeProfileController {
     public Label username;
     @FXML
     public Label employeeName;
+    public TextArea about;
     @FXML
     private ListView<String> skillListView;
     @FXML
@@ -77,11 +75,16 @@ public class employeeProfileController {
             // Set the employeeName label to the employee's full name
             employeeName.setText(employee.getFirstName() + " " + employee.getLastName());
             phoneNumber.setText(employee.getPhone());
+            about.setText(user.getAbout());
             loadSkills(employee);
         }
     }
 
     public void saveProfile(ActionEvent actionEvent) throws IOException, ExecutionException, InterruptedException {
+        User user = UserSessionManager.getUser();
+        user.setAbout(about.getText());
+        user.save();
+
         SceneManager.getInstance().showMainScene();
     }
 

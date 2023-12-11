@@ -23,9 +23,9 @@
                 <Image url="@profile.png" />
             </image>
         </ImageView>
-        <TextArea layoutX="8.0" layoutY="251.0" prefHeight="195.0" prefWidth="628.0" promptText="About me" style="-fx-border-color: white; -fx-prompt-text-fill: #bfdbf7; -fx-background-color: transparent;" />
-        <ListView fx:id="skillListView" layoutX="8.0" layoutY="411.0" prefHeight="161.0" prefWidth="696.0" style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: transparent;" />
-        <Label fx:id="employeeName" alignment="CENTER" contentDisplay="CENTER" layoutX="45.0" layoutY="41.0" prefHeight="105.0" prefWidth="644.0" textFill="#949090">
+        <TextArea fx:id="about" layoutX="8.0" layoutY="251.0" prefHeight="195.0" prefWidth="628.0" promptText="About Company" style="-fx-border-color: white; -fx-prompt-text-fill: #bfdbf7; -fx-background-color: transparent;" />
+<!--        <ListView fx:id="skillListView" layoutX="8.0" layoutY="411.0" prefHeight="161.0" prefWidth="696.0" style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: transparent;" />-->
+        <Label fx:id="companyName" alignment="CENTER" contentDisplay="CENTER" layoutX="45.0" layoutY="41.0" prefHeight="105.0" prefWidth="644.0" textFill="#949090">
             <font>
                 <Font size="36.0" />
             </font>
@@ -34,7 +34,6 @@
         <Label fx:id="phoneNumber" layoutX="338.0" layoutY="186.0" prefHeight="28.0" prefWidth="188.0" text="Phone Number" textFill="#bfdbf7" />
         <Label fx:id="lblErrorMsg" layoutX="46.0" layoutY="669.0" textFill="#eb0f0f" />
         <Button fx:id="saveButton" layoutX="610.0" layoutY="589.0" mnemonicParsing="false" onAction="#saveProfile" text="Save" />
-        <TextField fx:id="skill" promptText="Add Skill" style="-fx-prompt-text-fill: #bfdbf7;" />
         <Button fx:id="logOutBtn" onAction="#logOutHandler" layoutX="594.0" layoutY="656.0" mnemonicParsing="false" text="Log Out" />
     </children>
     <stylesheets>
