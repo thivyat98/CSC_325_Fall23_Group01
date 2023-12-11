@@ -48,13 +48,14 @@ public class searchController {
         String[] keywords = searchTerm.split("\\s+");
 
         // Fetch jobs for each non-empty keyword
+        List<JobPosting> allJobs = new ArrayList<>();
         for (String keyword : keywords) {
             if (!keyword.isEmpty()) {
-                List<JobPosting> jobs = fetchJobs(keyword, 10);// Adjust the limit as needed
-                jobs = JobPosting.checkDupes(jobs);
-                displayJobs(jobs);
+                allJobs.addAll(fetchJobs(keyword, 10));// Adjust the limit as needed
             }
         }
+        allJobs = JobPosting.checkDupes(allJobs);
+        displayJobs(allJobs);
     }
 
 
