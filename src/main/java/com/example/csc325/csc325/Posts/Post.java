@@ -10,17 +10,17 @@ public abstract class Post {
 
     private long unixTime;
 
-    public Post(){
-        this.title ="";
+    public Post() {
+        this.title = "";
         this.description = "";
-        this.id = "pst-"  + UUID.randomUUID().toString();
+        this.id = "pst-" + UUID.randomUUID().toString();
         this.unixTime = System.currentTimeMillis() / 1000;
     }
 
     public Post(String title, String description) {
         this.title = title;
         this.description = description;
-        this.id = "pst-"  + UUID.randomUUID().toString();
+        this.id = "pst-" + UUID.randomUUID().toString();
         this.unixTime = System.currentTimeMillis() / 1000;
     }
 

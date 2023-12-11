@@ -17,21 +17,6 @@ public class Employee extends User {
     private String firstName;
     private String lastName;
 
-    public static Employee getEmployee(String ID) throws ExecutionException, InterruptedException {
-        Firestore db = FirestoreClient.getFirestore();
-        DocumentReference docRef = db.collection("users").document(ID);
-        ApiFuture<DocumentSnapshot> future = docRef.get();
-        DocumentSnapshot document = future.get();
-        document.toObject(Employee.class);
-        if (document.exists()) {
-
-            return document.toObject(Employee.class);
-        } else {
-            System.out.println("No User Found!");
-            return null;
-        }
-    }
-
     public Employee() {
         super();
         this.firstName = "";
@@ -53,16 +38,32 @@ public class Employee extends User {
         this.skills = new ArrayList<>();
     }
 
+    public static Employee getEmployee(String ID) throws ExecutionException, InterruptedException {
+        Firestore db = FirestoreClient.getFirestore();
+        DocumentReference docRef = db.collection("users").document(ID);
+        ApiFuture<DocumentSnapshot> future = docRef.get();
+        DocumentSnapshot document = future.get();
+        document.toObject(Employee.class);
+        if (document.exists()) {
+
+            return document.toObject(Employee.class);
+        } else {
+            System.out.println("No User Found!");
+            return null;
+        }
+    }
+
     public ArrayList<String> getSkills() {
         return skills;
     }
+
     public void setSkills(ArrayList<String> skills) {
         this.skills = skills;
     }
 
 
     @Override
-    public void save(){
+    public void save() {
         Map<String, Object> data = new HashMap<>();
         data.put("type", this.getType());
         data.put("firstName", this.getFirstName());
