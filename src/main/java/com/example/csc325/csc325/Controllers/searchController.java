@@ -3,6 +3,8 @@ package com.example.csc325.csc325.Controllers;
 import com.example.csc325.csc325.Posts.JobPosting;
 import com.example.csc325.csc325.SceneManager;
 import com.example.csc325.csc325.UserSessionManager;
+import com.example.csc325.csc325.users.Employee;
+import com.example.csc325.csc325.users.User;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
 import com.google.firebase.cloud.FirestoreClient;
@@ -188,7 +190,10 @@ public class searchController {
 
 
     private void handleApplyAction(JobPosting job) throws IOException {
-        System.out.println("Applied for: " + job.getId());
+        User user = UserSessionManager.getUser();
+        if(user instanceof Employee e){
+            job.addApplicants(e);
+        }
     }
 
 //    public List<JobPosting> fetchRecentJobs() throws ExecutionException, InterruptedException {
