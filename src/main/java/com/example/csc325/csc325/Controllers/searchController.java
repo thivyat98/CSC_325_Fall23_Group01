@@ -34,7 +34,7 @@ public class searchController {
     }
 
     public void onLoad() throws ExecutionException, InterruptedException {
-        List<JobPosting> recent = fetchRecentJobs();
+        List<JobPosting> recent = fetchJobs("", 10); // Fetch recent jobs with a limit of 10
         displayJobs(recent);
     }
 
@@ -45,23 +45,24 @@ public class searchController {
         // Split the input string into multiple keywords using space as a separator
         String[] keywords = searchTerm.split("\\s+");
 
+        // Fetch jobs for each keyword
         for (String keyword : keywords) {
-            List<JobPosting> jobs = fetchJobs(keyword);
-            for (JobPosting job : jobs) {
-                HBox jobUI = createJobListingUI(job);
-                jobListingsContainer.getChildren().add(jobUI);
-            }
+            List<JobPosting> jobs = fetchJobs(keyword, 5); // Adjust the limit as needed
+            displayJobs(jobs);
         }
     }
 
-
-    public List<JobPosting> fetchJobs(String keyword) {
+    public List<JobPosting> fetchJobs(String keyword, int limit) {
         List<JobPosting> jobs = new ArrayList<>();
         List<String> pulledJobIds = new ArrayList<>(); // Use a List to store pulled job IDs
 
         try {
             // Query Firestore for jobs using the keyword
-            ApiFuture<QuerySnapshot> future = jobCollection.whereArrayContains("keywords", keyword).get();
+            ApiFuture<QuerySnapshot> future = jobCollection
+                    .whereArrayContains("keywords", keyword)
+                    .orderBy("unixTime", Query.Direction.DESCENDING)
+                    .limit(limit)
+                    .get();
             QuerySnapshot querySnapshot = future.get();
 
             // Display the matching jobs
@@ -83,6 +84,57 @@ public class searchController {
 
         return jobs;
     }
+
+//    public void onLoad() throws ExecutionException, InterruptedException {
+//        List<JobPosting> recent = fetchRecentJobs();
+//        displayJobs(recent);
+//    }
+//
+//    public void searchJobs(ActionEvent actionEvent) {
+//        String searchTerm = searchField.getText().toLowerCase();
+//        jobListingsContainer.getChildren().clear();
+//
+//        // Split the input string into multiple keywords using space as a separator
+//        String[] keywords = searchTerm.split("\\s+");
+//
+//        for (String keyword : keywords) {
+//            List<JobPosting> jobs = fetchJobs(keyword);
+//            for (JobPosting job : jobs) {
+//                HBox jobUI = createJobListingUI(job);
+//                jobListingsContainer.getChildren().add(jobUI);
+//            }
+//        }
+//    }
+
+
+//    public List<JobPosting> fetchJobs(String keyword) {
+//        List<JobPosting> jobs = new ArrayList<>();
+//        List<String> pulledJobIds = new ArrayList<>(); // Use a List to store pulled job IDs
+//
+//        try {
+//            // Query Firestore for jobs using the keyword
+//            ApiFuture<QuerySnapshot> future = jobCollection.whereArrayContains("keywords", keyword).get();
+//            QuerySnapshot querySnapshot = future.get();
+//
+//            // Display the matching jobs
+//            for (DocumentSnapshot document : querySnapshot.getDocuments()) {
+//                JobPosting job = document.toObject(JobPosting.class);
+//                if (job != null) {
+//                    String jobId = job.getId();
+//
+//                    // Check if the job ID has already been pulled
+//                    if (!pulledJobIds.contains(jobId)) {
+//                        jobs.add(job);
+//                        pulledJobIds.add(jobId);
+//                    }
+//                }
+//            }
+//        } catch (InterruptedException | ExecutionException e) {
+//            e.printStackTrace();
+//        }
+//
+//        return jobs;
+//    }
 
 
     public HBox createJobListingUI(JobPosting job) {
@@ -128,21 +180,21 @@ public class searchController {
         SceneManager.getInstance().showSuccessfulRegScene();
     }
 
-    public List<JobPosting> fetchRecentJobs() throws ExecutionException, InterruptedException {
-
-        // Assuming 'jobs' is your collection and 'postedDate' is the timestamp field
-        ApiFuture<QuerySnapshot> query = jobCollection
-                .orderBy("unixTime", Query.Direction.DESCENDING)
-                .limit(10)
-                .get();
-
-        List<QueryDocumentSnapshot> documents = query.get().getDocuments();
-        List<JobPosting> recentJobs = new ArrayList<>();
-        for (QueryDocumentSnapshot document : documents) {
-            recentJobs.add(document.toObject(JobPosting.class));
-        }
-        return recentJobs;
-    }
+//    public List<JobPosting> fetchRecentJobs() throws ExecutionException, InterruptedException {
+//
+//        // Assuming 'jobs' is your collection and 'postedDate' is the timestamp field
+//        ApiFuture<QuerySnapshot> query = jobCollection
+//                .orderBy("unixTime", Query.Direction.DESCENDING)
+//                .limit(10)
+//                .get();
+//
+//        List<QueryDocumentSnapshot> documents = query.get().getDocuments();
+//        List<JobPosting> recentJobs = new ArrayList<>();
+//        for (QueryDocumentSnapshot document : documents) {
+//            recentJobs.add(document.toObject(JobPosting.class));
+//        }
+//        return recentJobs;
+//    }
 
     public void employeeProfileLoader(ActionEvent actionEvent) throws IOException {
         SceneManager.getInstance().showEmployeeProfileScene();

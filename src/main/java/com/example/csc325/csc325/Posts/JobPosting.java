@@ -3,7 +3,7 @@ package com.example.csc325.csc325.Posts;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JobPosting extends Post{
+public class JobPosting extends Post {
 
     private String company;
     private String salary;

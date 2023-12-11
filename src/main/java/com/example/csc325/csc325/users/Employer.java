@@ -30,15 +30,25 @@ public class Employer extends User {
         this.companyName = "";
     }
 
+    public static Employer getEmployer(String ID) throws ExecutionException, InterruptedException {
+        Firestore db = FirestoreClient.getFirestore();
+        DocumentReference docRef = db.collection("users").document(ID);
+        ApiFuture<DocumentSnapshot> future = docRef.get();
+        DocumentSnapshot document = future.get();
+        if (document.exists()) {
+            return document.toObject(Employer.class);
+        } else {
+            System.out.println("No User Found!");
+            return null;
+        }
+    }
 
     public String getCompanyName() {
         return companyName;
     }
 
-
-
     @Override
-    public void save(){
+    public void save() {
         Map<String, Object> data = new HashMap<>();
         data.put("Type", this.getType());
         data.put("ID", this.getId());
@@ -74,18 +84,5 @@ public class Employer extends User {
             e.printStackTrace();
         }
         this.save();
-    }
-
-    public static Employer getEmployer(String ID) throws ExecutionException, InterruptedException {
-        Firestore db = FirestoreClient.getFirestore();
-        DocumentReference docRef = db.collection("users").document(ID);
-        ApiFuture<DocumentSnapshot> future = docRef.get();
-        DocumentSnapshot document = future.get();
-        if (document.exists()) {
-            return document.toObject(Employer.class);
-        } else {
-            System.out.println("No User Found!");
-            return null;
-        }
     }
 }

@@ -1,7 +1,6 @@
 package com.example.csc325.csc325.users;
 
 
-import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
@@ -44,14 +43,6 @@ public abstract class User {
     }
 
 
-
-
-
-
-
-
-
-
     public String getEmail() {
         return this.email;
     }
@@ -61,8 +52,8 @@ public abstract class User {
     }
 
     public abstract void save();
-    public abstract void register(String password) throws ExecutionException, InterruptedException;
 
+    public abstract void register(String password) throws ExecutionException, InterruptedException;
 
 
     @Override
