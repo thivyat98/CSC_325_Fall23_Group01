@@ -15,7 +15,7 @@
         <!-- Existing content -->
         <HBox alignment="TOP_RIGHT" styleClass="header">
             <!-- Profile Picture Icon -->
-            <Button onAction="#employeeProfileLoader">
+            <Button onAction="#ProfileLoader">
             <graphic>
                       <ImageView fitHeight="50" fitWidth="50"> <!-- Set your desired width and height -->
                           <image>

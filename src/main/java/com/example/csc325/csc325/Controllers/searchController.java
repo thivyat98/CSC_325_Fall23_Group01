@@ -22,13 +22,12 @@ import java.util.concurrent.ExecutionException;
 
 
 public class searchController {
+    // Replace the local list with a Firestore collection reference
+    private final CollectionReference jobCollection;
     @FXML
     public TextField searchField;
     @FXML
     public VBox jobListingsContainer;
-
-    // Replace the local list with a Firestore collection reference
-    private final CollectionReference jobCollection;
 
 
     public searchController() {
@@ -42,58 +41,58 @@ public class searchController {
     }
 
     public void searchJobs(ActionEvent actionEvent) throws ExecutionException, InterruptedException {
-        String searchTerm = searchField.getText().toLowerCase();
+        String searchTerm = searchField.getText().toLowerCase().trim();
         jobListingsContainer.getChildren().clear();
 
-        // Split the input string into multiple keywords using space as a separator
+        // Split the cleaned input string into multiple keywords using space as a separator
         String[] keywords = searchTerm.split("\\s+");
 
-        // Fetch jobs for each keyword
+        // Fetch jobs for each non-empty keyword
         for (String keyword : keywords) {
-            List<JobPosting> jobs = fetchJobs(keyword, 5); // Adjust the limit as needed
-            displayJobs(jobs);
+            if (!keyword.isEmpty()) {
+                List<JobPosting> jobs = fetchJobs(keyword, 5); // Adjust the limit as needed
+                displayJobs(jobs);
+            }
         }
     }
 
+
     public List<JobPosting> fetchJobs(String keyword, int limit) throws ExecutionException, InterruptedException {
+        List<JobPosting> jobs = new ArrayList<>();
+        List<String> pulledJobIds = new ArrayList<>();
+
         if (keyword.isEmpty()) {
             ApiFuture<QuerySnapshot> query = jobCollection
                     .orderBy("unixTime", Query.Direction.DESCENDING)
-                    .limit(10)
+                    .limit(limit)
                     .get();
 
             List<QueryDocumentSnapshot> documents = query.get().getDocuments();
-            List<JobPosting> recentJobs = new ArrayList<>();
             for (QueryDocumentSnapshot document : documents) {
-                recentJobs.add(document.toObject(JobPosting.class));
-            }
-            return recentJobs;
-        }
-        List<JobPosting> jobs = new ArrayList<>();
-        try {
-            // Query Firestore for jobs using the keyword
-            ApiFuture<QuerySnapshot> future = jobCollection
-                    .whereArrayContains("keywords", keyword)
-                    .get();
-            QuerySnapshot querySnapshot = future.get();
-
-            // Display the matching jobs
-            for (DocumentSnapshot document : querySnapshot.getDocuments()) {
                 JobPosting job = document.toObject(JobPosting.class);
-                if (job != null) {
-
-                    // Check if the job ID has already been pulled
-
+                if (job != null && !pulledJobIds.contains(job.getId())) {
                     jobs.add(job);
-
+                    pulledJobIds.add(job.getId());
                 }
             }
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
-        }
+        } else {
+            ApiFuture<QuerySnapshot> future = jobCollection
+                    .whereArrayContains("keywords", keyword)
+                    .limit(limit)
+                    .get();
 
+            QuerySnapshot querySnapshot = future.get();
+            for (DocumentSnapshot document : querySnapshot.getDocuments()) {
+                JobPosting job = document.toObject(JobPosting.class);
+                if (job != null && !pulledJobIds.contains(job.getId())) {
+                    jobs.add(job);
+                    pulledJobIds.add(job.getId());
+                }
+            }
+        }
         return jobs;
     }
+
 
 //    public void onLoad() throws ExecutionException, InterruptedException {
 //        List<JobPosting> recent = fetchRecentJobs();
@@ -205,12 +204,11 @@ public class searchController {
 //        return recentJobs;
 //    }
 
-    public void employeeProfileLoader(ActionEvent actionEvent) throws IOException {
-        if (Objects.equals(UserSessionManager.getUser().getType(), "employer")){
+    public void ProfileLoader(ActionEvent actionEvent) throws IOException {
+        if (Objects.equals(UserSessionManager.getUser().getType(), "employer")) {
             SceneManager.getInstance().showEmployerProfileScene();
-        }
-        else if(Objects.equals(UserSessionManager.getUser().getType(), "employee"))
-        SceneManager.getInstance().showEmployeeProfileScene();
+        } else if (Objects.equals(UserSessionManager.getUser().getType(), "employee"))
+            SceneManager.getInstance().showEmployeeProfileScene();
     }
 
     private void displayJobs(List<JobPosting> jobs) {

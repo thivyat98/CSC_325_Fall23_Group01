@@ -13,8 +13,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.concurrent.ExecutionException;
 
-
-
 public class main extends Application {
     public static void main(String[] args) throws IOException, ExecutionException, InterruptedException {
         InputStream serviceAccount = new FileInputStream("src/main/resources/com/example/csc325/csc325/privatekey.json");
