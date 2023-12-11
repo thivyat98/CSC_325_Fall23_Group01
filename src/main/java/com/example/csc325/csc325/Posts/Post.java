@@ -44,11 +44,30 @@ public abstract class Post {
         return this.id;
     }
 
+    public void setId(String id) {
+        this.id=id;
+    }
+
+
+
     public long getUnixTime() {
         return unixTime;
     }
 
     public void setUnixTime(long unixTime) {
         this.unixTime = unixTime;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Post that = (Post) o;
+        return id.equals(that.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
     }
 }

@@ -50,7 +50,8 @@ public class searchController {
         // Fetch jobs for each non-empty keyword
         for (String keyword : keywords) {
             if (!keyword.isEmpty()) {
-                List<JobPosting> jobs = fetchJobs(keyword, 5); // Adjust the limit as needed
+                List<JobPosting> jobs = fetchJobs(keyword, 10);// Adjust the limit as needed
+                jobs = JobPosting.checkDupes(jobs);
                 displayJobs(jobs);
             }
         }

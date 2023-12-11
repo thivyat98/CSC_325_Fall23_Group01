@@ -1,7 +1,9 @@
 package com.example.csc325.csc325.Posts;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class JobPosting extends Post {
 
@@ -46,5 +48,20 @@ public class JobPosting extends Post {
 
     public void setKeywords(List<String> keywords) {
         this.keywords = keywords;
+    }
+
+    public static List<JobPosting> checkDupes(List<JobPosting> jobs){
+        Set<JobPosting> uniqueJobs = new HashSet<>();
+        List<JobPosting> nonDuplicateJobs = new ArrayList<>();
+
+        for(JobPosting job : jobs){
+            if(uniqueJobs.add(job)){
+                System.out.println("0");
+                // If job is added successfully, it's not a duplicate.
+                nonDuplicateJobs.add(job);
+            }
+        }
+
+        return nonDuplicateJobs;
     }
 }
