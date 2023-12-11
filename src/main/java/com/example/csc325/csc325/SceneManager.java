@@ -110,4 +110,13 @@ public class SceneManager {
         stage.setTitle("Employer Profile");
         stage.show();
     }
+
+    public void showPostJobScene() throws IOException {
+        stage.hide();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("postJob.fxml"));
+        Parent root = loader.load();
+        stage.setScene(new Scene(root));
+        stage.setTitle("Post A Job");
+        stage.show();
+    }
 }

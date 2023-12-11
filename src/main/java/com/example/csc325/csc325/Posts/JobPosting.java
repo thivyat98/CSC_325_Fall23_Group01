@@ -21,6 +21,15 @@ public class JobPosting extends Post {
 
     private String location;
 
+    public JobPosting(String jobTitle, String company, String salary, String description, List<String> keywords, String companyId, String location) {
+        super(jobTitle, description);
+        this.company = company;
+        this.salary = salary;
+        this.keywords = keywords;
+        this.applicants = new ArrayList<>();
+        this.companyId = companyId;
+        this.location = location;
+    }
     public JobPosting() {
         super();
         this.company = "";
@@ -32,15 +41,6 @@ public class JobPosting extends Post {
 
     }
 
-    public JobPosting(String jobTitle, String company, String salary, String description, List<String> keywords, String companyId, String location) {
-        super(jobTitle, description);
-        this.company = company;
-        this.salary = salary;
-        this.keywords = keywords;
-        this.applicants = new ArrayList<>();
-        this.companyId = companyId;
-        this.location = location;
-    }
 
 
     public String getCompany() {

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: ccd5ae;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csc325.csc325.Controllers.JobPostingController">
+    <children>
+        <Label layoutX="238.0" layoutY="8.0" prefHeight="62.0" prefWidth="139.0" text="Post a job" textFill="#344e41">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <TextField fx:id="jobTitle" layoutX="26.0" layoutY="93.0" promptText="Job Title" style="-fx-background-color: fefae0; -fx-prompt-text-fill: #344e41;" />
+        <TextField fx:id="jobLocation" layoutX="26.0" layoutY="155.0" promptText="Job Location" style="-fx-background-color: fefae0; -fx-prompt-text-fill: #344e41;" />
+        <TextField fx:id="salary" layoutX="26.0" layoutY="210.0" promptText="Salary" style="-fx-background-color: fefae0; -fx-prompt-text-fill: #344e41;" />
+        <TextField fx:id="keywords" layoutX="26.0" layoutY="270.0" promptText="Keywords" style="-fx-background-color: fefae0; -fx-prompt-text-fill: #344e41;" />
+        <TextArea fx:id="description" layoutX="265.0" layoutY="81.0" prefHeight="259.0" prefWidth="300.0" promptText="Job Description" style="-fx-background-color: fefae0; -fx-prompt-text-fill: #344e41;" />
+      <Button onAction="#onCancel" layoutX="26.0" layoutY="315.0" mnemonicParsing="false" text="Cancel" />
+      <Button onAction="#onPost" layoutX="131.0" layoutY="316.0" mnemonicParsing="false" text="Post" />
+    </children>
+</AnchorPane>

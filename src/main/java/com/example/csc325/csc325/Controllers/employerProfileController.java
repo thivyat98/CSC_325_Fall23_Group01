@@ -19,6 +19,7 @@ public class employerProfileController {
     @FXML
     public Label companyName;
     public TextArea about;
+    public Button logOutBtn;
 
     @FXML
     private Label phoneNumber;
@@ -50,5 +51,9 @@ public class employerProfileController {
     public void logOutHandler(ActionEvent actionEvent) throws IOException {
         UserSessionManager.logoutUser();
         SceneManager.getInstance().showLoginScene();
+    }
+
+    public void postJob(ActionEvent actionEvent) throws IOException {
+        SceneManager.getInstance().showPostJobScene();
     }
 }

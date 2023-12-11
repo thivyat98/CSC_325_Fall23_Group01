@@ -163,7 +163,7 @@ public class searchController {
         Label companyNameLabel = new Label(job.getCompany());
         companyNameLabel.getStyleClass().add("company-name");
 
-        Label locationLabel = new Label("Location: Unknown"); // Replace with actual location if available
+        Label locationLabel = new Label(job.getLocation()); // Replace with actual location if available
         locationLabel.getStyleClass().add("job-location");
 
         Label salaryLabel = new Label("Salary: " + job.getSalary());
