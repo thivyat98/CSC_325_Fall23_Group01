@@ -40,7 +40,7 @@ public class employeeProfileController {
     private Button logOutBtn;
 
     @FXML
-    void addSkilltoList(ActionEvent event) {
+    void addSkilltoList(ActionEvent event) throws ExecutionException, InterruptedException {
         User user = UserSessionManager.getUser();
         if(skill.getText().isEmpty()){
             return;
@@ -51,7 +51,7 @@ public class employeeProfileController {
     }
 
     @FXML
-    void removeSkillfromList(ActionEvent event) {
+    void removeSkillfromList(ActionEvent event) throws ExecutionException, InterruptedException {
         User user = UserSessionManager.getUser();
         int selectedID = skillListView.getSelectionModel().getSelectedIndex();
         String selectString = skillListView.getSelectionModel().getSelectedItem();

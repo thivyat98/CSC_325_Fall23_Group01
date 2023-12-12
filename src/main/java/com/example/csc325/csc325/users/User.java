@@ -53,7 +53,7 @@ public abstract class User {
         this.email = email;
     }
 
-    public abstract void save();
+    public abstract void save() throws ExecutionException, InterruptedException;
 
     public abstract void register(String password) throws ExecutionException, InterruptedException;
 

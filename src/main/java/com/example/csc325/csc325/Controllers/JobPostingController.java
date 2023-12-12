@@ -27,16 +27,20 @@ public class JobPostingController {
 
     public void onPost(ActionEvent actionEvent) throws IOException, ExecutionException, InterruptedException {
         User user = UserSessionManager.getUser();
+        if(user instanceof Employer employer) {
 
-        String jobTitle = this.jobTitle.getText();
-        String jobLocation = this.jobLocation.getText();
-        String salary = this.salary.getText();
-        String[] keywords = this.keywords.getText().split("\\s+") ;
-        String description = this.description.getText();
-        String company = ((Employer) user).getCompanyName();
-        String companyId = user.getId();
-        JobPosting job = new JobPosting(jobTitle, company,salary,description, new ArrayList<>(Arrays.asList(keywords)), companyId, jobLocation);
-        job.save();
+            String jobTitle = this.jobTitle.getText();
+            String jobLocation = this.jobLocation.getText();
+            String salary = this.salary.getText();
+            String[] keywords = this.keywords.getText().split("\\s+");
+            String description = this.description.getText();
+            String company = employer.getCompanyName();
+            String companyId = user.getId();
+            JobPosting job = new JobPosting(jobTitle, company, salary, description, new ArrayList<>(Arrays.asList(keywords)), companyId, jobLocation);
+            job.save();
+            employer.addPostedJob(job);
+            employer.save();
+        }
         SceneManager.getInstance().showMainScene();
     }
 }

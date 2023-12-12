@@ -55,7 +55,7 @@ public class loginController {
     public void signin(ActionEvent actionEvent) throws IOException, ExecutionException, InterruptedException {
         Firestore db = FirestoreClient.getFirestore();
         ApiFuture<QuerySnapshot> query = db.collection("auth")
-                .whereEqualTo("username", usernameField.getText())
+                .whereEqualTo("username", usernameField.getText().toLowerCase())
                 .get();
         List<QueryDocumentSnapshot> documents = query.get().getDocuments();
         if(documents.isEmpty()){

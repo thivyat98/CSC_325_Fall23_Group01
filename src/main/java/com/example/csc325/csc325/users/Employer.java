@@ -1,33 +1,39 @@
 package com.example.csc325.csc325.users;
 
+import com.example.csc325.csc325.Posts.JobPosting;
+import com.example.csc325.csc325.UserSessionManager;
 import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.DocumentReference;
-import com.google.cloud.firestore.DocumentSnapshot;
-import com.google.cloud.firestore.Firestore;
-import com.google.cloud.firestore.WriteResult;
+import com.google.cloud.firestore.*;
 import com.google.firebase.cloud.FirestoreClient;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 public class Employer extends User {
     private String companyName;
 
+    private ArrayList<String> postedJobs;
+
     public Employer(String companyName, String email, String phone) {
         super(email, phone, "employer");
         this.companyName = companyName;
+        this.postedJobs = new ArrayList<>();
     }
 
     public Employer(String companyName, String email, String phone, String id) {
         super(email, phone, id, "employer");
         this.companyName = companyName;
+        this.postedJobs = new ArrayList<>();
     }
 
     public Employer() {
         super();
         this.companyName = "";
+        this.postedJobs = new ArrayList<>();
     }
 
     public static Employer getEmployer(String ID) throws ExecutionException, InterruptedException {
@@ -51,7 +57,7 @@ public class Employer extends User {
     }
 
     @Override
-    public void save() {
+    public void save() throws ExecutionException, InterruptedException {
         Map<String, Object> data = new HashMap<>();
         data.put("type", this.getType());
         data.put("id", this.getId());
@@ -68,15 +74,27 @@ public class Employer extends User {
             System.out.println("Error: " + e.getMessage());
         }
 
+        UserSessionManager.setCurrentUser(this.getId(), "employee");
+
     }
 
     @Override
-    public void register(String password) {
+    public void register(String password) throws ExecutionException, InterruptedException {
         Firestore firestore = FirestoreClient.getFirestore();
+        ApiFuture<QuerySnapshot> query = firestore.collection("auth")
+                .whereEqualTo("username", this.getEmail().toLowerCase())
+                .get();
+        List<QueryDocumentSnapshot> documents = query.get().getDocuments();
+
+        if (!documents.isEmpty()) {
+            System.out.println("Account using email already exists");
+            return;
+
+        }
         try {
             // Add data to Firestore
             Map<String, Object> creds = new HashMap<>();
-            creds.put("username", this.getEmail());
+            creds.put("username", this.getEmail().toLowerCase());
             creds.put("hashPassword", BCrypt.hashpw(password, BCrypt.gensalt()));
             creds.put("ID", this.getId());
             creds.put("Type", this.getType());
@@ -90,4 +108,15 @@ public class Employer extends User {
         this.save();
     }
 
+    public ArrayList<String> getPostedJobs() {
+        return postedJobs;
+    }
+
+    public void setPostedJobs(ArrayList<String> postedJobs) {
+        this.postedJobs = postedJobs;
+    }
+
+    public void addPostedJob(JobPosting job){
+        postedJobs.add(job.getId());
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.csc325.csc325.users;
 
+import com.example.csc325.csc325.UserSessionManager;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
 import com.google.firebase.cloud.FirestoreClient;
@@ -61,17 +62,17 @@ public class Employee extends User {
         this.skills = skills;
     }
 
-    public void addSkill(String skill){
+    public void addSkill(String skill) throws ExecutionException, InterruptedException {
         this.skills.add(skill);
         this.save();
     }
 
-    public void removeSkill(String skill){
+    public void removeSkill(String skill) throws ExecutionException, InterruptedException {
         this.skills.remove(skill);
         this.save();
     }
     @Override
-    public void save() {
+    public void save() throws ExecutionException, InterruptedException {
         Map<String, Object> data = new HashMap<>();
         data.put("type", this.getType());
         data.put("firstName", this.getFirstName());
@@ -89,6 +90,7 @@ public class Employee extends User {
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
+        UserSessionManager.setCurrentUser(this.getId(), "employee");
 
     }
 
@@ -96,7 +98,7 @@ public class Employee extends User {
     public void register(String password) throws ExecutionException, InterruptedException {
         Firestore firestore = FirestoreClient.getFirestore();
         ApiFuture<QuerySnapshot> query = firestore.collection("auth")
-                .whereEqualTo("username", this.getEmail())
+                .whereEqualTo("username", this.getEmail().toLowerCase())
                 .get();
         List<QueryDocumentSnapshot> documents = query.get().getDocuments();
 
@@ -108,7 +110,7 @@ public class Employee extends User {
         try {
             // Add data to Firestore
             Map<String, Object> creds = new HashMap<>();
-            creds.put("username", this.getEmail());
+            creds.put("username", this.getEmail().toLowerCase());
             creds.put("hashPassword", BCrypt.hashpw(password, BCrypt.gensalt()));
             creds.put("ID", this.getId());
             creds.put("Type", this.getType());
