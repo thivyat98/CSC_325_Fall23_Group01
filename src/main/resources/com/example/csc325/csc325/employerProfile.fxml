@@ -39,7 +39,7 @@
       <HBox alignment="TOP_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="28.0" prefWidth="708.0" styleClass="header" />
       <HBox alignment="TOP_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="28.0" prefWidth="708.0" styleClass="header">
          <children>
-            <Button onAction="#ProfileLoader" prefHeight="33.0" prefWidth="67.0">
+            <Button onAction="#applicantsPage" prefHeight="33.0" prefWidth="67.0">
                <graphic>
                   <ImageView fitHeight="50" fitWidth="50">
                      <image>
