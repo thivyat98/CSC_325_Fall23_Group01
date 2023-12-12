@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -8,18 +9,24 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<?import java.net.URL?>
-<VBox alignment="TOP_CENTER" spacing="10" style="-fx-background-color: #f2f2f2;" prefHeight="724" prefWidth="708" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="com.example.csc325.csc325.Controllers.searchController">
+<VBox alignment="TOP_CENTER" prefHeight="724" prefWidth="708" spacing="10" style="-fx-background-color: #f2f2f2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csc325.csc325.Controllers.searchController">
     <stylesheets>
         <URL value="@Stylesheet.css" />
     </stylesheets>
     <!-- Smoke Grey Background -->
     <VBox style="-fx-background-color: #ddd;">
         <!-- Existing content -->
-        <HBox alignment="TOP_RIGHT" styleClass="header">
+        <HBox alignment="TOP_RIGHT" style="-fx-background-color: white;" styleClass="header">
             <!-- Profile Picture Icon -->
-            <Button onAction="#ProfileLoader">
+
+            <Label prefHeight="30.0" prefWidth="305.0" styleClass="header-label" text="Job Search" textFill="#3567a2">
+            <font>
+               <Font size="25.0" />
+            </font></Label>
+            <!-- Profile Picture Icon -->
+            <Button onAction="#ProfileLoader" style="-fx-background-color: white;">
             <graphic>
                       <ImageView fitHeight="50" fitWidth="50"> <!-- Set your desired width and height -->
                           <image>
@@ -29,17 +36,13 @@
             </graphic></Button>
 
         </HBox>
-        <HBox alignment="CENTER" styleClass="header">
-            <!-- Profile Picture Icon -->
-
-            <Label styleClass="header-label" text="Job Search" />
-        </HBox>
-        <HBox alignment="CENTER" spacing="10">
+        <HBox alignment="CENTER" style="-fx-background-color: #3567a2;" styleClass="header" />
+        <HBox alignment="CENTER" spacing="10" style="-fx-background-color: white;">
             <TextField fx:id="searchField" promptText="Search Jobs" />
-            <Button onAction="#searchJobs" text="Search" />
+            <Button onAction="#searchJobs" prefHeight="27.0" prefWidth="59.0" style="-fx-background-color: #3567a2;" text="Search" textFill="WHITE" />
         </HBox>
         <ScrollPane fitToHeight="true" fitToWidth="true">
-            <VBox fx:id="jobListingsContainer" alignment="CENTER" spacing="10">
+            <VBox fx:id="jobListingsContainer" alignment="CENTER" spacing="10" style="-fx-background-color: white;">
 
             </VBox>
         </ScrollPane>
