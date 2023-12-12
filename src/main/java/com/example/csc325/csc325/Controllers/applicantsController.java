@@ -12,6 +12,7 @@ import com.google.firebase.cloud.FirestoreClient;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -92,6 +93,9 @@ public class applicantsController {
             for (Employee applicant : job.getApplicants()) {
                 HBox applicantUI = createApplicantUI(applicant);
                 jobApplicantsContainer.getChildren().add(applicantUI);
+                Separator separator = new Separator();
+                separator.getStyleClass().add("separator");
+                jobApplicantsContainer.getChildren().add(separator);
             }
 
             // Add the job and its applicants to the main container

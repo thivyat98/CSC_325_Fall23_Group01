@@ -30,11 +30,6 @@
         <Button fx:id="saveButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#saveProfile" style="-fx-background-color: ccd5ae;" text="Save" />
         <Button fx:id="logOutBtn" layoutX="77.0" layoutY="14.0" mnemonicParsing="false" onAction="#logOutHandler" style="-fx-background-color: ccd5ae;" text="Log Out" />
       <Button fx:id="postJobBtn" layoutX="562.0" layoutY="493.0" mnemonicParsing="false" onAction="#postJob" style="-fx-background-color: ccd5ae;" text="Post Job" />
-      <HBox alignment="TOP_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="28.0" prefWidth="708.0" styleClass="header" />
-      <HBox alignment="TOP_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="28.0" prefWidth="708.0" styleClass="header" />
-      <HBox alignment="TOP_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="28.0" prefWidth="708.0" styleClass="header" />
-      <HBox alignment="TOP_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="28.0" prefWidth="708.0" styleClass="header">
-      </HBox>
       <Button layoutX="478.0" layoutY="493.0" mnemonicParsing="false" onAction="#applicantsPage" style="-fx-background-color: ccd5ae;" text="Applicants" />
     </children>
 

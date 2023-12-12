@@ -11,4 +11,10 @@
     -fx-text-fill: white;
 }
 
+.job-title-label{
+    -fx-font-size: 20px;
+    -fx-text-alignment: center;
+    -fx-background-color: lightblue;
+}
+
 
