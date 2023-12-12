@@ -173,7 +173,7 @@ public class searchController {
         descriptionLabel.getStyleClass().add("job-description");
 
         Button applyButton = new Button("Apply");
-        applyButton.getStyleClass().add("apply-button");
+        applyButton.getStyleClass().add("button");
         applyButton.setOnAction(event -> {
             try {
                 handleApplyAction(job);
