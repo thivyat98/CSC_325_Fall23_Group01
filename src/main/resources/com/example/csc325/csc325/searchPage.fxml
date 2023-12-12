@@ -18,7 +18,7 @@
     <!-- Smoke Grey Background -->
     <VBox style="-fx-background-color: #ddd;">
         <!-- Existing content -->
-        <HBox alignment="TOP_RIGHT" style="-fx-background-color: white;" styleClass="header">
+        <HBox alignment="TOP_RIGHT" style="-fx-background-color: white;">
             <!-- Profile Picture Icon -->
 
             <Label prefHeight="30.0" prefWidth="305.0" styleClass="header-label" text="Job Search" textFill="#3567a2">
