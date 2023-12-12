@@ -16,14 +16,14 @@
     <!-- Smoke Grey Background -->
     <VBox style="-fx-background-color: #ddd;">
         <!-- Existing content -->
-        <HBox alignment="TOP_RIGHT" prefHeight="28.0" prefWidth="708.0" styleClass="header">
+        <HBox alignment="TOP_LEFT" prefHeight="28.0" prefWidth="708.0" styleClass="header">
             <children>
                 <!-- Profile Picture Icon -->
                 <Button onAction="#ProfileLoader" prefHeight="33.0" prefWidth="67.0">
                     <graphic>
                         <ImageView fitHeight="50" fitWidth="50"> <!-- Set your desired width and height -->
                             <image>
-                                <Image url="@../../../../../../../../../Desktop/backArrow.jpeg" />
+                                <Image url="@backArrow.jpeg" />
                             </image>
                         </ImageView>
                     </graphic>

@@ -43,7 +43,6 @@ public class applicantsController {
                 }
             }
         }
-        System.out.println(jobPostings);
         return jobPostings;
     }
 

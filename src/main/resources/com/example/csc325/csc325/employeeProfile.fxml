@@ -19,7 +19,7 @@
                 <Circle centerX="43.0" centerY="43.0" radius="43.0" />
             </clip>
             <image>
-                <Image url="@profile.png" />
+                <Image url="@defaultprofilepic.jpg" />
             </image>
         </ImageView>
         <TextArea fx:id="about" layoutX="41.0" layoutY="246.0" prefHeight="108.0" prefWidth="628.0" promptText="About me" style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: transparent;" />
