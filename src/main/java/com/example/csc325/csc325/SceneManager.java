@@ -1,5 +1,6 @@
 package com.example.csc325.csc325;
 
+import com.example.csc325.csc325.Controllers.applicantsController;
 import com.example.csc325.csc325.Controllers.employeeProfileController;
 import com.example.csc325.csc325.Controllers.employerProfileController;
 import com.example.csc325.csc325.Controllers.searchController;
@@ -117,6 +118,17 @@ public class SceneManager {
         Parent root = loader.load();
         stage.setScene(new Scene(root));
         stage.setTitle("Post A Job");
+        stage.show();
+    }
+
+    public void showApplicantsPage() throws IOException {
+        stage.hide();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("applicantsPage.fxml"));
+        Parent root = loader.load();
+        applicantsController c = loader.getController();
+        c.onLoad();
+        stage.setScene(new Scene(root));
+        stage.setTitle("Applicants");
         stage.show();
     }
 }

@@ -59,6 +59,7 @@ public class Employer extends User {
         data.put("companyName", this.getCompanyName());
         data.put("phone", this.getPhone());
         data.put("about", this.getAbout());
+        data.put("postedJobs", this.getPostedJobs());
         try {
             Firestore db = FirestoreClient.getFirestore();
             DocumentReference docRef = db.collection("users").document(super.getId());

@@ -56,4 +56,8 @@ public class employerProfileController {
     public void postJob(ActionEvent actionEvent) throws IOException {
         SceneManager.getInstance().showPostJobScene();
     }
+
+    public void applicantsPage(ActionEvent actionEvent) throws IOException {
+        SceneManager.getInstance().showApplicantsPage();
+    }
 }
