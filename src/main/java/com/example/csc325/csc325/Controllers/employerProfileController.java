@@ -60,4 +60,6 @@ public class employerProfileController {
     public void applicantsPage(ActionEvent actionEvent) throws IOException {
         SceneManager.getInstance().showApplicantsPage();
     }
+
+
 }

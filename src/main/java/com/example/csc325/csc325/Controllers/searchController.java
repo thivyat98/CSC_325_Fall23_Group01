@@ -194,6 +194,7 @@ public class searchController {
         if(user instanceof Employee e){
             job.addApplicants(e);
         }
+SceneManager.getInstance().showSuccessfulRegScene();
     }
 
 //    public List<JobPosting> fetchRecentJobs() throws ExecutionException, InterruptedException {
