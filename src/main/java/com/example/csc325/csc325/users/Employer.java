@@ -49,12 +49,6 @@ public class Employer extends User {
         }
     }
 
-    public String getCompanyName() {
-        return companyName;
-    }
-    public void setCompanyName(String companyName){
-        this.companyName = companyName;
-    }
 
     @Override
     public void save() throws ExecutionException, InterruptedException {
@@ -74,7 +68,7 @@ public class Employer extends User {
             System.out.println("Error: " + e.getMessage());
         }
 
-        UserSessionManager.setCurrentUser(this.getId(), "employee");
+        UserSessionManager.setCurrentUser(this.getId(), "employer");
 
     }
 
@@ -118,5 +112,13 @@ public class Employer extends User {
 
     public void addPostedJob(JobPosting job){
         postedJobs.add(job.getId());
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 }

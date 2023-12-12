@@ -70,7 +70,7 @@ public class signUpController {
             }
 
             ApiFuture<QuerySnapshot> query = db.collection("auth")
-                    .whereEqualTo("username", emailField.getText())
+                    .whereEqualTo("username", emailField.getText().toLowerCase())
                     .get();
             List<QueryDocumentSnapshot> documents = query.get().getDocuments();
 
