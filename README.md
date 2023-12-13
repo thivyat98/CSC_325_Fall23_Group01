@@ -113,3 +113,7 @@ This project was developed as part of a coursework assignment and may not be act
   - `UserSessionManager`: Manages user sessions and authentication.
 
 Stay tuned for updates and improvements to the application. Happy job hunting!
+
+# UML Structure
+
+<img width="1696" alt="Screenshot 2023-12-12 at 23 42 08" src="https://github.com/mazenkapadi/CSC_325/assets/73120392/8ff54001-387d-4044-9b67-cb1c15681657">
