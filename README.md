@@ -74,7 +74,7 @@ Stay tuned for updates and improvements to the application. Happy job hunting!
 ## Usage
 
 1. **Login or Register:**
-   - Users can log in with existing accounts or register as new users.
+   - Users can log in with existing accounts or register as new users. Users may choose an Employee Account or an Employer Account depending on their needs.
 
 2. **Create Profile:**
    - Job seekers and employers can create detailed profiles with relevant information.
