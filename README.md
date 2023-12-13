@@ -40,8 +40,8 @@ The JobGrabber application is designed to simplify the job search and recruitmen
 1. **Clone the Repository:**
    - Clone this repository to your local machine using the following command:
      ```bash
-     git clone https://github.com/your-username/job-finder.git
-     cd job-finder
+     git clone https://github.com/mazenkapadi/CSC_325.git
+     cd CSC_325
      ```
 
 2. **Import Project:**
