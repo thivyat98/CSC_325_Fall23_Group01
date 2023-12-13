@@ -17,4 +17,8 @@
     -fx-background-color: lightblue;
 }
 
+.error-label{
+    -fx-text-fill: red;
+}
+
 

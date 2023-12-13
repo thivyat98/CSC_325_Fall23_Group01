@@ -172,16 +172,23 @@ public class searchController {
         Label descriptionLabel = new Label(job.getDescription()); // Assuming getDescription() is defined in Post
         descriptionLabel.getStyleClass().add("job-description");
 
-        Label appliedLabel = new Label("Applied");
-        appliedLabel.getStyleClass().add("applied-label");
-
         Button applyButton = new Button("Apply");
         applyButton.getStyleClass().add("button");
         applyButton.setOnAction(event -> {
             try {
+                if(UserSessionManager.getUser().getType().equals("employee")){
                 handleApplyAction(job);
                 applyButton.setVisible(false);
+                Label appliedLabel = new Label("Applied");
+                appliedLabel.getStyleClass().add("applied-label");
                 detailsBox.getChildren().add(appliedLabel);
+                }
+                else{
+                    applyButton.setVisible(false);
+                    Label appliedLabel = new Label("Business Accounts Can not Apply");
+                    appliedLabel.getStyleClass().add("error-label");
+                    detailsBox.getChildren().add(appliedLabel);
+                }
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
