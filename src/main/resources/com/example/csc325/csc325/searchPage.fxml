@@ -1,50 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- XML file defining the layout for a Job Search application UI using JavaFX -->
 
-<?import java.net.URL?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
+<!-- Root VBox for the entire UI -->
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
-<VBox alignment="TOP_CENTER" prefHeight="724" prefWidth="708" spacing="10" style="-fx-background-color: #f2f2f2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csc325.csc325.Controllers.searchController">
+<?import java.net.URL?>
+<VBox alignment="TOP_CENTER" prefHeight="724" prefWidth="708" spacing="10" style="-fx-background-color: #f2f2f2;"
+      xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.csc325.csc325.Controllers.searchController">
+    <!-- External stylesheet for styling -->
     <stylesheets>
-        <URL value="@Stylesheet.css" />
+        <URL value="@Stylesheet.css"/>
     </stylesheets>
-    <!-- Smoke Grey Background -->
+
+    <!-- Top-level VBox for the main content -->
     <VBox style="-fx-background-color: #ddd;">
-        <!-- Existing content -->
+
+        <!-- HBox for the header with Job Search title and profile picture icon -->
         <HBox alignment="TOP_RIGHT" style="-fx-background-color: white;">
-            <!-- Profile Picture Icon -->
 
+            <!-- Label for the Job Search title -->
             <Label prefHeight="30.0" prefWidth="305.0" styleClass="header-label" text="Job Search" textFill="#3567a2">
-            <font>
-               <Font size="25.0" />
-            </font></Label>
-            <!-- Profile Picture Icon -->
+                <font>
+                    <!-- Font styling for the title -->
+                    <Font size="25.0"/>
+                </font>
+            </Label>
+
+            <!-- Profile Picture Icon Button -->
             <Button onAction="#ProfileLoader" style="-fx-background-color: white;">
-            <graphic>
-                      <ImageView fitHeight="50" fitWidth="50"> <!-- Set your desired width and height -->
-                          <image>
-                              <Image url="@defaultprofilepic.jpg" />
-                          </image>
-                      </ImageView>
-            </graphic></Button>
+                <graphic>
+                    <!-- ImageView for displaying the profile picture -->
+                    <ImageView fitHeight="50" fitWidth="50"> <!-- Set your desired width and height -->
+                        <image>
+                            <!-- Default profile picture image -->
+                            <Image url="@defaultprofilepic.jpg"/>
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
 
         </HBox>
-        <HBox alignment="CENTER" style="-fx-background-color: #3567a2;" styleClass="header" />
+
+        <!-- HBox for the header separator line -->
+        <HBox alignment="CENTER" style="-fx-background-color: #3567a2;" styleClass="header"/>
+
+        <!-- HBox for the search input field and search button -->
         <HBox alignment="CENTER" spacing="10" style="-fx-background-color: white;">
-            <TextField fx:id="searchField" promptText="Search Jobs" />
-            <Button onAction="#searchJobs" prefHeight="27.0" prefWidth="59.0" style="-fx-background-color: #3567a2;" text="Search" textFill="WHITE" />
+
+            <!-- TextField for entering job search queries -->
+            <TextField fx:id="searchField" promptText="Search Jobs"/>
+
+            <!-- Button for initiating the job search -->
+            <Button onAction="#searchJobs" prefHeight="27.0" prefWidth="59.0" style="-fx-background-color: #3567a2;"
+                    text="Search" textFill="WHITE"/>
+
         </HBox>
+
+        <!-- ScrollPane for displaying job listings -->
         <ScrollPane fitToHeight="true" fitToWidth="true">
+            <!-- VBox for containing job listings -->
             <VBox fx:id="jobListingsContainer" alignment="CENTER" spacing="10" style="-fx-background-color: white;">
+
+                <!-- Job listings will be dynamically populated here -->
 
             </VBox>
         </ScrollPane>
+
     </VBox>
 </VBox>
