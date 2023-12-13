@@ -191,10 +191,10 @@ public class searchController {
 
     private void handleApplyAction(JobPosting job) throws IOException {
         User user = UserSessionManager.getUser();
-        if(user instanceof Employee e){
+        if (user instanceof Employee e) {
             job.addApplicants(e);
         }
-SceneManager.getInstance().showSuccessfulRegScene();
+        SceneManager.getInstance().showSuccessfulRegScene();
     }
 
 //    public List<JobPosting> fetchRecentJobs() throws ExecutionException, InterruptedException {
