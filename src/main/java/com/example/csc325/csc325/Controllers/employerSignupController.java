@@ -17,11 +17,15 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
+/**
+ * Controller class for handling the logic of the employer signup view.
+ */
 public class employerSignupController {
 
+    private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@(.+)$";
+    private static final String PHONE_REGEX = "^\\d{10}$"; // Assumes a 10-digit phone number
+    private static final String PASSWORD_REGEX = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$";
     public TextField companyNameField;
     public TextField emailField;
     public TextField passwordField;
@@ -29,17 +33,26 @@ public class employerSignupController {
     public TextField phoneNumberField;
     public Button signUp;
     public Hyperlink loginLink;
-
     public Label lblErrorMsg;
 
-    private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@(.+)$";
-    private static final String PHONE_REGEX = "^\\d{10}$"; // Assumes a 10-digit phone number
-    private static final String PASSWORD_REGEX = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$";
-
+    /**
+     * Navigates back to the login scene.
+     *
+     * @param actionEvent The ActionEvent triggering the method.
+     * @throws IOException If an I/O error occurs.
+     */
     public void backToLogin(ActionEvent actionEvent) throws IOException {
         SceneManager.getInstance().showLoginScene();
     }
 
+    /**
+     * Handles the signup process for an employer.
+     *
+     * @param actionEvent The ActionEvent triggering the method.
+     * @throws ExecutionException   If the execution encounters an exception.
+     * @throws InterruptedException If the execution is interrupted.
+     * @throws IOException          If an I/O error occurs.
+     */
     public void handleSignUp(ActionEvent actionEvent) throws ExecutionException, InterruptedException, IOException {
         Firestore db = FirestoreClient.getFirestore();
 
@@ -90,6 +103,12 @@ public class employerSignupController {
         }
     }
 
+    /**
+     * Navigates to the signup scene.
+     *
+     * @param actionEvent The ActionEvent triggering the method.
+     * @throws IOException If an I/O error occurs.
+     */
     public void toSignup(ActionEvent actionEvent) throws IOException {
         SceneManager.getInstance().showSignUpScene();
     }

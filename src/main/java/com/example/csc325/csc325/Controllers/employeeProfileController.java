@@ -8,13 +8,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * Controller class for handling the logic of the employee profile view.
+ */
 public class employeeProfileController {
+
     @FXML
     public Label username;
     @FXML
@@ -39,10 +41,17 @@ public class employeeProfileController {
     @FXML
     private Button logOutBtn;
 
+    /**
+     * Adds a skill to the skill list and updates the user's skills in the backend.
+     *
+     * @param event The ActionEvent triggering the method.
+     * @throws ExecutionException   If an execution exception occurs.
+     * @throws InterruptedException If the operation is interrupted.
+     */
     @FXML
     void addSkilltoList(ActionEvent event) throws ExecutionException, InterruptedException {
         User user = UserSessionManager.getUser();
-        if(skill.getText().isEmpty()){
+        if (skill.getText().isEmpty()) {
             return;
         }
         skillListView.getItems().add(skill.getText());
@@ -50,6 +59,13 @@ public class employeeProfileController {
         skill.clear();
     }
 
+    /**
+     * Removes a selected skill from the skill list and updates the user's skills in the backend.
+     *
+     * @param event The ActionEvent triggering the method.
+     * @throws ExecutionException   If an execution exception occurs.
+     * @throws InterruptedException If the operation is interrupted.
+     */
     @FXML
     void removeSkillfromList(ActionEvent event) throws ExecutionException, InterruptedException {
         User user = UserSessionManager.getUser();
@@ -59,14 +75,19 @@ public class employeeProfileController {
         ((Employee) user).removeSkill(selectString);
     }
 
-
+    /**
+     * Loads the skills of the employee into the skill list.
+     *
+     * @param employee The Employee object representing the logged-in employee.
+     */
     private void loadSkills(Employee employee) {
         skillListView.getItems().addAll(employee.getSkills());
     }
 
-
-
-    // This method is called when the scene is loaded, it should auto-populate the fields with the user data from UserSessionManager
+    /**
+     * This method is called when the scene is loaded.
+     * It auto-populates the fields with the user data from UserSessionManager.
+     */
     public void onLoad() {
         User user = UserSessionManager.getUser();
         if (user instanceof Employee employee) {
@@ -80,6 +101,14 @@ public class employeeProfileController {
         }
     }
 
+    /**
+     * Saves the changes made to the user's profile and navigates back to the main scene.
+     *
+     * @param actionEvent The ActionEvent triggering the method.
+     * @throws IOException          If an I/O exception occurs.
+     * @throws ExecutionException   If an execution exception occurs.
+     * @throws InterruptedException If the operation is interrupted.
+     */
     public void saveProfile(ActionEvent actionEvent) throws IOException, ExecutionException, InterruptedException {
         User user = UserSessionManager.getUser();
         user.setAbout(about.getText());
@@ -88,6 +117,12 @@ public class employeeProfileController {
         SceneManager.getInstance().showMainScene();
     }
 
+    /**
+     * Handles the action event for logging out and navigates back to the login scene.
+     *
+     * @param actionEvent The ActionEvent triggering the method.
+     * @throws IOException If an I/O exception occurs.
+     */
     public void logOutHandler(ActionEvent actionEvent) throws IOException {
         UserSessionManager.logoutUser();
         SceneManager.getInstance().showLoginScene();

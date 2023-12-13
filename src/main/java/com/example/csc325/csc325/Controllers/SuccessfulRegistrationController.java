@@ -8,6 +8,9 @@ import javafx.scene.control.Label;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * Controller class for handling the logic of the successful registration view.
+ */
 public class SuccessfulRegistrationController {
     @FXML
     public Label lblSuccessMsg;
@@ -15,9 +18,14 @@ public class SuccessfulRegistrationController {
     @FXML
     public Button backToLoginBtn;
 
+    /**
+     * Navigates back to the login scene.
+     *
+     * @throws IOException          If an I/O error occurs.
+     * @throws ExecutionException   If the execution encounters an exception.
+     * @throws InterruptedException If the execution is interrupted.
+     */
     public void backToLogin() throws IOException, ExecutionException, InterruptedException {
         SceneManager.getInstance().showLoginScene();
     }
-
-
 }

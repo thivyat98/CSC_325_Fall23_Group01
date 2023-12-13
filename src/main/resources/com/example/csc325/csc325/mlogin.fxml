@@ -1,65 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- XML file defining the layout for user login in a JavaFX application -->
 
-<?import java.net.URL?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Hyperlink?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<!-- AnchorPane for the login UI -->
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="608.0" prefWidth="558.0" styleClass="anchor_pane" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csc325.csc325.Controllers.loginController">
+<?import java.net.URL?>
+<AnchorPane prefHeight="608.0" prefWidth="558.0" styleClass="anchor_pane" xmlns="http://javafx.com/javafx/20.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csc325.csc325.Controllers.loginController">
     <children>
+
+        <!-- GridPane for organizing login elements -->
         <GridPane layoutX="64.0" layoutY="49.0" prefHeight="510.0" prefWidth="430.0" styleClass="anchor_pane">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints/>
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints maxHeight="122.0" minHeight="10.0" prefHeight="99.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="107.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="114.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="167.0" minHeight="10.0" prefHeight="110.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="93.0" minHeight="0.0" prefHeight="58.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="127.0" minHeight="10.0" prefHeight="88.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="103.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                <!-- Row constraints for organizing grid rows -->
             </rowConstraints>
             <children>
+
+                <!-- Label for the login section -->
                 <Label alignment="CENTER" prefHeight="30.0" prefWidth="417.0" text="Login" textAlignment="CENTER">
                     <font>
-                        <Font size="25.0" />
+                        <!-- Font styling for the title -->
+                        <Font size="25.0"/>
                     </font>
                 </Label>
-                <TextField fx:id="usernameField" prefHeight="34.0" prefWidth="386.0" promptText="Email" GridPane.rowIndex="1" />
-                <PasswordField fx:id="passwordField" prefHeight="34.0" prefWidth="386.0" promptText="Password" styleClass="password-label" GridPane.rowIndex="2" />
 
-                <!--            <TextField prefHeight="34.0" prefWidth="386.0" promptText="Confirm password" GridPane.rowIndex="3" />-->
-                <Button fx:id="loginBtn" defaultButton="true" mnemonicParsing="false" onAction="#signin" prefHeight="26.0" prefWidth="404.0" styleClass="nav_btn" text="Login" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-                <Label alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="253.0" text="Don't have an account? " GridPane.rowIndex="4" />
+                <!-- TextFields for entering login details -->
+                <TextField fx:id="usernameField" prefHeight="34.0" prefWidth="386.0" promptText="Email"
+                           GridPane.rowIndex="1"/>
+                <PasswordField fx:id="passwordField" prefHeight="34.0" prefWidth="386.0" promptText="Password"
+                               styleClass="password-label" GridPane.rowIndex="2"/>
+
+                <!-- Button for submitting the login -->
+                <Button fx:id="loginBtn" defaultButton="true" mnemonicParsing="false" onAction="#signin"
+                        prefHeight="26.0" prefWidth="404.0" styleClass="nav_btn" text="Login"
+                        GridPane.halignment="CENTER" GridPane.rowIndex="3"/>
+
+                <!-- Label for prompting new users to sign up -->
+                <Label alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="253.0" text="Don't have an account? "
+                       GridPane.rowIndex="4"/>
                 <GridPane prefHeight="26.0" prefWidth="240.0" GridPane.rowIndex="4">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
                     </rowConstraints>
                     <children>
+                        <!-- Hyperlink for new users to sign up -->
                         <AnchorPane prefHeight="20.0" prefWidth="291.0">
                             <children>
-                                <Hyperlink layoutX="253.0" layoutY="19.0" onAction="#signup" text="Sign up" />
+                                <Hyperlink layoutX="253.0" layoutY="19.0" onAction="#signup" text="Sign up"/>
                             </children>
                         </AnchorPane>
                     </children>
                 </GridPane>
-            <Label fx:id="lblErrorMsg" style="-fx-text-fill: #e63946" alignment="CENTER" prefHeight="67.0" prefWidth="394.0" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+
+                <!-- Label for displaying error messages -->
+                <Label fx:id="lblErrorMsg" style="-fx-text-fill: #e63946" alignment="CENTER" prefHeight="67.0"
+                       prefWidth="394.0" GridPane.halignment="CENTER" GridPane.rowIndex="5"
+                       GridPane.valignment="CENTER"/>
             </children>
         </GridPane>
     </children>
+
+    <!-- External stylesheet for styling -->
     <stylesheets>
-        <URL value="@style.css" />
+        <URL value="@style.css"/>
     </stylesheets>
 </AnchorPane>

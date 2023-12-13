@@ -6,15 +6,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.FileChooser;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Controller class for handling the logic of the employer listings view.
+ */
 public class employerListingsController {
     @FXML
     private Label employerName;
@@ -32,15 +31,11 @@ public class employerListingsController {
     @FXML
     private TextField CompanyName;
 
-
-
     @FXML
     private TextField email;
 
     @FXML
     private TextField phoneNumber;
-
-
 
     // Constructor to initialize jobList
     public employerListingsController() {
@@ -50,6 +45,78 @@ public class employerListingsController {
         // Add more jobs as needed
     }
 
+    /**
+     * Handles the event of adding a job to the job list.
+     *
+     * @param event The MouseEvent triggering the method.
+     */
+    @FXML
+    void addJobToList(MouseEvent event) {
+        jobListView.getItems().add(jobTitle.getText());
+    }
+
+    /**
+     * Handles the event of removing a job from the job list.
+     *
+     * @param event The MouseEvent triggering the method.
+     */
+    @FXML
+    void removeJobFromList(MouseEvent event) {
+        int selectedID = jobListView.getSelectionModel().getSelectedIndex();
+        jobListView.getItems().remove(selectedID);
+    }
+
+    /**
+     * Shows the employer logo. (To be implemented)
+     */
+    @FXML
+    protected void showEmployerLogo() {
+        // Implement code to show employer logo
+    }
+
+    /**
+     * Sets the employer's information for display.
+     *
+     * @param employer The User object representing the employer.
+     */
+    public void setEmployer(User employer) {
+        this.employerName.setText(employer.getId());
+    }
+
+    /**
+     * Implements search functionality for jobs with a set of keywords.
+     *
+     * @param event The MouseEvent triggering the method.
+     */
+    public void searchJobs(MouseEvent event) {
+        String searchTerm = jobTitle.getText().toLowerCase();
+
+        for (Job job : jobList) {
+            if (containsKeyword(job, searchTerm)) {
+                System.out.println("Job Matches " + job.jobTitle);
+            }
+        }
+    }
+
+    /**
+     * Checks if a job contains the specified keyword.
+     *
+     * @param job        The Job object to check.
+     * @param searchTerm The keyword to search for.
+     * @return True if the job contains the keyword, false otherwise.
+     */
+    private boolean containsKeyword(Job job, String searchTerm) {
+        for (String keyword : job.keywords) {
+            if (keyword.toLowerCase().contains(searchTerm)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Represents a job with its details.
+     */
     private static class Job {
         String jobTitle;
         String company;
@@ -64,45 +131,5 @@ public class employerListingsController {
             this.description = description;
             this.keywords = keywords;
         }
-    }
-
-    @FXML
-    void addJobToList(MouseEvent event) {
-        jobListView.getItems().add(jobTitle.getText());
-    }
-
-    @FXML
-    void removeJobFromList(MouseEvent event) {
-        int selectedID = jobListView.getSelectionModel().getSelectedIndex();
-        jobListView.getItems().remove(selectedID);
-    }
-
-    @FXML
-    protected void showEmployerLogo() {
-        // Implement code to show employer logo
-    }
-
-    public void setEmployer(User employer) {
-        this.employerName.setText(employer.getId());
-    }
-
-    // Implement search functionality for jobs with a set of keywords
-    public void searchJobs(MouseEvent event) {
-        String searchTerm = jobTitle.getText().toLowerCase();
-
-        for (Job job : jobList) {
-            if (containsKeyword(job, searchTerm)) {
-                System.out.println("Job Matches " + job.jobTitle);
-            }
-        }
-    }
-
-    private boolean containsKeyword(Job job, String searchTerm) {
-        for (String keyword : job.keywords) {
-            if (keyword.toLowerCase().contains(searchTerm)) {
-                return true;
-            }
-        }
-        return false;
     }
 }

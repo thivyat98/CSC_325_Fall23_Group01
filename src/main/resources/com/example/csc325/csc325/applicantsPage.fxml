@@ -1,45 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- XML file defining the layout for the applicants view in a JavaFX application -->
 
-<?import java.net.URL?>
+<!-- VBox for organizing the main layout -->
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<VBox alignment="TOP_CENTER" prefHeight="724" prefWidth="708" spacing="10" style="-fx-background-color: #f2f2f2;"
+      xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.csc325.csc325.Controllers.applicantsController">
 
-<VBox alignment="TOP_CENTER" prefHeight="724" prefWidth="708" spacing="10" style="-fx-background-color: #f2f2f2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csc325.csc325.Controllers.applicantsController">
+    <!-- Stylesheet for styling the UI -->
     <stylesheets>
-        <URL value="@Stylesheet.css" />
+        <URL value="@Stylesheet.css"/>
     </stylesheets>
+
     <!-- Smoke Grey Background -->
     <VBox style="-fx-background-color: #ddd;">
+
         <!-- Existing content -->
+
+        <!-- HBox for the header with a back arrow button -->
         <HBox alignment="TOP_LEFT" prefHeight="28.0" prefWidth="708.0" styleClass="header">
             <children>
-                <!-- Profile Picture Icon -->
+                <!-- Back Arrow Button to navigate back -->
                 <Button onAction="#ProfileLoader" prefHeight="33.0" prefWidth="67.0">
                     <graphic>
                         <ImageView fitHeight="50" fitWidth="50"> <!-- Set your desired width and height -->
                             <image>
-                                <Image url="@backArrow.jpeg" />
+                                <!-- Placeholder for back arrow image -->
+                                <Image url="@backArrow.jpeg"/>
                             </image>
                         </ImageView>
                     </graphic>
                 </Button>
             </children>
-
         </HBox>
+
+        <!-- HBox for the main header with the title "Applicants" -->
         <HBox alignment="CENTER" styleClass="header">
-            <!-- Profile Picture Icon -->
-
-            <Label styleClass="header-label" text="Applicants" />
+            <Label styleClass="header-label" text="Applicants"/>
         </HBox>
-        <HBox alignment="CENTER" spacing="10" />
-        <ScrollPane fitToHeight="true" fitToWidth="true">
-            <VBox fx:id="applicantsContainer" alignment="CENTER" spacing="10">
 
+        <!-- HBox for spacing -->
+        <HBox alignment="CENTER" spacing="10"/>
+
+        <!-- ScrollPane to enable scrolling for the list of applicants -->
+        <ScrollPane fitToHeight="true" fitToWidth="true">
+            <!-- VBox to contain the list of applicants -->
+            <VBox fx:id="applicantsContainer" alignment="CENTER" spacing="10">
+                <!-- This is where the list of applicants will be dynamically loaded -->
             </VBox>
         </ScrollPane>
     </VBox>

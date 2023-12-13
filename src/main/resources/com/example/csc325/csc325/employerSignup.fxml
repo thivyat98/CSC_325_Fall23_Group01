@@ -1,65 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- XML file defining the layout for the business sign-up UI in a JavaFX application -->
 
-<?import java.net.URL?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Hyperlink?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<!-- AnchorPane for the business sign-up UI -->
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="629.0" prefWidth="600.0" styleClass="anchor_pane" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csc325.csc325.Controllers.employerSignupController">
+<?import java.net.URL?>
+<AnchorPane prefHeight="629.0" prefWidth="600.0" styleClass="anchor_pane" xmlns="http://javafx.com/javafx/20.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.csc325.csc325.Controllers.employerSignupController">
     <children>
+
+        <!-- GridPane for arranging UI elements -->
         <GridPane layoutX="36.0" layoutY="31.0" prefHeight="604.0" prefWidth="529.0" styleClass="anchor_pane">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints maxHeight="58.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="58.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="50.0" minHeight="7.0" prefHeight="38.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="75.0" minHeight="6.0" prefHeight="36.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="122.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="101.0" minHeight="0.0" prefHeight="81.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="103.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="60.0" minHeight="0.0" prefHeight="42.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="91.0" minHeight="10.0" prefHeight="91.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="60.0" minHeight="0.0" prefHeight="44.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="58.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                <!-- Row constraints for organizing the layout -->
             </rowConstraints>
             <children>
+
+                <!-- Label for the business sign-up title -->
                 <Label prefHeight="17.0" prefWidth="575.0" text="                                    Business Sign Up">
                     <font>
-                        <Font size="25.0" />
+                        <Font size="25.0"/>
                     </font>
                 </Label>
-                <TextField fx:id="companyNameField" promptText="Company name" GridPane.rowIndex="2" />
-                <Label fx:id="firstNameCheck" />
-                <TextField fx:id="emailField" promptText="Email address" GridPane.rowIndex="4" />
-                <Label fx:id="emailCheck" />
-                <TextField fx:id="passwordField" promptText="Password" GridPane.rowIndex="6" GridPane.valignment="BOTTOM" />
-                <TextField fx:id="ConfirmPasswordField" promptText="Confirm Password" GridPane.rowIndex="7" />
-                <TextField fx:id="phoneNumberField" promptText="Phone number (xxx-xxx-xxxx)" GridPane.rowIndex="5" GridPane.valignment="TOP" />
-                <Label fx:id="phoneNumberCheck" />
-                <Button fx:id="signUp" mnemonicParsing="false" onAction="#handleSignUp" prefHeight="26.0" prefWidth="40.0" styleClass="nav_btn" text="Sign Up" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
+
+                <!-- TextFields for entering company name, email, password, etc. -->
+                <TextField fx:id="companyNameField" promptText="Company name" GridPane.rowIndex="2"/>
+                <Label fx:id="firstNameCheck"/>
+                <TextField fx:id="emailField" promptText="Email address" GridPane.rowIndex="4"/>
+                <Label fx:id="emailCheck"/>
+                <TextField fx:id="passwordField" promptText="Password" GridPane.rowIndex="6"
+                           GridPane.valignment="BOTTOM"/>
+                <TextField fx:id="ConfirmPasswordField" promptText="Confirm Password" GridPane.rowIndex="7"/>
+                <TextField fx:id="phoneNumberField" promptText="Phone number (xxx-xxx-xxxx)" GridPane.rowIndex="5"
+                           GridPane.valignment="TOP"/>
+                <Label fx:id="phoneNumberCheck"/>
+
+                <!-- Button for submitting the sign-up form -->
+                <Button fx:id="signUp" mnemonicParsing="false" onAction="#handleSignUp" prefHeight="26.0"
+                        prefWidth="40.0" styleClass="nav_btn" text="Sign Up" GridPane.halignment="CENTER"
+                        GridPane.rowIndex="8" GridPane.valignment="CENTER"/>
+
+                <!-- AnchorPane for existing account message and links -->
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="9">
                     <children>
-                        <Label layoutX="192.0" layoutY="11.0" text="Already have an account?" />
-                        <Hyperlink fx:id="loginLink" layoutX="332.0" layoutY="8.0" onAction="#backToLogin" text="Login" />
+                        <!-- Label for the existing account message -->
+                        <Label layoutX="192.0" layoutY="11.0" text="Already have an account?"/>
+                        <!-- Hyperlink for navigating back to the login page -->
+                        <Hyperlink fx:id="loginLink" layoutX="332.0" layoutY="8.0" onAction="#backToLogin"
+                                   text="Login"/>
                     </children>
                     <children>
-                        <Hyperlink fx:id="employeeSignup" onAction="#toSignup" contentDisplay="CENTER" layoutX="212.0" layoutY="66.0" prefHeight="23.0" prefWidth="106.0" text="Employee Signup" textAlignment="JUSTIFY" textOverrun="CLIP" />
+                        <!-- Hyperlink for navigating to the employee sign-up page -->
+                        <Hyperlink fx:id="employeeSignup" onAction="#toSignup" contentDisplay="CENTER" layoutX="212.0"
+                                   layoutY="66.0" prefHeight="23.0" prefWidth="106.0" text="Employee Signup"
+                                   textAlignment="JUSTIFY" textOverrun="CLIP"/>
                     </children>
                 </AnchorPane>
-                <Label fx:id="lblErrorMsg" style="-fx-text-fill: #e63946" alignment="CENTER" prefHeight="30.0" prefWidth="305.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+
+                <!-- Label for displaying error messages -->
+                <Label fx:id="lblErrorMsg" style="-fx-text-fill: #e63946" alignment="CENTER" prefHeight="30.0"
+                       prefWidth="305.0" GridPane.halignment="CENTER" GridPane.rowIndex="1"
+                       GridPane.valignment="CENTER"/>
             </children>
         </GridPane>
     </children>
+
+    <!-- Stylesheets for styling the UI -->
     <stylesheets>
-        <URL value="@style.css" />
+        <URL value="@style.css"/>
     </stylesheets>
 </AnchorPane>

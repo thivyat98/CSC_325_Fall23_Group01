@@ -6,11 +6,10 @@ import com.example.csc325.csc325.UserSessionManager;
 import com.example.csc325.csc325.users.Employee;
 import com.example.csc325.csc325.users.Employer;
 import com.example.csc325.csc325.users.User;
-import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.*;
+import com.google.cloud.firestore.DocumentSnapshot;
+import com.google.cloud.firestore.Firestore;
 import com.google.firebase.cloud.FirestoreClient;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.HBox;
@@ -21,11 +20,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * Controller class for handling the logic of the applicants view.
+ */
 public class applicantsController {
 
+    /**
+     * Container for displaying the list of applicants.
+     */
     public VBox applicantsContainer;
 
-    public List<JobPosting> fetchjobs() {
+    /**
+     * Fetches the jobs posted by the currently logged-in employer.
+     *
+     * @return List of JobPosting objects representing the posted jobs.
+     */
+    public List<JobPosting> fetchJobs() {
         User user = UserSessionManager.getUser();
         Firestore db = FirestoreClient.getFirestore();
         List<JobPosting> jobPostings = new ArrayList<>();
@@ -47,6 +57,12 @@ public class applicantsController {
         return jobPostings;
     }
 
+    /**
+     * Creates the UI representation for a specific applicant.
+     *
+     * @param applicant The Employee object representing the applicant.
+     * @return HBox containing the UI representation of the applicant.
+     */
     public HBox createApplicantUI(Employee applicant) {
         HBox jobBox = new HBox(10);
         jobBox.getStyleClass().add("applicant-box");
@@ -56,20 +72,17 @@ public class applicantsController {
         Label applicantName = new Label(applicant.getFirstName() + " " + applicant.getLastName());
         applicantName.getStyleClass().add("applicant-name");
 
-
         Label applicantEmail = new Label(applicant.getEmail());
         applicantEmail.getStyleClass().add("applicant-email");
 
         Label applicantPhone = new Label(applicant.getPhone());
         applicantPhone.getStyleClass().add("applicant-phone");
 
-
         Label applicantSkills = new Label("Skills: " + applicant.getSkills());
         applicantSkills.getStyleClass().add("applicant-skills");
 
-        Label applicantAbout = new Label(applicant.getAbout()); // Assuming getDescription() is defined in Post
-        applicantAbout.getStyleClass().add("applicant-aboutn");
-
+        Label applicantAbout = new Label(applicant.getAbout());
+        applicantAbout.getStyleClass().add("applicant-about");
 
         detailsBox.getChildren().addAll(applicantName, applicantEmail, applicantPhone, applicantSkills, applicantAbout);
         jobBox.getChildren().add(detailsBox);
@@ -77,6 +90,11 @@ public class applicantsController {
         return jobBox;
     }
 
+    /**
+     * Displays the list of applicants for each job in the given list of JobPosting objects.
+     *
+     * @param jobs List of JobPosting objects.
+     */
     public void displayApplicants(List<JobPosting> jobs) {
         VBox mainContainer = new VBox(10); // Main container for all jobs and their applicants
 
@@ -105,15 +123,21 @@ public class applicantsController {
         applicantsContainer.getChildren().add(mainContainer);
     }
 
-    public void onLoad(){
-        List<JobPosting> jobs = fetchjobs();
+    /**
+     * Initializes the view by fetching jobs and displaying applicants.
+     */
+    public void onLoad() {
+        List<JobPosting> jobs = fetchJobs();
         displayApplicants(jobs);
-
     }
 
-
-    public void ProfileLoader(ActionEvent actionEvent) throws IOException {
+    /**
+     * Handles the action event for navigating to the employer's profile.
+     *
+     * @param actionEvent The ActionEvent triggering the method.
+     * @throws IOException If an I/O exception occurs.
+     */
+    public void profileLoader(ActionEvent actionEvent) throws IOException {
         SceneManager.getInstance().showEmployerProfileScene();
     }
 }
-

@@ -1,41 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- XML file defining the layout for a job posting in a JavaFX application -->
 
-<?import java.net.URL?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
+<!-- AnchorPane for the job posting UI -->
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
-
+<?import java.net.URL?>
 <AnchorPane prefHeight="724" prefWidth="708" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="704.0" prefWidth="688.0" style="-fx-background-color: white; -fx-padding: 20;">
+
+        <!-- AnchorPane for styling and positioning elements -->
+        <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="704.0" prefWidth="688.0"
+                    style="-fx-background-color: white; -fx-padding: 20;">
             <children>
+
+                <!-- ImageView for displaying a banner image -->
                 <ImageView fitHeight="724" fitWidth="688" layoutX="0.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@banner.jpeg" />
+                        <!-- Placeholder for the banner image -->
+                        <Image url="@banner.jpeg"/>
                     </image>
                 </ImageView>
-                <ImageView fitHeight="86.0" fitWidth="129.0" layoutX="46.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+
+                <!-- ImageView for displaying a profile image with a circular clip -->
+                <ImageView fitHeight="86.0" fitWidth="129.0" layoutX="46.0" layoutY="80.0" pickOnBounds="true"
+                           preserveRatio="true">
                     <clip>
-                        <Circle centerX="43.0" centerY="43.0" radius="43.0" />
+                        <!-- Circular clip for the profile image -->
+                        <Circle centerX="43.0" centerY="43.0" radius="43.0"/>
                     </clip>
                     <image>
-                        <Image url="@profile.png" />
+                        <!-- Placeholder for the profile image -->
+                        <Image url="@profile.png"/>
                     </image>
                 </ImageView>
-                <TextArea layoutX="8.0" layoutY="251.0" prefHeight="195.0" prefWidth="628.0" promptText="Description" style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: transparent;" />
-                <TextArea layoutX="8.0" layoutY="463.0" prefHeight="161.0" prefWidth="628.0" promptText="Required Skills" style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: transparent;" />
-                <Label layoutX="17.0" layoutY="193.0" text="Job Title" textFill="#949090" />
-                <Label layoutX="127.0" layoutY="193.0" text="Location" textFill="#949090" />
-                <Label layoutX="228.0" layoutY="193.0" text="Key Words" textFill="#949090" />
-                <Label fx:id="lblErrorMsg" layoutX="26.0" layoutY="658.0" prefHeight="17.0" prefWidth="48.0" textFill="#e11111" />
+
+                <!-- TextArea for entering job description -->
+                <TextArea layoutX="8.0" layoutY="251.0" prefHeight="195.0" prefWidth="628.0" promptText="Description"
+                          style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: transparent;"/>
+
+                <!-- TextArea for entering required skills -->
+                <TextArea layoutX="8.0" layoutY="463.0" prefHeight="161.0" prefWidth="628.0"
+                          promptText="Required Skills"
+                          style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: transparent;"/>
+
+                <!-- Labels for displaying job details -->
+                <Label layoutX="17.0" layoutY="193.0" text="Job Title" textFill="#949090"/>
+                <Label layoutX="127.0" layoutY="193.0" text="Location" textFill="#949090"/>
+                <Label layoutX="228.0" layoutY="193.0" text="Key Words" textFill="#949090"/>
+
+                <!-- Error message label -->
+                <Label fx:id="lblErrorMsg" layoutX="26.0" layoutY="658.0" prefHeight="17.0" prefWidth="48.0"
+                       textFill="#e11111"/>
+
             </children>
         </AnchorPane>
     </children>
+
+    <!-- Stylesheets for styling the UI -->
     <stylesheets>
-        <URL value="@style.css" />
-        <URL value="@../../../../../styling/style.css" />
+        <URL value="@style.css"/>
+        <URL value="@../../../../../styling/style.css"/>
     </stylesheets>
 </AnchorPane>

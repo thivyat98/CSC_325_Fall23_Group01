@@ -19,10 +19,14 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * Controller class for handling the logic of the sign-up view.
+ */
 public class signUpController {
     private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@(.+)$";
     private static final String PHONE_REGEX = "^\\d{10}$"; // Assumes a 10-digit phone number
     private static final String PASSWORD_REGEX = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$";
+
     @FXML
     public Button signUp;
     public TextField firstNameField;
@@ -36,6 +40,14 @@ public class signUpController {
     @FXML
     public Label lblErrorMsg;
 
+    /**
+     * Handles the sign-up button click event.
+     *
+     * @param actionEvent The event triggered by the sign-up button.
+     * @throws ExecutionException   If the execution encounters an exception.
+     * @throws InterruptedException If the execution is interrupted.
+     * @throws IOException          If an I/O error occurs.
+     */
     public void handleSignUp(ActionEvent actionEvent) throws ExecutionException, InterruptedException, IOException {
         Firestore db = FirestoreClient.getFirestore();
 
@@ -86,10 +98,22 @@ public class signUpController {
         }
     }
 
+    /**
+     * Navigates back to the login scene.
+     *
+     * @param actionEvent The event triggered by the "Back to Login" hyperlink.
+     * @throws IOException If an I/O error occurs.
+     */
     public void backToLogin(ActionEvent actionEvent) throws IOException {
         SceneManager.getInstance().showLoginScene();
     }
 
+    /**
+     * Navigates to the business sign-up scene.
+     *
+     * @param actionEvent The event triggered by the "Business Sign-up" hyperlink.
+     * @throws IOException If an I/O error occurs.
+     */
     public void toBussinessSignup(ActionEvent actionEvent) throws IOException {
         SceneManager.getInstance().showBusinessSignUpScene();
     }

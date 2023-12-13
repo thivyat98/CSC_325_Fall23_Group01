@@ -1,44 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- This XML file represents the layout of an employee profile in a JavaFX application. -->
 
-<?import java.net.URL?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="722.0" prefWidth="718.0" style="-fx-background-color: #6096ba; -fx-padding: 20;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csc325.csc325.Controllers.employeeProfileController">
+<?import java.net.URL?>
+<AnchorPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="722.0" prefWidth="718.0"
+            style="-fx-background-color: #6096ba; -fx-padding: 20;" xmlns="http://javafx.com/javafx/19"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.csc325.csc325.Controllers.employeeProfileController">
     <children>
-        <ImageView fitHeight="86.0" fitWidth="129.0" layoutX="46.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+        <!-- Profile picture with a circular clip -->
+        <ImageView fitHeight="86.0" fitWidth="129.0" layoutX="46.0" layoutY="80.0" pickOnBounds="true"
+                   preserveRatio="true">
             <clip>
-                <Circle centerX="43.0" centerY="43.0" radius="43.0" />
+                <Circle centerX="43.0" centerY="43.0" radius="43.0"/>
             </clip>
+            <!-- Default profile picture -->
             <image>
-                <Image url="@defaultprofilepic.jpg" />
+                <Image url="@defaultprofilepic.jpg"/>
             </image>
         </ImageView>
-        <TextArea fx:id="about" layoutX="41.0" layoutY="246.0" prefHeight="108.0" prefWidth="628.0" promptText="About me" style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: transparent;" />
-        <ListView fx:id="skillListView" layoutX="26.0" layoutY="393.0" prefHeight="179.0" prefWidth="671.0" style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: white;" />
-        <Label fx:id="employeeName" alignment="CENTER" contentDisplay="CENTER" layoutX="36.0" layoutY="33.0" prefHeight="105.0" prefWidth="644.0" textFill="WHITE">
+
+        <!-- TextArea for entering and displaying 'About me' information -->
+        <TextArea fx:id="about" layoutX="41.0" layoutY="246.0" prefHeight="108.0" prefWidth="628.0"
+                  promptText="About me"
+                  style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: transparent;"/>
+
+        <!-- ListView for displaying skills -->
+        <ListView fx:id="skillListView" layoutX="26.0" layoutY="393.0" prefHeight="179.0" prefWidth="671.0"
+                  style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: white;"/>
+
+        <!-- Label for displaying employee name -->
+        <Label fx:id="employeeName" alignment="CENTER" contentDisplay="CENTER" layoutX="36.0" layoutY="33.0"
+               prefHeight="105.0" prefWidth="644.0" textFill="WHITE">
             <font>
-                <Font size="36.0" />
+                <Font size="36.0"/>
             </font>
         </Label>
-        <Label fx:id="username" layoutX="152.0" layoutY="186.0" prefHeight="28.0" prefWidth="188.0" text="Email" textFill="WHITE" />
-        <Label fx:id="phoneNumber" layoutX="475.0" layoutY="180.0" prefHeight="28.0" prefWidth="188.0" text="Phone Number" textFill="WHITE" />
-        <Label fx:id="lblErrorMsg" layoutX="46.0" layoutY="669.0" textFill="#eb0f0f" />
-      <Button fx:id="saveButton" layoutX="610.0" layoutY="589.0" mnemonicParsing="false" onAction="#saveProfile" styleClass="nav_btn" text="Save" />
-      <Button fx:id="addSkill" layoutX="32.0" layoutY="650.0" mnemonicParsing="false" onAction="#addSkilltoList" styleClass="nav_btn" text="Add" />
-      <Button layoutX="116.0" layoutY="651.0" mnemonicParsing="false" onAction="#removeSkillfromList" styleClass="nav_btn" text="Remove" />
-        <TextField fx:id="skill" layoutX="31.0" layoutY="589.0" promptText="Add Skill" />
-      <Button fx:id="logOutBtn" layoutX="594.0" layoutY="656.0" mnemonicParsing="false" onAction="#logOutHandler" styleClass="nav_btn" text="Log Out" />
+
+        <!-- Labels for displaying email and phone number -->
+        <Label fx:id="username" layoutX="152.0" layoutY="186.0" prefHeight="28.0" prefWidth="188.0" text="Email"
+               textFill="WHITE"/>
+        <Label fx:id="phoneNumber" layoutX="475.0" layoutY="180.0" prefHeight="28.0" prefWidth="188.0"
+               text="Phone Number" textFill="WHITE"/>
+
+        <!-- Error message label -->
+        <Label fx:id="lblErrorMsg" layoutX="46.0" layoutY="669.0" textFill="#eb0f0f"/>
+
+        <!-- Buttons for saving, adding skills, removing skills, and logging out -->
+        <Button fx:id="saveButton" layoutX="610.0" layoutY="589.0" mnemonicParsing="false" onAction="#saveProfile"
+                styleClass="nav_btn" text="Save"/>
+        <Button fx:id="addSkill" layoutX="32.0" layoutY="650.0" mnemonicParsing="false" onAction="#addSkilltoList"
+                styleClass="nav_btn" text="Add"/>
+        <Button layoutX="116.0" layoutY="651.0" mnemonicParsing="false" onAction="#removeSkillfromList"
+                styleClass="nav_btn" text="Remove"/>
+
+        <!-- TextField for entering a new skill -->
+        <TextField fx:id="skill" layoutX="31.0" layoutY="589.0" promptText="Add Skill"/>
+
+        <!-- Button for logging out -->
+        <Button fx:id="logOutBtn" layoutX="594.0" layoutY="656.0" mnemonicParsing="false" onAction="#logOutHandler"
+                styleClass="nav_btn" text="Log Out"/>
     </children>
+    <!-- External stylesheet -->
     <stylesheets>
-        <URL value="@colors.css" />
+        <URL value="@colors.css"/>
     </stylesheets>
 </AnchorPane>

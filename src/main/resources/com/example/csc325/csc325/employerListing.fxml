@@ -1,30 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+    This XML file represents the layout for a simple form capturing job-related information.
+-->
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
+<!-- Root AnchorPane for the job information form -->
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-
 <AnchorPane prefHeight="724" prefWidth="708" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
     <children>
+        <!-- Sub AnchorPane with a white background -->
         <AnchorPane layoutX="-6.0" prefHeight="724.0" prefWidth="708" style="-fx-background-color: white;">
             <children>
+                <!-- Banner image at the top of the form -->
                 <ImageView fitHeight="724" fitWidth="708" layoutX="0.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@banner.jpeg" />
+                        <Image url="@banner.jpeg"/>
                     </image>
                 </ImageView>
-                <ImageView fitHeight="132.0" fitWidth="146.0" layoutX="26.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
+
+                <!-- Company logo image -->
+                <ImageView fitHeight="132.0" fitWidth="146.0" layoutX="26.0" layoutY="89.0" pickOnBounds="true"
+                           preserveRatio="true">
                     <image>
-                        <Image url="@company.png" />
+                        <Image url="@company.png"/>
                     </image>
                 </ImageView>
-                <TextField layoutX="24.0" layoutY="256.0" prefHeight="26.0" prefWidth="150.0" promptText="Job Title" style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: transparent;" />
-                <TextField layoutX="24.0" layoutY="191.0" prefHeight="26.0" prefWidth="150.0" promptText="Company Name" style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: transparent;" />
-                <TextField layoutX="24.0" layoutY="322.0" prefHeight="26.0" prefWidth="150.0" promptText="Email" style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: transparent;" />
-                <TextField layoutX="24.0" layoutY="380.0" prefHeight="26.0" prefWidth="150.0" promptText="Phone Number" style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: transparent;" />
-                <Label fx:id="lblErrorMsg" layoutX="40.0" layoutY="498.0" prefHeight="17.0" prefWidth="48.0" textFill="#e80b0b" />
+
+                <!-- TextFields for entering job-related information -->
+                <TextField layoutX="24.0" layoutY="256.0" prefHeight="26.0" prefWidth="150.0" promptText="Job Title"
+                           style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: transparent;"/>
+                <TextField layoutX="24.0" layoutY="191.0" prefHeight="26.0" prefWidth="150.0" promptText="Company Name"
+                           style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: transparent;"/>
+                <TextField layoutX="24.0" layoutY="322.0" prefHeight="26.0" prefWidth="150.0" promptText="Email"
+                           style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: transparent;"/>
+                <TextField layoutX="24.0" layoutY="380.0" prefHeight="26.0" prefWidth="150.0" promptText="Phone Number"
+                           style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: transparent;"/>
+
+                <!-- Error message label -->
+                <Label fx:id="lblErrorMsg" layoutX="40.0" layoutY="498.0" prefHeight="17.0" prefWidth="48.0"
+                       textFill="#e80b0b"/>
             </children>
         </AnchorPane>
     </children>

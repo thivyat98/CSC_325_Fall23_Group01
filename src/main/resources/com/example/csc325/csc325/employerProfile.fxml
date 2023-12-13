@@ -1,37 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+    This XML file represents the layout for an employer profile in a JavaFX application.
+-->
 
+<!-- Root AnchorPane for the employer profile -->
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #344e41;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csc325.csc325.Controllers.employerProfileController">
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #344e41;"
+            xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.csc325.csc325.Controllers.employerProfileController">
 
     <children>
-        <ImageView fitHeight="86.0" fitWidth="129.0" layoutX="22.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+        <!-- ImageView for the employer's profile picture with a circular clip -->
+        <ImageView fitHeight="86.0" fitWidth="129.0" layoutX="22.0" layoutY="66.0" pickOnBounds="true"
+                   preserveRatio="true">
             <clip>
-                <Circle centerX="43.0" centerY="43.0" radius="43.0" />
+                <Circle centerX="43.0" centerY="43.0" radius="43.0"/>
             </clip>
+            <!-- Default profile picture for the company -->
             <image>
-                <Image url="@defaultprofilepic.jpg" />
+                <Image url="@defaultprofilepic.jpg"/>
             </image>
         </ImageView>
-        <TextArea fx:id="about" layoutX="-8.0" layoutY="155.0" prefHeight="297.0" prefWidth="728.0" promptText="About Company" style="-fx-border-color: white; -fx-prompt-text-fill: ccd5ae; -fx-background-color: transparent;" styleClass="anchor_pane" />
-<!--        <ListView fx:id="skillListView" layoutX="8.0" layoutY="411.0" prefHeight="161.0" prefWidth="696.0" style="-fx-border-color: white; -fx-border-width: 1; -fx-background-color: transparent;" />-->
-        <Label fx:id="companyName" alignment="CENTER" contentDisplay="CENTER" layoutX="124.0" layoutY="50.0" prefHeight="44.0" prefWidth="475.0" textFill="#ccd5ae">
+
+        <!-- TextArea for entering and displaying information about the company -->
+        <TextArea fx:id="about" layoutX="-8.0" layoutY="155.0" prefHeight="297.0" prefWidth="728.0"
+                  promptText="About Company"
+                  style="-fx-border-color: white; -fx-prompt-text-fill: ccd5ae; -fx-background-color: transparent;"
+                  styleClass="anchor_pane"/>
+
+        <!-- Label for displaying the company name -->
+        <Label fx:id="companyName" alignment="CENTER" contentDisplay="CENTER" layoutX="124.0" layoutY="50.0"
+               prefHeight="44.0" prefWidth="475.0" textFill="#ccd5ae">
             <font>
-                <Font size="36.0" />
+                <Font size="36.0"/>
             </font>
         </Label>
-        <Label fx:id="username" layoutX="152.0" layoutY="95.0" prefHeight="28.0" prefWidth="188.0" text="Email" textFill="#ccd5ae" />
-        <Label fx:id="phoneNumber" layoutX="468.0" layoutY="95.0" prefHeight="28.0" prefWidth="188.0" text="Phone Number" textFill="#ccd5ae" />
-        <Label fx:id="lblErrorMsg" layoutX="46.0" layoutY="669.0" textFill="#eb0f0f" />
-        <Button fx:id="saveButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#saveProfile" style="-fx-background-color: ccd5ae;" text="Save" />
-        <Button fx:id="logOutBtn" layoutX="77.0" layoutY="14.0" mnemonicParsing="false" onAction="#logOutHandler" style="-fx-background-color: ccd5ae;" text="Log Out" />
-      <Button fx:id="postJobBtn" layoutX="562.0" layoutY="493.0" mnemonicParsing="false" onAction="#postJob" style="-fx-background-color: ccd5ae;" text="Post Job" />
-      <Button layoutX="478.0" layoutY="493.0" mnemonicParsing="false" onAction="#applicantsPage" style="-fx-background-color: ccd5ae;" text="Applicants" />
-    </children>
 
+        <!-- Labels for displaying email and phone number -->
+        <Label fx:id="username" layoutX="152.0" layoutY="95.0" prefHeight="28.0" prefWidth="188.0" text="Email"
+               textFill="#ccd5ae"/>
+        <Label fx:id="phoneNumber" layoutX="468.0" layoutY="95.0" prefHeight="28.0" prefWidth="188.0"
+               text="Phone Number" textFill="#ccd5ae"/>
+
+        <!-- Error message label -->
+        <Label fx:id="lblErrorMsg" layoutX="46.0" layoutY="669.0" textFill="#eb0f0f"/>
+
+        <!-- Buttons for saving profile, logging out, posting a job, and viewing applicants -->
+        <Button fx:id="saveButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#saveProfile"
+                style="-fx-background-color: ccd5ae;" text="Save"/>
+        <Button fx:id="logOutBtn" layoutX="77.0" layoutY="14.0" mnemonicParsing="false" onAction="#logOutHandler"
+                style="-fx-background-color: ccd5ae;" text="Log Out"/>
+        <Button fx:id="postJobBtn" layoutX="562.0" layoutY="493.0" mnemonicParsing="false" onAction="#postJob"
+                style="-fx-background-color: ccd5ae;" text="Post Job"/>
+        <Button layoutX="478.0" layoutY="493.0" mnemonicParsing="false" onAction="#applicantsPage"
+                style="-fx-background-color: ccd5ae;" text="Applicants"/>
+    </children>
 
 </AnchorPane>

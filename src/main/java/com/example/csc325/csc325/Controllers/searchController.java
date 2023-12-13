@@ -23,26 +23,44 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
-
+/**
+ * Controller class for handling the logic of the job search view.
+ */
 public class searchController {
     // Replace the local list with a Firestore collection reference
     private final CollectionReference jobCollection;
+
     @FXML
     public TextField searchField;
     @FXML
     public VBox jobListingsContainer;
 
-
+    /**
+     * Constructor for initializing the Firestore collection reference.
+     */
     public searchController() {
         // Assuming 'jobs' is the name of your Firestore collection
         this.jobCollection = FirestoreClient.getFirestore().collection("jobs");
     }
 
+    /**
+     * Loads the recent job listings when the scene is loaded.
+     *
+     * @throws ExecutionException   If the execution encounters an exception.
+     * @throws InterruptedException If the execution is interrupted.
+     */
     public void onLoad() throws ExecutionException, InterruptedException {
         List<JobPosting> recent = fetchJobs("", 10); // Fetch recent jobs with a limit of 10
         displayJobs(recent);
     }
 
+    /**
+     * Handles the search for jobs based on the entered keywords.
+     *
+     * @param actionEvent The event triggered by the search button.
+     * @throws ExecutionException   If the execution encounters an exception.
+     * @throws InterruptedException If the execution is interrupted.
+     */
     public void searchJobs(ActionEvent actionEvent) throws ExecutionException, InterruptedException {
         String searchTerm = searchField.getText().toLowerCase().trim();
         jobListingsContainer.getChildren().clear();
@@ -61,7 +79,15 @@ public class searchController {
         displayJobs(allJobs);
     }
 
-
+    /**
+     * Fetches jobs from Firestore based on the specified keyword and limit.
+     *
+     * @param keyword The keyword to search for in job listings.
+     * @param limit   The maximum number of jobs to fetch.
+     * @return A list of JobPosting objects matching the criteria.
+     * @throws ExecutionException   If the execution encounters an exception.
+     * @throws InterruptedException If the execution is interrupted.
+     */
     public List<JobPosting> fetchJobs(String keyword, int limit) throws ExecutionException, InterruptedException {
         List<JobPosting> jobs = new ArrayList<>();
         List<String> pulledJobIds = new ArrayList<>();
@@ -98,94 +124,46 @@ public class searchController {
         return jobs;
     }
 
-
-//    public void onLoad() throws ExecutionException, InterruptedException {
-//        List<JobPosting> recent = fetchRecentJobs();
-//        displayJobs(recent);
-//    }
-//
-//    public void searchJobs(ActionEvent actionEvent) {
-//        String searchTerm = searchField.getText().toLowerCase();
-//        jobListingsContainer.getChildren().clear();
-//
-//        // Split the input string into multiple keywords using space as a separator
-//        String[] keywords = searchTerm.split("\\s+");
-//
-//        for (String keyword : keywords) {
-//            List<JobPosting> jobs = fetchJobs(keyword);
-//            for (JobPosting job : jobs) {
-//                HBox jobUI = createJobListingUI(job);
-//                jobListingsContainer.getChildren().add(jobUI);
-//            }
-//        }
-//    }
-
-
-//    public List<JobPosting> fetchJobs(String keyword) {
-//        List<JobPosting> jobs = new ArrayList<>();
-//        List<String> pulledJobIds = new ArrayList<>(); // Use a List to store pulled job IDs
-//
-//        try {
-//            // Query Firestore for jobs using the keyword
-//            ApiFuture<QuerySnapshot> future = jobCollection.whereArrayContains("keywords", keyword).get();
-//            QuerySnapshot querySnapshot = future.get();
-//
-//            // Display the matching jobs
-//            for (DocumentSnapshot document : querySnapshot.getDocuments()) {
-//                JobPosting job = document.toObject(JobPosting.class);
-//                if (job != null) {
-//                    String jobId = job.getId();
-//
-//                    // Check if the job ID has already been pulled
-//                    if (!pulledJobIds.contains(jobId)) {
-//                        jobs.add(job);
-//                        pulledJobIds.add(jobId);
-//                    }
-//                }
-//            }
-//        } catch (InterruptedException | ExecutionException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return jobs;
-//    }
-
-
+    /**
+     * Creates the user interface for displaying a job listing.
+     *
+     * @param job The JobPosting object for which to create the UI.
+     * @return An HBox representing the job listing UI.
+     */
     public HBox createJobListingUI(JobPosting job) {
         HBox jobBox = new HBox(10);
         jobBox.getStyleClass().add("job-listing");
 
         VBox detailsBox = new VBox(5);
 
-        Label titleLabel = new Label(job.getTitle()); // Assuming getTitle() is defined in Post
+        Label titleLabel = new Label(job.getTitle());
         titleLabel.getStyleClass().add("job-title");
 
         Label companyNameLabel = new Label(job.getCompany());
         companyNameLabel.getStyleClass().add("company-name");
 
-        Label locationLabel = new Label(job.getLocation()); // Replace with actual location if available
+        Label locationLabel = new Label(job.getLocation());
         locationLabel.getStyleClass().add("job-location");
 
         Label salaryLabel = new Label("Salary: " + job.getSalary());
         salaryLabel.getStyleClass().add("job-description");
 
-        Label descriptionLabel = new Label(job.getDescription()); // Assuming getDescription() is defined in Post
+        Label descriptionLabel = new Label(job.getDescription());
         descriptionLabel.getStyleClass().add("job-description");
 
         Button applyButton = new Button("Apply");
         applyButton.getStyleClass().add("button");
         applyButton.setOnAction(event -> {
             try {
-                if(UserSessionManager.getUser().getType().equals("employee")){
-                handleApplyAction(job);
-                applyButton.setVisible(false);
-                Label appliedLabel = new Label("Applied");
-                appliedLabel.getStyleClass().add("applied-label");
-                detailsBox.getChildren().add(appliedLabel);
-                }
-                else{
+                if (UserSessionManager.getUser().getType().equals("employee")) {
+                    handleApplyAction(job);
                     applyButton.setVisible(false);
-                    Label appliedLabel = new Label("Business Accounts Can not Apply");
+                    Label appliedLabel = new Label("Applied");
+                    appliedLabel.getStyleClass().add("applied-label");
+                    detailsBox.getChildren().add(appliedLabel);
+                } else {
+                    applyButton.setVisible(false);
+                    Label appliedLabel = new Label("Business Accounts Cannot Apply");
                     appliedLabel.getStyleClass().add("error-label");
                     detailsBox.getChildren().add(appliedLabel);
                 }
@@ -200,7 +178,12 @@ public class searchController {
         return jobBox;
     }
 
-
+    /**
+     * Handles the action when a user applies for a job.
+     *
+     * @param job The JobPosting object for which the user is applying.
+     * @throws IOException If an I/O error occurs.
+     */
     private void handleApplyAction(JobPosting job) throws IOException {
         User user = UserSessionManager.getUser();
         if (user instanceof Employee e) {
@@ -208,22 +191,12 @@ public class searchController {
         }
     }
 
-//    public List<JobPosting> fetchRecentJobs() throws ExecutionException, InterruptedException {
-//
-    // Assuming 'jobs' is your collection and 'postedDate' is the timestamp field
-//        ApiFuture<QuerySnapshot> query = jobCollection
-//                .orderBy("unixTime", Query.Direction.DESCENDING)
-//                .limit(10)
-//                .get();
-//
-//        List<QueryDocumentSnapshot> documents = query.get().getDocuments();
-//        List<JobPosting> recentJobs = new ArrayList<>();
-//        for (QueryDocumentSnapshot document : documents) {
-//            recentJobs.add(document.toObject(JobPosting.class));
-//        }
-//        return recentJobs;
-//    }
-
+    /**
+     * Loads the user profile scene based on the user's type (employer or employee).
+     *
+     * @param actionEvent The event triggered by the "Profile" button.
+     * @throws IOException If an I/O error occurs.
+     */
     public void ProfileLoader(ActionEvent actionEvent) throws IOException {
         if (Objects.equals(UserSessionManager.getUser().getType(), "employer")) {
             SceneManager.getInstance().showEmployerProfileScene();
@@ -231,6 +204,11 @@ public class searchController {
             SceneManager.getInstance().showEmployeeProfileScene();
     }
 
+    /**
+     * Displays the fetched job listings in the UI.
+     *
+     * @param jobs The list of JobPosting objects to display.
+     */
     private void displayJobs(List<JobPosting> jobs) {
         for (JobPosting job : jobs) {
             HBox jobUI = createJobListingUI(job);
@@ -240,5 +218,4 @@ public class searchController {
             jobListingsContainer.getChildren().add(separator);
         }
     }
-
 }

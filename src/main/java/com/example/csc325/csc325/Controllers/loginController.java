@@ -18,6 +18,9 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * Controller class for handling user login functionality.
+ */
 public class loginController {
 
     @FXML
@@ -28,58 +31,55 @@ public class loginController {
     public TextField usernameField;
     public TextField passwordField;
 
-//    public void togglePasswordVisibility(ActionEvent actionEvent) {
-//        if (visiblePasswordField.isVisible()) {
-//            hiddenPasswordField.setText(visiblePasswordField.getText());
-//            hiddenPasswordField.setVisible(true);
-//            passwordField.setText(getDots(hiddenPasswordField.getText()));
-//            passwordField.setVisible(true);
-//            visiblePasswordField.setVisible(false);
-//        } else {
-//            visiblePasswordField.setText(hiddenPasswordField.getText());
-//            visiblePasswordField.setVisible(true);
-//            visiblePasswordField.requestFocus();
-//            passwordField.setVisible(false);
-//            hiddenPasswordField.setVisible(false);
-//        }
-//    }
-
-    private String getDots(String text) {
-        return "•".repeat(text.length());
-    }
-
+    /**
+     * Switches to the sign-up scene.
+     *
+     * @param actionEvent The event triggered by the sign-up button.
+     * @throws IOException If an I/O error occurs.
+     */
     public void signup(ActionEvent actionEvent) throws IOException {
         SceneManager.getInstance().showSignUpScene();
     }
 
+    /**
+     * Attempts to sign in the user based on provided credentials.
+     *
+     * @param actionEvent The event triggered by the login button.
+     * @throws IOException          If an I/O error occurs.
+     * @throws ExecutionException   If the execution encounters an exception.
+     * @throws InterruptedException If the execution is interrupted.
+     */
     public void signin(ActionEvent actionEvent) throws IOException, ExecutionException, InterruptedException {
         Firestore db = FirestoreClient.getFirestore();
+
+        // Query Firestore for the user account with the entered email
         ApiFuture<QuerySnapshot> query = db.collection("auth")
                 .whereEqualTo("username", usernameField.getText().toLowerCase())
                 .get();
+
         List<QueryDocumentSnapshot> documents = query.get().getDocuments();
-        if(documents.isEmpty()){
+
+        // Check if an account with the entered email exists
+        if (documents.isEmpty()) {
             System.out.println("No Account under this email");
             lblErrorMsg.setText("No Account under this email");
             return;
         }
+
+        // Retrieve the hashed password stored in Firestore for the user
         String storedHashedPassword = documents.get(0).getString("hashPassword");
+
+        // Check if the entered password matches the stored hashed password
         assert storedHashedPassword != null;
-        if(BCrypt.checkpw(passwordField.getText(), storedHashedPassword)){
+        if (BCrypt.checkpw(passwordField.getText(), storedHashedPassword)) {
             System.out.println(documents.get(0).getString("ID"));
+            // Log in the user and switch to the main scene
             UserSessionManager.loginUser(documents.get(0).getString("ID"), documents.get(0).getString("Type"));
             SceneManager.getInstance().showMainScene();
-        }
-        else{
+        } else {
             System.out.println("Incorrect Password");
             lblErrorMsg.setText("Incorrect Password");
-
             return;
-
         }
-
-
     }
-
-
 }
