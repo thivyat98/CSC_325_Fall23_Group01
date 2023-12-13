@@ -172,11 +172,16 @@ public class searchController {
         Label descriptionLabel = new Label(job.getDescription()); // Assuming getDescription() is defined in Post
         descriptionLabel.getStyleClass().add("job-description");
 
+        Label appliedLabel = new Label("Applied");
+        appliedLabel.getStyleClass().add("applied-label");
+
         Button applyButton = new Button("Apply");
         applyButton.getStyleClass().add("button");
         applyButton.setOnAction(event -> {
             try {
                 handleApplyAction(job);
+                applyButton.setVisible(false);
+                detailsBox.getChildren().add(appliedLabel);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -194,7 +199,6 @@ public class searchController {
         if (user instanceof Employee e) {
             job.addApplicants(e);
         }
-        SceneManager.getInstance().showSuccessfulRegScene();
     }
 
 //    public List<JobPosting> fetchRecentJobs() throws ExecutionException, InterruptedException {
