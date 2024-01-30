@@ -44,6 +44,7 @@ public class main extends Application {
      * @param stage The primary stage of the JavaFX application.
      * @throws IOException If an I/O error occurs.
      */
+    //thivya 
     @Override
     public void start(Stage stage) throws IOException {
         // Set the primary stage for the SceneManager
